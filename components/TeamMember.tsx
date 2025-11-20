@@ -23,7 +23,6 @@ export function TeamMember({ name, role, bio, image, index = 0 }: TeamMemberProp
       <div className="aspect-square relative overflow-hidden bg-gray-100">
         <ImageWithFallback
           src={image.src}         
-          alt={image.src}
           className="w-full h-[800px] object-cover position-center "
         />
       </div>
