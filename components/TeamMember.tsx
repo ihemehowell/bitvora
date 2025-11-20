@@ -1,15 +1,13 @@
 import { Linkedin, Twitter } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { ImageWithFallback } from './figma/ImageFallBack';
+import { StaticImageData } from 'next/image';
 
 interface TeamMemberProps {
   name: string;
   role: string;
   bio: string;
-  image: {
-    src: string;
-    alt: string;
-  };
+  image: StaticImageData;
   index?: number;
 }
 
@@ -25,7 +23,7 @@ export function TeamMember({ name, role, bio, image, index = 0 }: TeamMemberProp
       <div className="aspect-square relative overflow-hidden bg-gray-100">
         <ImageWithFallback
           src={image.src}         
-          alt={image.alt}
+          alt={image.src}
           className="w-full h-[800px] object-cover position-center "
         />
       </div>
