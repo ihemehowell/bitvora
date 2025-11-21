@@ -50,7 +50,7 @@ export  default function PortfolioPage() {
                 key={filter}
                 onClick={() => setActiveFilter(filter)}
                 className={`px-6 py-2.5 rounded-lg transition-all ${activeFilter === filter
-                    ? 'bg-primary-600 text-white shadow-md'
+                    ? 'bg-[#319198] text-white shadow-md'
                     : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                   }`}
               >
@@ -76,7 +76,7 @@ export  default function PortfolioPage() {
           {/* Load More */}
           {filteredProjects.length >= 9 && (
             <div className="text-center mt-12">
-              <button className="px-8 py-3 bg-gray-100 text-gray-900 rounded-xl hover:bg-gray-200 transition-colors disabled:opacity-50">
+              <button className="px-8 py-3 bg-[#319198]/20 text-white font-semibold rounded-xl hover:bg-[#319198]/40 transition-colors disabled:opacity-50">
                 Load More Projects
               </button>
             </div>

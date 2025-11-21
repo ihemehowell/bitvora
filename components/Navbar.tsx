@@ -78,25 +78,24 @@ export default function Navbar({ currentPage,  }: NavbarProps) {
         {/* Mobile Menu */}
         {mobileMenuOpen && (
           <div className="md:hidden py-4 border-t border-gray-200">
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-4 px-5">
               {navLinks.map((link) => (
-                
-                <Link href={`/${link.page} key={link.page}`}>
-                   <button
-                  onClick={() => {
-                    setMobileMenuOpen(false);
-                  }}
-                  className={`text-left px-4 py-2 rounded-lg transition-colors ${
-                    currentPage === link.page
-                      ? "bg-blue-50 text-blue-600"
-                      : "text-gray-600 hover:bg-gray-50"
-                  }`}
-                >
-                  {link.name}
-                </button>
-                </Link>
-               
-              ))}
+                  <Link key={link.page} href={`/${link.page}`}>
+                    <button
+                      onClick={() => {
+                        setMobileMenuOpen(false);
+                      }}
+                      className={`text-left px-4 py-2 rounded-lg transition-colors ${
+                        currentPage === link.page
+                          ? "bg-blue-50 text-blue-600"
+                          : "text-gray-600 hover:bg-gray-50"
+                      }`}
+                    >
+                      {link.name}
+                    </button>
+                  </Link>
+                ))}
+
               <Link href="/quote">
               <Button
                 onClick={() => {

@@ -34,14 +34,14 @@ export default function PortfolioSection() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {portfolioProjects.map((project, index) => (
-            <Link href={`portfolio/${project.id}`}>
-            <PortfolioCard
-              key={project.id}
-              {...project}
-              index={index}
-             />
+            <Link key={project.id} href={`/portfolio/${project.id}`}>
+              <PortfolioCard
+                {...project}
+                index={index}
+              />
             </Link>
           ))}
+
         </div>
 
         <div className="text-center mt-8 md:hidden">
