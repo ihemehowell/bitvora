@@ -105,7 +105,7 @@ export function Footer({ onNavigate }: FooterProps) {
             <ul className="space-y-3">
               <li className="flex items-start gap-3">
                 <Mail size={20} className="text-primary-400 mt-1 shrink-0" />
-                <span className="text-gray-400">info@webflowagency.com</span>
+                <span className="text-gray-400">infobitvoratech@gmail.com</span>
               </li>
               <li className="flex items-start gap-3">
                 <Phone size={20} className="text-primary-400 mt-1 shrink-0" />
