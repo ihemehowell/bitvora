@@ -65,7 +65,7 @@ export default function Navbar({ currentPage,  }: NavbarProps) {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 rounded-lg hover:bg-gray-100"
+            className="md:hidden p-2 text-white rounded-lg cursor-pointer"
           >
             {mobileMenuOpen ? (
               <X className="w-6 h-6" />
@@ -83,7 +83,6 @@ export default function Navbar({ currentPage,  }: NavbarProps) {
                 
                 <Link href={`/${link.page} key={link.page}`}>
                    <button
-                  
                   onClick={() => {
                     setMobileMenuOpen(false);
                   }}
