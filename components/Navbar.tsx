@@ -9,10 +9,10 @@ import logo from "../public/bitvora logo.svg";
 import { navLinks } from "../Data/Data";
 
 interface NavbarProps {
-  currentPage: string;
+  currentPage?: string;
 }
 
-export function Navbar({ currentPage,  }: NavbarProps) {
+export default function Navbar({ currentPage = "" }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
 

@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { ProcessStep } from '@/components/ProcessStep';
 import Link from 'next/link';
 import { team, values, process } from '@/Data/Data';
+import Image from 'next/image';
 
 
 export default function AboutPage() {
@@ -172,7 +173,7 @@ export default function AboutPage() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {team.map((member, index) => (
-              <TeamMember key={index} {...member} index={index} />
+              <TeamMember key={index} {...member} index={index}/>
             ))}
           </div>
         </div>
