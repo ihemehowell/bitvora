@@ -7,11 +7,9 @@ import { services } from "@/Data/Data";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
-interface ServicesSectionProps {
-    onNavigate: (page: string) => void;
-}
 
-export default function ServicesSection({ onNavigate }: ServicesSectionProps) {
+
+export default function ServicesSection() {
     return (
         <section className="bg-white py-20 max-md:py-12">
             <div className="container mx-auto px-6 text-center mb-12">

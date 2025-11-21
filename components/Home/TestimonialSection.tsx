@@ -5,7 +5,7 @@ import SectionHeading from "../SectionHeading";
 
 export default function TestimonialsSection() {
   return (
-    <section className="bg-gradient-to-br from-primary-600 to-primary-700 py-16">
+    <section className="bg-linear-to-br from-[#319198] to-[#319198]/80 py-16">
       <div className="container mx-auto px-6">
         <SectionHeading
           title="What Our Clients Say"
