@@ -4,13 +4,12 @@ import { PortfolioCard } from "@/components/PortfolioCard";
 
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 
-interface Props {
-  onNavigate: (page: string, id?: number) => void;
-}
 
-export default function PortfolioSection({ onNavigate }: Props) {
+
+export default function PortfolioSection() {
   return (
     <section className="bg-white py-16">
       <div className="container mx-auto px-6">
@@ -23,34 +22,37 @@ export default function PortfolioSection({ onNavigate }: Props) {
             </p>
           </div>
 
+          <Link href="portfolio">
           <Button
-            onClick={() => onNavigate("portfolio")}
             variant="ghost"
             className="text-primary-600 hidden md:flex"
           >
             View All <ArrowRight size={18} />
           </Button>
+          </Link>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {portfolioProjects.map((project, index) => (
+            <Link href={`portfolio/${project.id}`}>
             <PortfolioCard
               key={project.id}
               {...project}
               index={index}
-              onViewDetails={(id) => onNavigate("portfolio-detail", id)}
-            />
+             />
+            </Link>
           ))}
         </div>
 
         <div className="text-center mt-8 md:hidden">
+          <Link href="portfolio">
           <Button
-            onClick={() => onNavigate("portfolio")}
             variant="ghost"
             className="text-primary-600"
           >
             View All Projects <ArrowRight size={18} />
           </Button>
+          </Link>
         </div>
 
       </div>

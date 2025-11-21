@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle } from "lucide-react";
-import { Button } from "../ui/button";
 import Link from "next/link";
 
 
