@@ -5,12 +5,11 @@ import { motion } from 'framer-motion';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
+import Link from 'next/link';
 
-interface ContactPageProps {
-  onNavigate: (page: string) => void;
-}
 
-export default function ContactPage({ onNavigate }: ContactPageProps) {
+
+export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -42,20 +41,20 @@ export default function ContactPage({ onNavigate }: ContactPageProps) {
     {
       icon: Mail,
       title: 'Email',
-      value: 'info@webflowagency.com',
+      value: 'infobitvoratech@gmail.com',
       link: 'mailto:info@webflowagency.com',
     },
     {
       icon: Phone,
       title: 'Phone',
-      value: '+234 90112449545',
-      link: 'tel:+23490112449545',
+      value: '+234 9061846290',
+      link: '+2349061846290',
     },
     {
       icon: MessageCircle,
       title: 'WhatsApp',
-      value: '+234 90112449545',
-      link: 'https://wa.me/+23490112449545',
+      value: '+234 9061846290',
+      link: 'https://wa.me/+2349061846290',
     },
     {
       icon: MapPin,
@@ -68,7 +67,7 @@ export default function ContactPage({ onNavigate }: ContactPageProps) {
   return (
     <div className="pt-20">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-gray-50 via-white to-primary-50 py-20 max-md:py-12">
+      <section className="bg-linear-to-br from-gray-50 via-white to-primary-50 py-20 max-md:py-12">
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mx-auto text-center">
             <motion.h1
@@ -76,7 +75,7 @@ export default function ContactPage({ onNavigate }: ContactPageProps) {
               animate={{ opacity: 1, y: 0 }}
               className="text-gray-900 mb-6 text-3xl font-bold"
             >
-              Get in <span className="bg-gradient-to-br from-indigo-500 to-violet-500 bg-clip-text text-transparent">Touch</span>
+              Get in <span className="bg-linear-to-br from-[#319198]/50 to-[#319198]/80 bg-clip-text text-transparent">Touch</span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -151,7 +150,7 @@ export default function ContactPage({ onNavigate }: ContactPageProps) {
                         type="tel"
                         value={formData.phone}
                         onChange={handleChange}
-                        placeholder="+1 (555) 123-4567"
+                        placeholder="+234 902-123-4567"
                         className="mt-2"
                       />
                     </div>
@@ -172,7 +171,7 @@ export default function ContactPage({ onNavigate }: ContactPageProps) {
 
                     <button
                       type="submit"
-                      className="w-full px-8 py-4 bg-primary-600 text-white rounded-xl hover:bg-primary-700 transition-colors flex items-center justify-center gap-2"
+                      className="w-full px-8 py-4 bg-[#319198]/80 text-white rounded-xl hover:bg-[#319198]/70 transition-colors flex items-center justify-center gap-2"
                     >
                       Send Message
                       <Send size={20} />
@@ -207,8 +206,8 @@ export default function ContactPage({ onNavigate }: ContactPageProps) {
                     transition={{ delay: index * 0.1 }}
                     className="flex items-start gap-4 p-6 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors"
                   >
-                    <div className="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                      <item.icon className="text-primary-600" size={24} />
+                    <div className="w-12 h-12 bg-[#319198]/80 rounded-xl flex items-center justify-center shrink-0">
+                      <item.icon className="text-white/80" size={24} />
                     </div>
                     <div>
                       <h6 className="text-gray-900 mb-1">{item.title}</h6>
@@ -243,18 +242,21 @@ export default function ContactPage({ onNavigate }: ContactPageProps) {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="max-w-4xl mx-auto bg-gradient-to-br from-primary-600 to-primary-700 rounded-3xl p-12 text-center"
+            className="max-w-4xl mx-auto bg-linear-to-br from-[#319198]/60 to-[#319198]/80 rounded-3xl p-12 text-center"
           >
             <h3 className="text-gray-900 mb-4 text-3xl font-bold">Ready to Start Your Project?</h3>
             <p className="text-gray-600 mb-8 text-lg">
               Get a detailed quote for your project with our easy request form.
             </p>
+            <Link href='quote'>
             <button
-              onClick={() => onNavigate('quote')}
+             
               className="px-8 py-4 bg-gray-700 text-white rounded-xl hover:bg-gray-600 transition-colors"
             >
               Request a Quote
             </button>
+            </Link>
+            
           </motion.div>
         </div>
       </section>

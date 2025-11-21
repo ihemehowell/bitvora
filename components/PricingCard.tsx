@@ -1,5 +1,6 @@
 import { Check } from 'lucide-react';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 interface PricingCardProps {
   name: string;
@@ -9,7 +10,6 @@ interface PricingCardProps {
   features: string[];
   popular?: boolean;
   index?: number;
-  onGetQuote: () => void;
 }
 
 export function PricingCard({
@@ -20,7 +20,6 @@ export function PricingCard({
   features,
   popular = false,
   index = 0,
-  onGetQuote,
 }: PricingCardProps) {
   return (
     <motion.div
@@ -34,22 +33,23 @@ export function PricingCard({
     >
       {popular && (
         <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-          <span className="bg-gradient-to-r from-primary-600 to-primary-700 text-white px-4 py-1 rounded-full text-sm">
+          <span className="bg-linear-to-r from-[#319198]/60 to-[#319198]/80 text-white px-4 py-1 rounded-full text-sm">
             Most Popular
           </span>
         </div>
       )}
       
       <h4 className="text-gray-900 mb-2 text-lg font-semibold">{name}</h4>
-      <p className="text-gray-600 text-sm mb-6 text-lg font-semibold">{description}</p>
+      <p className="text-gray-600  mb-6 text-lg font-semibold">{description}</p>
       
       <div className="mb-6">
         <span className="text-gray-900">{price}</span>
         <span className="text-gray-500 text-sm ml-2">{period}</span>
       </div>
 
-      <button
-        onClick={onGetQuote}
+        <Link href='quote'>
+        <button
+        
         className={`w-full py-3 rounded-lg mb-8 transition-colors ${
           popular
             ? 'bg-[#319198] text-white hover:bg-[#319198]/80'
@@ -58,11 +58,13 @@ export function PricingCard({
       >
         Get Started
       </button>
+        </Link>
+      
 
       <ul className="space-y-4">
         {features.map((feature, idx) => (
           <li key={idx} className="flex items-start gap-3">
-            <Check size={20} className="text-primary-600 flex-shrink-0 mt-0.5" />
+            <Check size={20} className="text-primary-600 shrink-0 mt-0.5" />
             <span className="text-gray-600 text-sm font-semibold">{feature}</span>
           </li>
         ))}

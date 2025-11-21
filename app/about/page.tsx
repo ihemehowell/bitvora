@@ -60,8 +60,8 @@ export default function AboutPage() {
                 className="mb-12"
               >
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center">
-                    <Target className="text-primary-600" size={24} />
+                  <div className="w-12 h-12 bg-[#319198]/80 rounded-xl flex items-center justify-center">
+                    <Target className="text-white" size={24} />
                   </div>
                   <h3 className="text-gray-900 text-2xl font-bold">Our Mission</h3>
                 </div>
@@ -77,8 +77,8 @@ export default function AboutPage() {
                 transition={{ delay: 0.1 }}
               >
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center">
-                    <Eye className="text-primary-600" size={24} />
+                  <div className="w-12 h-12 bg-[#319198]/80 rounded-xl flex items-center justify-center">
+                    <Eye className="text-white" size={24} />
                   </div>
                   <h3 className="text-gray-900 text-2xl font-bold">Our Vision</h3>
                 </div>
@@ -118,8 +118,8 @@ export default function AboutPage() {
                 transition={{ delay: index * 0.1 }}
                 className="bg-white p-8 rounded-2xl border border-gray-100 text-center"
               >
-                <div className="w-16 h-16 bg-linear-to-br from-primary-600 to-primary-700 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <value.icon className="text-gray-400" size={32} />
+                <div className="w-16 h-16 bg-linear-to-br from-[#319198]/60 to-[#319198]/70 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                  <value.icon className="text-white" size={32} />
                 </div>
                 <h5 className="text-gray-900 mb-3 text-lg font-bold">{value.title}</h5>
                 <p className="text-gray-600 text-sm">{value.description}</p>

@@ -7,6 +7,7 @@ import {Accordion,AccordionContent,AccordionItem,AccordionTrigger,} from '@/comp
 import { servicesData,faqs,pricingPlans } from '@/Data/Data';
 import Link from 'next/link';
 import { ChevronRight } from 'lucide-react';
+import { button } from 'framer-motion/client';
 
 interface ServicesPageProps {
   onNavigate: (page: string) => void;
@@ -16,9 +17,9 @@ export default function ServicesPage({ onNavigate }: ServicesPageProps) {
   
 
   return (
-    <div className="pt-20">
+    <div className="">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-gray-50 via-white to-primary-50 py-20 max-md:py-12">
+      <section className="bg-linear-to-br from-[#319198]/30  to-[#319198]/50 py-20 max-md:py-12">
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mx-auto text-center">
             <motion.h1
@@ -70,11 +71,11 @@ export default function ServicesPage({ onNavigate }: ServicesPageProps) {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {pricingPlans.map((plan, index) => (
+              
               <PricingCard
                 key={index}
                 {...plan}
                 index={index}
-                onGetQuote={() => onNavigate('quote')}
               />
             ))}
           </div>
@@ -83,12 +84,15 @@ export default function ServicesPage({ onNavigate }: ServicesPageProps) {
             <p className="text-gray-600 mb-6 text-lg font-semibold">
               Not sure which plan is right for you?
             </p>
+
+            <Link href='contact'>
             <button
-              onClick={() => onNavigate('contact')}
-              className="px-8 py-3 bg-[#319198] text-white rounded-xl hover:bg-[#319198]/80 transition-colors"
+             className="px-8 py-3 bg-[#319198] text-white rounded-xl hover:bg-[#319198]/80 transition-colors"
             >
               Schedule a Consultation
             </button>
+            </Link>
+            
           </div>
         </div>
       </section>
@@ -137,26 +141,28 @@ export default function ServicesPage({ onNavigate }: ServicesPageProps) {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-gradient-to-br from-primary-600 to-primary-700 py-20 max-md:py-12">
+      <section className="bg-linear-to-br from-[#319198]/40 to-[#319198]/80 py-20 max-md:py-12">
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mx-auto text-center">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-white mb-6"
+              className="text-gray-600 mb-6 text-3xl font-bold"
             >
               Ready to Get Started?
             </motion.h2>
-            <p className="text-primary-160000 text-lg mb-8">
+            <p className="text-gray-600 text-lg mb-8">
               Let's build something amazing together. Get your free project quote today.
             </p>
-            <button
-              onClick={() => onNavigate('quote')}
-              className="px-8 py-4 bg-white text-primary-600 rounded-xl hover:bg-gray-100 transition-colors"
+            <Link href='quote'>
+             <button
+              className="px-8 py-4 bg-white text rounded-xl hover:bg-gray-100 transition-colors"
             >
               Request a Quote
             </button>
+            </Link>
+           
           </div>
         </div>
       </section>
