@@ -170,7 +170,7 @@ export { filters }
 const projects = [
   {
     id: 1,
-    title: 'TechStart Landing',
+    title: 'Mona',
     category: 'Landing Pages',
     tags: ['Design', 'Development', 'Conversion'],
     image: 'https://images.unsplash.com/photo-1560202582-a391c31ec300?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',

@@ -9,6 +9,12 @@ interface PortfolioDetailPageProps {
   projectId: number;
 }
 
+export function generateStaticParams() {
+  return relatedProjects.map((project) => ({
+    id: project.id.toString(),
+  }));
+}
+
 export default function  PortfolioDetailPage({ projectId }: PortfolioDetailPageProps) {
   // Project data - in real app would fetch based on projectId
  
