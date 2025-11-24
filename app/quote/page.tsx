@@ -50,7 +50,7 @@ export default function QuotePage() {
 
   if (submitted) {
     return (
-      <div className="pt-20 min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 via-white to-primary-50">
+      <div className="pt-20 min-h-screen flex items-center justify-center bg-linear-to-br from-gray-50 via-white to-primary-50">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
@@ -68,7 +68,7 @@ export default function QuotePage() {
               <h5 className="text-gray-900 mb-4">What happens next?</h5>
               <div className="space-y-4 text-left">
                 <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 bg-primary-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <div className="w-8 h-8 bg-primary-100 rounded-full flex items-center justify-center shrink-0 mt-0.5">
                     <span className="text-primary-600">1</span>
                   </div>
                   <div>
@@ -77,7 +77,7 @@ export default function QuotePage() {
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 bg-primary-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <div className="w-8 h-8 bg-primary-100 rounded-full flex items-center justify-center shrink-0 mt-0.5">
                     <span className="text-primary-600">2</span>
                   </div>
                   <div>
@@ -86,7 +86,7 @@ export default function QuotePage() {
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 bg-primary-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <div className="w-8 h-8 bg-primary-100 rounded-full flex items-center justify-center shrink-0 mt-0.5">
                     <span className="text-primary-600">3</span>
                   </div>
                   <div>
@@ -122,7 +122,7 @@ export default function QuotePage() {
   }
 
   return (
-    <div className="pt-20 min-h-screen bg-gradient-to-br from-gray-50 via-white to-primary-50">
+    <div className="pt-20 min-h-screen bg-linear-to-br from-gray-50 via-white to-primary-50">
       {/* Header */}
       <section className="py-20 max-md:py-12 pb-8">
         <div className="container mx-auto px-6">
