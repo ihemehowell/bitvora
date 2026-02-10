@@ -1,37 +1,52 @@
 'use client';
 
-import { whyChooseUs } from "../../Data/Data";
+import { whyChooseUs } from "@/Data/Data";
 import { motion } from "framer-motion";
-import SectionHeading from "../SectionHeading";
 
 export default function WhyChooseUsSection() {
   return (
-    <section className="bg-gray-50 py-16">
-      <div className="container mx-auto px-6">
+    <section className="py-20 relative">
+      {/* Background */}
+      <div className="absolute inset-0 dotted-grid opacity-30 pointer-events-none" />
 
-        <SectionHeading
-          title="Why Choose Us"
-          subtitle="We combine expertise, creativity, and dedication to deliver exceptional results"
-        />
+      <div className="container mx-auto px-6 relative z-10">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <span className="text-cyan-400 text-sm font-medium mono mb-4 block">
+            WHY CHOOSE US
+          </span>
+          <h2 className="text-4xl font-bold text-white mb-4">
+            Built for <span className="gradient-text">Excellence</span>
+          </h2>
+          <p className="text-gray-400 max-w-2xl mx-auto">
+            We combine expertise, creativity, and dedication to deliver exceptional results
+          </p>
+        </motion.div>
 
+        {/* Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {whyChooseUs.map((item, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 12 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.05 }}
-              className="bg-white rounded-xl p-5 text-center h-full flex flex-col items-center gap-3 border"
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className="group p-6 rounded-2xl border border-white/10 hover:border-cyan-500/30 transition-all duration-300 text-center"
             >
-              <div className="w-14 h-14 bg-primary-100 rounded-lg flex items-center justify-center">
-                <item.icon size={32} className={item.color} />
+              <div className="w-14 h-14 rounded-xl bg-cyan-500/10 flex items-center justify-center mx-auto mb-4 group-hover:bg-cyan-500/20 transition-colors">
+                <item.icon size={28} className={item.color} />
               </div>
-              <h5 className="text-gray-900 font-medium text-xl">{item.title}</h5>
-              <p className="text-gray-600 text-md">{item.description}</p>
+              <h5 className="text-white font-semibold text-lg mb-2">{item.title}</h5>
+              <p className="text-gray-400 text-sm">{item.description}</p>
             </motion.div>
           ))}
         </div>
-
       </div>
     </section>
   );

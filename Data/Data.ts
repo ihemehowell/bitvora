@@ -1,6 +1,53 @@
-import { ArrowRight, CheckCircle, Code, Palette, ShoppingCart, Users, Award, Zap, LucideIcon, Rocket, Code2, Search, MessageSquare, Users2, Lightbulb, Shield, Heart, FileText, Globe, TrendingUp, Wrench, Layout, } from "lucide-react";
+import { 
+  ArrowRight, 
+  CheckCircle, 
+  Code, 
+  Palette, 
+  ShoppingCart, 
+  Users, 
+  Award, 
+  Zap, 
+  LucideIcon, 
+  Rocket, 
+  Code2, 
+  Search, 
+  MessageSquare, 
+  Users2, 
+  Lightbulb, 
+  Shield, 
+  Heart, 
+  FileText, 
+  Globe, 
+  TrendingUp, 
+  Wrench, 
+  Layout, 
+  CodeXml, 
+  Megaphone, 
+  Brush,
+  Target,
+  Eye,
+  Calendar,
+  DollarSign,
+  ExternalLink,
+  Send,
+  Mail,
+  Phone,
+  MapPin,
+  MessageCircle,
+  ChevronRight,
+  ChevronLeft,
+  Check,
+  Menu,
+  X
+} from "lucide-react";
+import { StaticImageData } from "next/image";
 
-import { oma, howell, doris } from '../assets/team'
+import { oma, howell, doris } from '../assets/team';
+import { project1, project2, project3 } from '../assets/portfolio';
+
+// ============================================
+// TYPES
+// ============================================
 
 export interface Service {
   icon: LucideIcon;
@@ -21,7 +68,8 @@ export interface Project {
   title: string;
   category: string;
   tags: string[];
-  image: string;
+  image: string | StaticImageData;
+  href: string;
 }
 
 export interface Testimonial {
@@ -33,335 +81,109 @@ export interface Testimonial {
   rating: number;
 }
 
-const services: Service[] = [
+export interface TeamMember {
+  name: string;
+  role: string;
+  bio: string;
+  image: StaticImageData | string;
+}
+
+export interface Value {
+  icon: LucideIcon;
+  title: string;
+  description: string;
+}
+
+export interface ProcessStep {
+  number: number;
+  icon: LucideIcon;
+  title: string;
+  description: string;
+}
+
+export interface NavLink {
+  name: string;
+  href: string;
+}
+
+export interface ProjectType {
+  id: string;
+  icon: LucideIcon;
+  title: string;
+  description: string;
+}
+
+export interface BudgetRange {
+  id: string;
+  label: string;
+  value: string;
+}
+
+export interface Timeline {
+  id: string;
+  label: string;
+  value: string;
+}
+
+export interface PricingPlan {
+  name: string;
+  price: string;
+  period: string;
+  description: string;
+  features: string[];
+  popular?: boolean;
+}
+
+export interface FAQ {
+  question: string;
+  answer: string;
+}
+
+export interface ContactInfo {
+  icon: LucideIcon;
+  title: string;
+  value: string;
+  link: string;
+}
+
+// ============================================
+// NAVIGATION
+// ============================================
+
+export const navLinks: NavLink[] = [
+  { name: "Home", href: "/" },
+  { name: "Services", href: "/services" },
+  { name: "Portfolio", href: "/portfolio" },
+  { name: "About", href: "/about" },
+  { name: "Contact", href: "/contact" },
+];
+
+// ============================================
+// SERVICES
+// ============================================
+
+export const services: Service[] = [
   {
     icon: Code,
     title: "Website Development",
-    description:
-      "Custom-built websites tailored to your business needs with modern technologies.",
-    features: [
-      "Responsive Design",
-      "Fast Performance",
-      "SEO Optimized",
-    ],
+    description: "Custom-built websites tailored to your business needs with modern technologies.",
+    features: ["Responsive Design", "Fast Performance", "SEO Optimized"],
   },
   {
     icon: Palette,
     title: "UI/UX Design",
-    description:
-      "Beautiful, intuitive designs that provide exceptional user experiences.",
+    description: "Beautiful, intuitive designs that provide exceptional user experiences.",
     features: ["User Research", "Wireframing", "Prototyping"],
   },
   {
     icon: ShoppingCart,
     title: "eCommerce Solutions",
-    description:
-      "Powerful online stores that drive sales and grow your business.",
-    features: [
-      "Payment Integration",
-      "Inventory Management",
-      "Analytics",
-    ],
+    description: "Powerful online stores that drive sales and grow your business.",
+    features: ["Payment Integration", "Inventory Management", "Analytics"],
   },
 ];
 
-export { services };
-
-const whyChooseUs: WhyChooseUsItem[] = [
-  {
-    icon: Zap,
-    title: "Fast Delivery",
-    description:
-      "Get your website launched quickly without compromising on quality.",
-    color: "text-yellow-400"
-  },
-  {
-    icon: Users,
-    title: "Expert Team",
-    description:
-      "Work with experienced developers and designers who care about your success.",
-    color: 'text-gray-400'
-  },
-  {
-    icon: Award,
-    title: "Quality Assured",
-    description:
-      "Rigorous testing ensures your website works flawlessly across all devices.",
-    color: "text-cyan-400"
-  },
-  {
-    icon: CheckCircle,
-    title: "Ongoing Support",
-    description:
-      "Continuous maintenance and support to keep your website running smoothly.",
-    color: "text-green-600"
-  },
-];
-export { whyChooseUs };
-
-const portfolioProjects: Project[] = [
-  {
-    id: 1,
-    title: "TechStart Landing",
-    category: "Landing Page",
-    tags: ["Design", "Development"],
-    image:
-      "https://images.unsplash.com/photo-1560202582-a391c31ec300?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-  },
-  {
-    id: 2,
-    title: "Fashion eCommerce",
-    category: "eCommerce",
-    tags: ["eCommerce", "UI/UX"],
-    image:
-      "https://images.unsplash.com/photo-1658297063569-162817482fb6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-  },
-  {
-    id: 3,
-    title: "Creative Agency Site",
-    category: "Website",
-    tags: ["Branding", "Development"],
-    image:
-      "https://images.unsplash.com/photo-1676792519027-7c42006d7b4a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-  },
-];
-export { portfolioProjects };
-
-const testimonials: Testimonial[] = [
-  {
-    name: "Sarah Johnson",
-    role: "CEO",
-    company: "TechVision Inc",
-    content:
-      "Working with WebFlow Agency was an absolute pleasure. They delivered our website ahead of schedule and exceeded all our expectations. The attention to detail was remarkable.",
-    avatar:
-      "https://images.unsplash.com/photo-1496180470114-6ef490f3ff22?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
-    rating: 5,
-  },
-  {
-    name: "Michael Chen",
-    role: "Founder",
-    company: "StyleHub",
-    content:
-      "Our eCommerce platform has seen a 300% increase in conversions since the redesign. The team understood our vision perfectly and brought it to life beautifully.",
-    avatar:
-      "https://images.unsplash.com/photo-1652471943570-f3590a4e52ed?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
-    rating: 5,
-  },
-  {
-    name: "Emily Rodriguez",
-    role: "Marketing Director",
-    company: "GrowthLabs",
-    content:
-      "The landing pages they created for our campaigns are converting at an incredible rate. Professional, responsive, and results-driven. Highly recommended!",
-    avatar:
-      "https://images.unsplash.com/photo-1543132220-7bc04a0e790a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
-    rating: 5,
-  },
-];
-
-export { testimonials };
-
-
-const filters = ['All', 'Websites', 'eCommerce', 'Landing Pages', 'UI/UX'];
-
-export { filters }
-
-const projects = [
-  {
-    id: 1,
-    title: 'Mona',
-    category: 'Landing Pages',
-    tags: ['Design', 'Development', 'Conversion'],
-    image: 'https://images.unsplash.com/photo-1560202582-a391c31ec300?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
-  },
-  {
-    id: 2,
-    title: 'Fashion eCommerce Store',
-    category: 'eCommerce',
-    tags: ['eCommerce', 'UI/UX', 'Shopify'],
-    image: 'https://images.unsplash.com/photo-1658297063569-162817482fb6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
-  },
-  {
-    id: 3,
-    title: 'Creative Agency Website',
-    category: 'Websites',
-    tags: ['Branding', 'Development', 'CMS'],
-    image: 'https://images.unsplash.com/photo-1676792519027-7c42006d7b4a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
-  },
-  {
-    id: 4,
-    title: 'Mobile App Landing',
-    category: 'Landing Pages',
-    tags: ['Landing Page', 'Marketing', 'Mobile'],
-    image: 'https://images.unsplash.com/photo-1609921212029-bb5a28e60960?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
-  },
-  {
-    id: 5,
-    title: 'SaaS Platform Interface',
-    category: 'UI/UX',
-    tags: ['UI/UX', 'Dashboard', 'SaaS'],
-    image: 'https://images.unsplash.com/photo-1603985585179-3d71c35a537c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
-  },
-  {
-    id: 6,
-    title: 'Corporate Website',
-    category: 'Websites',
-    tags: ['Corporate', 'Professional', 'SEO'],
-    image: 'https://images.unsplash.com/photo-1646153114001-495dfb56506d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
-  },
-  {
-    id: 7,
-    title: 'Online Marketplace',
-    category: 'eCommerce',
-    tags: ['Multi-vendor', 'eCommerce', 'Platform'],
-    image: 'https://images.unsplash.com/photo-1658297063569-162817482fb6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
-  },
-  {
-    id: 8,
-    title: 'Product Launch Page',
-    category: 'Landing Pages',
-    tags: ['Product', 'Marketing', 'Conversion'],
-    image: 'https://images.unsplash.com/photo-1560202582-a391c31ec300?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
-  },
-  {
-    id: 9,
-    title: 'Design System',
-    category: 'UI/UX',
-    tags: ['Design System', 'Components', 'Branding'],
-    image: 'https://images.unsplash.com/photo-1676792519027-7c42006d7b4a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
-  },
-];
-
-export { projects };
-
-const team = [
-  {
-    name: 'Agba Loveth',
-    role: 'Founder & CEO',
-    bio: 'Visionary leader with 5 years in web development and digital strategy.',
-    image: oma,
-  },
-  {
-    name: 'Howell Iheme',
-    role: 'Lead Developer',
-    bio: 'Front-end developer with 5 years of experience in web development and digital strategy.',
-    image: howell,
-  },
-  // {
-  //   name: 'Micheal Smith',
-  //   role: 'UI/UX Designer',
-  //   bio: 'Creative designer focused on user-centered design and beautiful interfaces.',
-  //   image: 'https://images.unsplash.com/photo-1543132220-7bc04a0e790a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',
-  // },
-  {
-    name: 'Doris Nwankwo',
-    role: 'Social Media Manager',
-    bio: 'Social media expert with 5 years of experience in digital marketing and social media strategy.',
-    image: doris,
-  },
-];
-
-const values = [
-  {
-    icon: Heart,
-    title: 'Client-Focused',
-    description: 'Your success is our success. We prioritize understanding your needs and exceeding expectations.',
-  },
-  {
-    icon: Shield,
-    title: 'Quality First',
-    description: 'We never compromise on quality. Every project receives our full attention to detail.',
-  },
-  {
-    icon: Lightbulb,
-    title: 'Innovation',
-    description: 'We stay ahead of trends and use cutting-edge technologies to deliver modern solutions.',
-  },
-  {
-    icon: Users2,
-    title: 'Collaboration',
-    description: 'We believe in transparent communication and working together as partners.',
-  },
-];
-
-const process = [
-  {
-    number: 1,
-    icon: MessageSquare,
-    title: 'Discovery & Consultation',
-    description: 'We start by understanding your business, goals, target audience, and project requirements through detailed discussions.',
-  },
-  {
-    number: 2,
-    icon: Search,
-    title: 'Research & Planning',
-    description: 'Our team conducts market research, competitor analysis, and creates a comprehensive project roadmap.',
-  },
-  {
-    number: 3,
-    icon: Palette,
-    title: 'Design & Prototyping',
-    description: 'We create wireframes and high-fidelity designs, ensuring every element aligns with your brand and vision.',
-  },
-  {
-    number: 4,
-    icon: Code2,
-    title: 'Development & Testing',
-    description: 'Our developers bring designs to life with clean code, followed by rigorous testing across all devices and browsers.',
-  },
-  {
-    number: 5,
-    icon: Rocket,
-    title: 'Launch & Support',
-    description: 'We handle the launch process and provide ongoing support to ensure your website continues to perform optimally.',
-  },
-];
-
-const navLinks = [
-  { name: "Home", page: "/" },
-  { name: "Services", page: "services" },
-  { name: "Portfolio", page: "portfolio" },
-  { name: "About", page: "about" },
-  { name: "Contact", page: "contact" },
-];
-
-const projectTypes = [
-  {
-    id: 'website',
-    icon: Globe,
-    title: 'Website Development',
-    description: 'Custom business website',
-  },
-  {
-    id: 'landing',
-    icon: FileText,
-    title: 'Landing Page',
-    description: 'High-converting landing page',
-  },
-  {
-    id: 'ecommerce',
-    icon: ShoppingCart,
-    title: 'eCommerce Store',
-    description: 'Online store solution',
-  },
-];
-
-const budgetRanges = [
-  { id: 'small', label: '$2,000 - $5,000', value: 'small' },
-  { id: 'medium', label: '$5,000 - $10,000', value: 'medium' },
-  { id: 'large', label: '$10,000 - $25,000', value: 'large' },
-  { id: 'enterprise', label: '$25,000+', value: 'enterprise' },
-];
-
-const timelines = [
-  { id: 'urgent', label: '2-4 weeks', value: 'urgent' },
-  { id: 'standard', label: '4-8 weeks', value: 'standard' },
-  { id: 'flexible', label: '8-12 weeks', value: 'flexible' },
-  { id: 'no-rush', label: 'No Rush', value: 'no-rush' },
-];
-
-const servicesData = [
+export const servicesData: Service[] = [
   {
     icon: Code,
     title: 'Website Development',
@@ -434,12 +256,277 @@ const servicesData = [
       'Performance tracking',
     ],
   },
+  {
+    icon: CodeXml,
+    title: 'App Development',
+    description: 'High-performance mobile and web applications tailored to your business needs.',
+    features: [
+      'Cross-platform development',
+      'Custom web applications',
+      'API integration & backend',
+      'Modern UI/UX design',
+      'Testing & maintenance',
+    ],
+  },
+  {
+    icon: Megaphone,
+    title: 'Digital Marketing',
+    description: 'Result-driven digital marketing services to grow your online presence.',
+    features: [
+      'Social media management',
+      'Paid Ads (Google & Meta)',
+      'Email marketing campaigns',
+      'Content creation',
+      'Analytics & tracking',
+    ],
+  },
+  {
+    icon: Brush,
+    title: 'Branding & Graphics',
+    description: 'Creative branding solutions that give your business a strong visual identity.',
+    features: [
+      'Logo design & brand identity',
+      'Business cards & brand kits',
+      'Social media graphics',
+      'Marketing materials',
+      'Brand guidelines',
+    ],
+  },
 ];
 
-const pricingPlans = [
+// ============================================
+// PORTFOLIO
+// ============================================
+
+export const portfolioProjects: Project[] = [
+  {
+    id: 1,
+    title: "Mek Print Landing Page",
+    category: "Landing Page",
+    tags: ["Design", "Development", "Landing Page"],
+    image: project1,
+    href: 'https://mekprint.vercel.app/',
+  },
+  {
+    id: 2,
+    title: "iPhone eCommerce Store",
+    category: "eCommerce",
+    tags: ["eCommerce", "UI/UX"],
+    image: project2,
+    href: 'https://applestore-07.vercel.app/',
+  },
+  {
+    id: 3,
+    title: "SkyCast Weather Webapp",
+    category: "WebApps",
+    tags: ["WebApp", "API Integration", "React", "TailwindCSS"],
+    image: project3,
+    href: 'https://skycast-app.vercel.app/',
+  },
+];
+
+export const projects: Project[] = portfolioProjects;
+
+export const portfolioFilters = ['All', 'Websites', 'eCommerce', 'Landing Pages', 'UI/UX'];
+
+// ============================================
+// WHY CHOOSE US
+// ============================================
+
+export const whyChooseUs: WhyChooseUsItem[] = [
+  {
+    icon: Zap,
+    title: "Fast Delivery",
+    description: "Get your website launched quickly without compromising on quality.",
+    color: "text-cyan-400"
+  },
+  {
+    icon: Users,
+    title: "Expert Team",
+    description: "Work with experienced developers and designers who care about your success.",
+    color: 'text-cyan-300'
+  },
+  {
+    icon: Award,
+    title: "Quality Assured",
+    description: "Rigorous testing ensures your website works flawlessly across all devices.",
+    color: "text-cyan-500"
+  },
+  {
+    icon: CheckCircle,
+    title: "Ongoing Support",
+    description: "Continuous maintenance and support to keep your website running smoothly.",
+    color: "text-cyan-400"
+  },
+];
+
+// ============================================
+// TESTIMONIALS
+// ============================================
+
+export const testimonials: Testimonial[] = [
+  {
+    name: "Sarah Johnson",
+    role: "CEO",
+    company: "TechVision Inc",
+    content: "Working with Bitvoratech was an absolute pleasure. They delivered our website ahead of schedule and exceeded all our expectations.",
+    avatar: "https://images.unsplash.com/photo-1496180470114-6ef490f3ff22?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
+    rating: 5,
+  },
+  {
+    name: "Michael Chen",
+    role: "Founder",
+    company: "StyleHub",
+    content: "Our eCommerce platform has seen a 300% increase in conversions since the redesign. The team understood our vision perfectly.",
+    avatar: "https://images.unsplash.com/photo-1652471943570-f3590a4e52ed?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
+    rating: 5,
+  },
+  {
+    name: "Emily Rodriguez",
+    role: "Marketing Director",
+    company: "GrowthLabs",
+    content: "The landing pages they created for our campaigns are converting at an incredible rate. Professional, responsive, and results-driven.",
+    avatar: "https://images.unsplash.com/photo-1543132220-7bc04a0e790a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
+    rating: 5,
+  },
+];
+
+// ============================================
+// TEAM
+// ============================================
+
+export const team: TeamMember[] = [
+  {
+    name: 'Agba Loveth',
+    role: 'Founder & CEO',
+    bio: 'Visionary leader with 5 years in web development and digital strategy.',
+    image: oma,
+  },
+  {
+    name: 'Howell Iheme',
+    role: 'Lead Developer',
+    bio: 'Front-end developer with 5 years of experience in web development.',
+    image: howell,
+  },
+  {
+    name: 'Doris Nwankwo',
+    role: 'Social Media Manager',
+    bio: 'Social media expert with 5 years of experience in digital marketing.',
+    image: doris,
+  },
+];
+
+// ============================================
+// VALUES
+// ============================================
+
+export const values: Value[] = [
+  {
+    icon: Heart,
+    title: 'Client-Focused',
+    description: 'Your success is our success. We prioritize understanding your needs.',
+  },
+  {
+    icon: Shield,
+    title: 'Quality First',
+    description: 'We never compromise on quality. Every project receives full attention.',
+  },
+  {
+    icon: Lightbulb,
+    title: 'Innovation',
+    description: 'We stay ahead of trends and use cutting-edge technologies.',
+  },
+  {
+    icon: Users2,
+    title: 'Collaboration',
+    description: 'We believe in transparent communication and working together.',
+  },
+];
+
+// ============================================
+// PROCESS
+// ============================================
+
+export const process: ProcessStep[] = [
+  {
+    number: 1,
+    icon: MessageSquare,
+    title: 'Discovery & Consultation',
+    description: 'We start by understanding your business, goals, and project requirements.',
+  },
+  {
+    number: 2,
+    icon: Search,
+    title: 'Research & Planning',
+    description: 'Our team conducts market research and creates a comprehensive roadmap.',
+  },
+  {
+    number: 3,
+    icon: Palette,
+    title: 'Design & Prototyping',
+    description: 'We create wireframes and high-fidelity designs that align with your vision.',
+  },
+  {
+    number: 4,
+    icon: Code2,
+    title: 'Development & Testing',
+    description: 'Our developers bring designs to life with clean code and rigorous testing.',
+  },
+  {
+    number: 5,
+    icon: Rocket,
+    title: 'Launch & Support',
+    description: 'We handle the launch process and provide ongoing support.',
+  },
+];
+
+// ============================================
+// QUOTE FORM
+// ============================================
+
+export const projectTypes: ProjectType[] = [
+  {
+    id: 'website',
+    icon: Globe,
+    title: 'Website Development',
+    description: 'Custom business website',
+  },
+  {
+    id: 'landing',
+    icon: FileText,
+    title: 'Landing Page',
+    description: 'High-converting landing page',
+  },
+  {
+    id: 'ecommerce',
+    icon: ShoppingCart,
+    title: 'eCommerce Store',
+    description: 'Online store solution',
+  },
+];
+
+export const budgetRanges: BudgetRange[] = [
+  { id: 'small', label: '₦120,000 - ₦350,000', value: 'small' },
+  { id: 'medium', label: '₦350,001 - ₦600,000', value: 'medium' },
+  { id: 'large', label: '₦600,001 - ₦1,500,000', value: 'large' },
+  { id: 'enterprise', label: '₦1,500,001+', value: 'enterprise' },
+];
+
+export const timelines: Timeline[] = [
+  { id: 'urgent', label: '2-4 weeks', value: 'urgent' },
+  { id: 'standard', label: '4-8 weeks', value: 'standard' },
+  { id: 'flexible', label: '8-12 weeks', value: 'flexible' },
+  { id: 'no-rush', label: 'No Rush', value: 'no-rush' },
+];
+
+// ============================================
+// PRICING
+// ============================================
+
+export const pricingPlans: PricingPlan[] = [
   {
     name: 'Starter',
-    price: 'From $2,999',
+    price: 'From ₦350,000',
     period: 'one-time',
     description: 'Perfect for small businesses and startups',
     features: [
@@ -453,7 +540,7 @@ const pricingPlans = [
   },
   {
     name: 'Professional',
-    price: 'From $5,999',
+    price: 'From ₦750,000',
     period: 'one-time',
     description: 'Ideal for growing businesses',
     features: [
@@ -470,7 +557,7 @@ const pricingPlans = [
   },
   {
     name: 'Enterprise',
-    price: 'Custom',
+    price: 'Custom Quote',
     period: 'contact us',
     description: 'For large-scale projects',
     features: [
@@ -486,87 +573,104 @@ const pricingPlans = [
   },
 ];
 
-const faqs = [
+// ============================================
+// FAQ
+// ============================================
+
+export const faqs: FAQ[] = [
   {
-    question: 'How long does it take to build a website?',
-    answer: 'Typical project timelines range from 4-8 weeks for standard websites, 8-12 weeks for eCommerce sites, and 2-4 weeks for landing pages. Complex custom projects may take longer. We provide detailed timelines during the consultation phase.',
+    question: "How long does it take to build a website?",
+    answer: "The timeline varies based on project complexity. A simple landing page takes 1-2 weeks, while a full eCommerce site may take 4-8 weeks. We provide a detailed timeline during the quote phase.",
   },
   {
-    question: 'Do you provide website hosting?',
-    answer: 'Yes, we can arrange hosting for your website through reliable providers, or we can work with your existing hosting setup. We recommend hosting solutions based on your specific needs and budget.',
+    question: "Do you provide ongoing maintenance?",
+    answer: "Yes! We offer various maintenance packages to keep your website secure, updated, and performing optimally.",
   },
   {
-    question: 'Can I update the website content myself?',
-    answer: 'Absolutely! We typically build websites with user-friendly content management systems (CMS) that allow you to easily update text, images, and other content without technical knowledge. We also provide training and documentation.',
+    question: "Can you help with domain and hosting?",
+    answer: "Absolutely. We can assist with domain registration, hosting setup, and configuration to ensure your site is ready for launch.",
   },
   {
-    question: 'What happens after my website launches?',
-    answer: 'We provide ongoing support and maintenance packages to ensure your website stays secure, updated, and running smoothly. This includes software updates, security monitoring, backups, and technical support.',
+    question: "Do you offer SEO services?",
+    answer: "Yes, we provide comprehensive SEO services including keyword research, on-page optimization, and technical SEO to improve your search rankings.",
   },
   {
-    question: 'Do you offer SEO services?',
-    answer: 'Yes, we offer comprehensive SEO services including keyword research, on-page optimization, technical SEO, content strategy, and ongoing optimization to improve your search engine rankings.',
-  },
-  {
-    question: 'What if I need changes after the website is complete?',
-    answer: 'We include a revision period in all projects, and offer ongoing support packages for continued updates and improvements. Minor changes during the support period are included, while larger modifications can be quoted separately.',
+    question: "What payment methods do you accept?",
+    answer: "We accept bank transfers and mobile payment platforms. We typically require a 50% deposit to begin work.",
   },
 ];
 
-const projectData = {
-  id: 1,
-  title: 'TechStart SaaS Landing Page',
-  category: 'Landing Page',
-  client: 'TechStart Inc.',
-  date: 'October 2024',
-  duration: '6 weeks',
-  tags: ['Design', 'Development', 'Conversion Optimization', 'React'],
-  url: 'https://example.com',
-  heroImage: 'https://images.unsplash.com/photo-1560202582-a391c31ec300?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
-  description:
-    'TechStart needed a high-converting landing page for their new SaaS product launch. The goal was to capture leads, communicate value clearly, and drive sign-ups for their beta program.',
-  challenge:
-    'The main challenge was to create a landing page that would clearly communicate the complex features of their SaaS product in a simple, digestible way while maintaining high conversion rates. The page needed to appeal to both technical and non-technical audiences.',
-  solution:
-    'We designed a clean, modern landing page with a clear hierarchy of information. Using compelling visuals, concise copy, and strategic CTAs, we created a seamless user journey from awareness to conversion. The page features interactive elements, customer testimonials, and a simplified sign-up process.',
-  results: [
-    '45% increase in conversion rate',
-    '3,500+ qualified leads generated',
-    '60% reduction in bounce rate',
-    '2.5x increase in demo requests',
+// ============================================
+// CONTACT
+// ============================================
+
+export const contactInfo: ContactInfo[] = [
+  {
+    icon: Mail,
+    title: 'Email',
+    value: 'info@bitvoratech.com',
+    link: 'mailto:info@bitvoratech.com',
+  },
+  {
+    icon: Phone,
+    title: 'Phone',
+    value: '+234 9061846290',
+    link: 'tel:+2349061846290',
+  },
+  {
+    icon: MessageCircle,
+    title: 'WhatsApp',
+    value: '+234 9061846290',
+    link: 'https://wa.me/+2349061846290',
+  },
+  {
+    icon: MapPin,
+    title: 'Office',
+    value: '2, Dacosta Street, Yaba Lagos',
+    link: '#',
+  },
+];
+
+export const businessHours = [
+  { day: 'Monday - Friday', hours: '9:00 AM - 6:00 PM' },
+  { day: 'Saturday', hours: '10:00 AM - 4:00 PM' },
+  { day: 'Sunday', hours: 'Closed' },
+];
+
+// ============================================
+// SOCIAL LINKS
+// ============================================
+
+export const socialLinks = [
+  { name: 'Facebook', href: '#', icon: 'facebook' },
+  { name: 'Twitter', href: '#', icon: 'twitter' },
+  { name: 'Instagram', href: '#', icon: 'instagram' },
+  { name: 'LinkedIn', href: '#', icon: 'linkedin' },
+];
+
+// ============================================
+// FOOTER LINKS
+// ============================================
+
+export const footerLinks = {
+  quickLinks: [
+    { name: 'Home', href: '/' },
+    { name: 'Services', href: '/services' },
+    { name: 'About', href: '/about' },
+    { name: 'Portfolio', href: '/portfolio' },
+    { name: 'Contact', href: '/contact' },
   ],
-  testimonial: {
-    content:
-      'The landing page exceeded our expectations. The design is beautiful, the messaging is clear, and most importantly, it converts. We saw immediate results from day one of the launch.',
-    author: 'Blessing Iheme',
-    role: 'CEO, Jochenna Thrift',
-    avatar: 'https://images.unsplash.com/photo-1496180470114-6ef490f3ff22?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400',
-  },
+  services: [
+    'Website Development',
+    'Landing Page Design',
+    'eCommerce Websites',
+    'UI/UX Design',
+    'Web Maintenance',
+    'SEO Optimization',
+  ],
+  legal: [
+    { name: 'Privacy Policy', href: '#' },
+    { name: 'Terms of Service', href: '#' },
+    { name: 'Cookie Policy', href: '#' },
+  ],
 };
-
-const relatedProjects = [
-  {
-    id: 2,
-    title: 'Fashion eCommerce Store',
-    category: 'eCommerce',
-    tags: ['eCommerce', 'UI/UX'],
-    image: 'https://images.unsplash.com/photo-1658297063569-162817482fb6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
-  },
-  {
-    id: 3,
-    title: 'Creative Agency Website',
-    category: 'Website',
-    tags: ['Branding', 'Development'],
-    image: 'https://images.unsplash.com/photo-1676792519027-7c42006d7b4a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
-  },
-  {
-    id: 4,
-    title: 'Mobile App Landing',
-    category: 'Landing Page',
-    tags: ['Landing Page', 'Marketing'],
-    image: 'https://images.unsplash.com/photo-1609921212029-bb5a28e60960?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
-  },
-];
-
-
-export { team, values, process, navLinks, projectTypes, budgetRanges, timelines, servicesData, pricingPlans, faqs, projectData, relatedProjects };

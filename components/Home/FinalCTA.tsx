@@ -1,51 +1,53 @@
 'use client';
+
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
-
 export default function FinalCTA() {
   return (
-    <section className="bg-white py-16">
-      <div className="container mx-auto px-6">
+    <section className="py-20 relative overflow-hidden">
+      {/* Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/20 via-transparent to-transparent pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-500/10 rounded-full blur-[100px] pointer-events-none" />
 
-        <div className="rounded-3xl p-16 text-center relative bg-linear-to-br from-[#319198]/70 to-[#319198]/95 overflow-hidden">
+      <div className="container mx-auto px-6 relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="relative rounded-3xl p-12 md:p-16 text-center overflow-hidden"
+        >
+          {/* Glow Effect */}
+          <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/20 to-transparent rounded-3xl" />
+          
+          {/* Content */}
+          <div className="relative z-10">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              Ready to Build Something <span className="gradient-text">Amazing?</span>
+            </h2>
+            <p className="text-gray-400 max-w-xl mx-auto mb-8">
+              Let's discuss how we can bring your ideas to life with modern technologies.
+            </p>
 
-          <motion.h2
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            className="text-white text-2xl font-semibold mb-4"
-          >
-            Ready to Start Your Project?
-          </motion.h2>
+            <div className="flex flex-wrap gap-4 justify-center">
+              <Link href="/quote">
+                <Button className="bg-cyan-500 hover:bg-cyan-400 text-black font-semibold px-8 py-4 rounded-xl transition-all duration-300 glow-primary">
+                  Get Free Quote
+                </Button>
+              </Link>
 
-          <p className="text-gray-300 max-w-xl mx-auto mb-6">
-            Let's discuss how we can bring your ideas to life.
-          </p>
-
-          <div className="flex flex-wrap gap-4 justify-center">
-            <Link href='quote'>
-             <Button  size="lg" className="bg-[#319198]/50 text-white hover:bg-[#319198]/80">
-              Get Free Quote
-            </Button>
-            </Link>
-           
-
-
-            <Link href='contact'>
-            <Button
-              variant="secondary"
-              size="lg"
-              className="bg-white text-gray-900 hover:bg-gray-100"
-            >
-              Contact Us
-            </Button>
-            </Link>
-            
+              <Link href="/contact">
+                <Button
+                  variant="outline"
+                  className="border-white/20 text-white hover:bg-white/10 px-8 py-4 rounded-xl transition-all duration-300"
+                >
+                  Contact Us
+                </Button>
+              </Link>
+            </div>
           </div>
-
-        </div>
-
+        </motion.div>
       </div>
     </section>
   );

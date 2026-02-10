@@ -23,7 +23,7 @@ export default function SectionHeading({
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="text-gray-900 mb-4 text-3xl font-bold"
+        className="text-3xl md:text-4xl font-bold text-white"
       >
         {title}
       </motion.h2>
@@ -34,7 +34,7 @@ export default function SectionHeading({
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
           viewport={{ once: true }}
-          className="text-gray-600 max-w-2xl mx-auto text-lg font-medium"
+          className="text-gray-400 max-w-2xl mx-auto mt-4"
         >
           {subtitle}
         </motion.p>

@@ -16,19 +16,19 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "BITVORATECH",
-  description: "",
+  title: "Bitvoratech | Modern Web Development Agency",
+  description: "Building high-performance websites and digital solutions with cutting-edge technologies.",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-tech-dark text-white`}
       >
         <Navbar />
         {children}

@@ -1,4 +1,5 @@
-'use client'
+'use client';
+
 import { useState } from 'react';
 import { Mail, Phone, MapPin, MessageCircle, Send } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -6,8 +7,8 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import Link from 'next/link';
-
-
+import emailjs from '@emailjs/browser';
+import { contactInfo, businessHours } from '@/Data/Data';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -20,12 +21,22 @@ export default function ContactPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate form submission
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      setFormData({ name: '', email: '', phone: '', message: '' });
-    }, 3000);
+
+    const templateParams = {
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      message: formData.message,
+    };
+
+    emailjs.send(
+      process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+      process.env.NEXT_PUBLIC_EMAILJS_CONTACT_TEMPLATE_ID!,
+      templateParams,
+      process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+    )
+    .then(() => setSubmitted(true))
+    .catch((err) => console.error('Failed to send contact message', err));
   };
 
   const handleChange = (
@@ -37,60 +48,32 @@ export default function ContactPage() {
     });
   };
 
-  const contactInfo = [
-    {
-      icon: Mail,
-      title: 'Email',
-      value: 'infobitvoratech@gmail.com',
-      link: 'mailto:info@webflowagency.com',
-    },
-    {
-      icon: Phone,
-      title: 'Phone',
-      value: '+234 9061846290',
-      link: '+2349061846290',
-    },
-    {
-      icon: MessageCircle,
-      title: 'WhatsApp',
-      value: '+234 9061846290',
-      link: 'https://wa.me/+2349061846290',
-    },
-    {
-      icon: MapPin,
-      title: 'Office',
-      value: '2 , Dacosta Street, Yaba Lagos',
-      link: '#',
-    },
-  ];
-
   return (
-    <div className="pt-20">
+    <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="bg-linear-to-br from-gray-50 via-white to-primary-50 py-20 max-md:py-12">
-        <div className="container mx-auto px-6">
-          <div className="max-w-3xl mx-auto text-center">
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="text-gray-900 mb-6 text-3xl font-bold"
-            >
-              Get in <span className="bg-linear-to-br from-[#319198]/50 to-[#319198]/80 bg-clip-text text-transparent">Touch</span>
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-              className="text-gray-600 text-lg"
-            >
-              Have a project in mind? We'd love to hear from you. Send us a message and we'll respond as soon as possible.
-            </motion.p>
-          </div>
+      <section className="py-20 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-transparent to-transparent pointer-events-none" />
+        <div className="container mx-auto px-6 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="max-w-3xl mx-auto text-center"
+          >
+            <span className="text-cyan-400 text-sm font-medium mono mb-4 block">
+              CONTACT US
+            </span>
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              Get in <span className="gradient-text">Touch</span>
+            </h1>
+            <p className="text-gray-400 text-lg">
+              Have a project in mind? We'd love to hear from you.
+            </p>
+          </motion.div>
         </div>
       </section>
 
       {/* Contact Section */}
-      <section className="bg-white py-20 max-md:py-12">
+      <section className="py-10">
         <div className="container mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
             {/* Contact Form */}
@@ -99,23 +82,27 @@ export default function ContactPage() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <div className="bg-white p-8 rounded-2xl border border-gray-200 shadow-lg">
-                <h3 className="text-gray-900 mb-6 text-2xl font-bold">Send us a Message</h3>
+              <div className="p-8 rounded-2xl border border-white/10">
+                <h3 className="text-2xl font-bold text-white mb-6">Send us a Message</h3>
 
                 {submitted ? (
-                  <div className="py-12 text-center">
-                    <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <Send className="text-green-600" size={28} />
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="py-12 text-center"
+                  >
+                    <div className="w-16 h-16 bg-cyan-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <Send className="text-cyan-400" size={28} />
                     </div>
-                    <h4 className="text-gray-900 mb-2">Message Sent!</h4>
-                    <p className="text-gray-600">
+                    <h4 className="text-white text-xl font-semibold mb-2">Message Sent!</h4>
+                    <p className="text-gray-400">
                       Thank you for contacting us. We'll get back to you soon.
                     </p>
-                  </div>
+                  </motion.div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div>
-                      <Label htmlFor="name">Full Name</Label>
+                      <Label htmlFor="name" className="text-gray-300">Full Name</Label>
                       <Input
                         id="name"
                         name="name"
@@ -124,12 +111,12 @@ export default function ContactPage() {
                         onChange={handleChange}
                         placeholder="John Doe"
                         required
-                        className="mt-2"
+                        className="mt-2 bg-white/5 border-white/10 text-white"
                       />
                     </div>
 
                     <div>
-                      <Label htmlFor="email">Email Address</Label>
+                      <Label htmlFor="email" className="text-gray-300">Email Address</Label>
                       <Input
                         id="email"
                         name="email"
@@ -138,12 +125,12 @@ export default function ContactPage() {
                         onChange={handleChange}
                         placeholder="john@example.com"
                         required
-                        className="mt-2"
+                        className="mt-2 bg-white/5 border-white/10 text-white"
                       />
                     </div>
 
                     <div>
-                      <Label htmlFor="phone">Phone Number</Label>
+                      <Label htmlFor="phone" className="text-gray-300">Phone Number</Label>
                       <Input
                         id="phone"
                         name="phone"
@@ -151,12 +138,12 @@ export default function ContactPage() {
                         value={formData.phone}
                         onChange={handleChange}
                         placeholder="+234 902-123-4567"
-                        className="mt-2"
+                        className="mt-2 bg-white/5 border-white/10 text-white"
                       />
                     </div>
 
                     <div>
-                      <Label htmlFor="message">Message</Label>
+                      <Label htmlFor="message" className="text-gray-300">Message</Label>
                       <Textarea
                         id="message"
                         name="message"
@@ -165,13 +152,13 @@ export default function ContactPage() {
                         placeholder="Tell us about your project..."
                         required
                         rows={6}
-                        className="mt-2"
+                        className="mt-2 bg-white/5 border-white/10 text-white"
                       />
                     </div>
 
                     <button
                       type="submit"
-                      className="w-full px-8 py-4 bg-[#319198]/80 text-white rounded-xl hover:bg-[#319198]/70 transition-colors flex items-center justify-center gap-2"
+                      className="w-full px-8 py-4 bg-cyan-500 hover:bg-cyan-400 text-black font-semibold rounded-xl transition-all duration-300 glow-primary flex items-center justify-center gap-2"
                     >
                       Send Message
                       <Send size={20} />
@@ -184,18 +171,18 @@ export default function ContactPage() {
             {/* Contact Information */}
             <div>
               <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 className="mb-8"
               >
-                <h3 className="text-gray-900 mb-4 text-2xl font-bold">Contact Information</h3>
-                <p className="text-gray-600 text-lg">
-                  Reach out to us through any of these channels. We're here to help!
+                <h3 className="text-2xl font-bold text-white mb-4">Contact Information</h3>
+                <p className="text-gray-400 text-lg">
+                  Reach out to us through any channel
                 </p>
               </motion.div>
 
-              <div className="space-y-6">
+              <div className="space-y-4">
                 {contactInfo.map((item, index) => (
                   <motion.a
                     key={index}
@@ -204,30 +191,37 @@ export default function ContactPage() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 }}
-                    className="flex items-start gap-4 p-6 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors"
+                    className="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors"
                   >
-                    <div className="w-12 h-12 bg-[#319198]/80 rounded-xl flex items-center justify-center shrink-0">
-                      <item.icon className="text-white/80" size={24} />
+                    <div className="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center shrink-0">
+                      <item.icon className="text-cyan-400" size={24} />
                     </div>
                     <div>
-                      <h6 className="text-gray-900 mb-1">{item.title}</h6>
-                      <p className="text-gray-600">{item.value}</p>
+                      <h6 className="text-white font-medium">{item.title}</h6>
+                      <p className="text-gray-400">{item.value}</p>
                     </div>
                   </motion.a>
                 ))}
               </div>
 
-              {/* Map Placeholder */}
+              {/* Business Hours */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="mt-8 rounded-2xl overflow-hidden h-64 bg-gray-200 flex items-center justify-center"
+                className="mt-8 p-6 rounded-xl bg-white/5 border border-white/10"
               >
-                <div className="text-center">
-                  <MapPin className="text-gray-400 mx-auto mb-2" size={48} />
-                  <p className="text-gray-500">Map Location</p>
-                  <p className="text-gray-400 text-sm">2, Dacosta Street, Yaba Lagos</p>
+                <h4 className="text-white font-semibold mb-4">Business Hours</h4>
+                <div className="space-y-2">
+                  {businessHours.map((schedule, index) => (
+                    <div
+                      key={index}
+                      className="flex justify-between items-center py-2 border-b border-white/5 last:border-0"
+                    >
+                      <span className="text-gray-400">{schedule.day}</span>
+                      <span className="text-white">{schedule.hours}</span>
+                    </div>
+                  ))}
                 </div>
               </motion.div>
             </div>
@@ -235,61 +229,26 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* CTA Box */}
-      <section className="bg-gray-50 py-20 max-md:py-12">
+      {/* CTA Section */}
+      <section className="py-20">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="max-w-4xl mx-auto bg-linear-to-br from-[#319198]/60 to-[#319198]/80 rounded-3xl p-12 text-center"
+            className="relative rounded-3xl p-12 md:p-16 text-center overflow-hidden"
           >
-            <h3 className="text-gray-900 mb-4 text-3xl font-bold">Ready to Start Your Project?</h3>
-            <p className="text-gray-600 mb-8 text-lg">
-              Get a detailed quote for your project with our easy request form.
-            </p>
-            <Link href='quote'>
-            <button
-             
-              className="px-8 py-4 bg-gray-700 text-white rounded-xl hover:bg-gray-600 transition-colors"
-            >
-              Request a Quote
-            </button>
-            </Link>
-            
+            <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/20 to-transparent rounded-3xl" />
+            <div className="relative z-10">
+              <h3 className="text-3xl font-bold text-white mb-4">Ready to Start Your Project?</h3>
+              <p className="text-gray-400 mb-8">Get a detailed quote for your project</p>
+              <Link href="/quote">
+                <button className="px-8 py-4 bg-cyan-500 hover:bg-cyan-400 text-black font-semibold rounded-xl transition-all duration-300 glow-primary">
+                  Request a Quote
+                </button>
+              </Link>
+            </div>
           </motion.div>
-        </div>
-      </section>
-
-      {/* Business Hours */}
-      <section className="bg-white py-20 max-md:py-12">
-        <div className="container mx-auto px-6">
-          <div className="max-w-3xl mx-auto">
-            <div className="text-center mb-8">
-              <h3 className="text-gray-900 mb-4 text-3xl font-bold">Business Hours</h3>
-              <p className="text-gray-600 text-lg">
-                Our team is available during these hours
-              </p>
-            </div>
-
-            <div className="bg-gray-50 rounded-2xl p-8">
-              <div className="space-y-4">
-                {[
-                  { day: 'Monday - Friday', hours: '9:00 AM - 6:00 PM' },
-                  { day: 'Saturday', hours: '10:00 AM - 4:00 PM' },
-                  { day: 'Sunday', hours: 'Closed' },
-                ].map((schedule, index) => (
-                  <div
-                    key={index}
-                    className="flex justify-between items-center py-3 border-b border-gray-200 last:border-0"
-                  >
-                    <span className="text-gray-900">{schedule.day}</span>
-                    <span className="text-gray-600">{schedule.hours}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
         </div>
       </section>
     </div>

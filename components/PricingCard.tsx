@@ -27,45 +27,45 @@ export function PricingCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.1 }}
-      className={`relative bg-white p-8 rounded-2xl border-2 ${
-        popular ? 'border-primary-600 shadow-xl' : 'border-gray-100'
-      }`}
+      className={`relative p-8 rounded-2xl border ${
+        popular 
+          ? 'border-cyan-500 bg-cyan-500/5' 
+          : 'border-white/10 bg-white/5'
+      } hover:border-cyan-500/30 transition-all duration-300 group`}
     >
       {popular && (
         <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-          <span className="bg-linear-to-r from-[#319198]/60 to-[#319198]/80 text-white px-4 py-1 rounded-full text-sm">
+          <span className="bg-gradient-to-r from-cyan-500 to-cyan-400 text-black px-4 py-1 rounded-full text-sm font-medium">
             Most Popular
           </span>
         </div>
       )}
       
-      <h4 className="text-gray-900 mb-2 text-lg font-semibold">{name}</h4>
-      <p className="text-gray-600  mb-6 text-lg font-semibold">{description}</p>
+      <h4 className="text-white mb-2 text-lg font-semibold">{name}</h4>
+      <p className="text-gray-400 mb-6 text-sm">{description}</p>
       
       <div className="mb-6">
-        <span className="text-gray-900">{price}</span>
-        <span className="text-gray-500 text-sm ml-2">{period}</span>
+        <span className="text-3xl font-bold text-white">{price}</span>
+        <span className="text-gray-500 text-sm ml-2">/ {period}</span>
       </div>
 
-        <Link href='quote'>
+      <Link href="/quote">
         <button
-        
-        className={`w-full py-3 rounded-lg mb-8 transition-colors ${
-          popular
-            ? 'bg-[#319198] text-white hover:bg-[#319198]/80'
-            : 'bg-gray-100 text-gray-900 hover:bg-gray-200'
-        }`}
-      >
-        Get Started
-      </button>
-        </Link>
-      
+          className={`w-full py-3 rounded-xl mb-8 transition-all duration-300 ${
+            popular
+              ? 'bg-cyan-500 hover:bg-cyan-400 text-black font-semibold'
+              : 'bg-white/10 hover:bg-white/20 text-white'
+          }`}
+        >
+          Get Started
+        </button>
+      </Link>
 
       <ul className="space-y-4">
         {features.map((feature, idx) => (
           <li key={idx} className="flex items-start gap-3">
-            <Check size={20} className="text-primary-600 shrink-0 mt-0.5" />
-            <span className="text-gray-600 text-sm font-semibold">{feature}</span>
+            <Check size={18} className="text-cyan-400 shrink-0 mt-0.5" />
+            <span className="text-gray-300 text-sm">{feature}</span>
           </li>
         ))}
       </ul>

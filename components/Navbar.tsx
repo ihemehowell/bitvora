@@ -6,107 +6,95 @@ import { Button } from "./ui/button";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "../public/bitvora logo.svg";
-import { navLinks } from "../Data/Data";
+import { navLinks } from "@/Data/Data";
 
 interface NavbarProps {
   currentPage?: string;
 }
 
-export default function Navbar({ currentPage,  }: NavbarProps) {
+export default function Navbar({ currentPage }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-
-
   return (
-    <nav className="bg-[#01172F] border-b border-gray-200 sticky top-0 z-50">
-      <div className="container">
-        <div className="flex items-center justify-between h-20">
+    <nav className="fixed top-0 left-0 right-0 z-50 glass-dark">
+      <div className="container mx-auto px-6">
+        <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/">
-           <button
-            className="flex items-center gap-1"
-          >
-            <Image src={logo} alt="logo"  width={100} height={100} className="object-contain"/>
-            <span className="text-xl font-black uppercase text-white">BitvoraTech</span>
-          </button>
+          <Link href="/" className="flex items-center gap-2 group">
+            <div className="relative">
+              <Image 
+                src={logo} 
+                alt="BitvoraTech Logo" 
+                width={40} 
+                height={40} 
+                className="object-contain"
+              />
+              <div className="absolute inset-0 bg-cyan-400/20 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            </div>
+            <span className="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">
+              Bitvora<span className="text-cyan-400">Tech</span>
+            </span>
           </Link>
-         
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-1">
             {navLinks.map((link) => (
-              <Link href={`/${link.page}`} key={link.page}>
-                  <button
-                
-                className={`transition-colors ${
-                  currentPage === link.page
-                    ? "text-blue-600"
-                    : "text-white hover:text-blue-300"
+              <Link 
+                key={link.name}
+                href={link.href}
+                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                  currentPage === link.href.replace('/', '')
+                    ? "text-cyan-400 bg-cyan-400/10"
+                    : "text-gray-300 hover:text-white hover:bg-white/5"
                 }`}
               >
                 {link.name}
-              </button>
               </Link>
-              
             ))}
           </div>
 
           {/* CTA Button */}
           <div className="hidden md:block">
             <Link href="/quote">
-            <Button
-              className="bg-[#319198] text-white rounded-lg py-6 px-8 font-bold text-lg shadow-lg transition-transform transform hover:scale-105 hover:bg-[#319198]/70"
-            >
-              Get a Quote
-            </Button>
+              <Button className="bg-cyan-500 hover:bg-cyan-400 text-black font-semibold px-6 py-2 rounded-lg transition-all duration-200 glow-primary">
+                Get a Quote
+              </Button>
             </Link>
           </div>
 
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 text-white rounded-lg cursor-pointer"
+            className="md:hidden p-2 text-white rounded-lg hover:bg-white/5 transition-colors"
           >
-            {mobileMenuOpen ? (
-              <X className="w-6 h-6" />
-            ) : (
-              <Menu className="w-6 h-6" />
-            )}
+            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-gray-200">
-            <div className="flex flex-col gap-4 px-5">
+          <div className="md:hidden py-4 border-t border-white/10">
+            <div className="flex flex-col gap-2">
               {navLinks.map((link) => (
-                  <Link key={link.page} href={`/${link.page}`}>
-                    <button
-                      onClick={() => {
-                        setMobileMenuOpen(false);
-                      }}
-                      className={`text-left px-4 py-2 rounded-lg transition-colors ${
-                        currentPage === link.page
-                          ? "bg-blue-50 text-blue-600"
-                          : "text-gray-600 hover:bg-gray-50"
-                      }`}
-                    >
-                      {link.name}
-                    </button>
-                  </Link>
-                ))}
-
-              <Link href="/quote">
-              <Button
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                }}
-                className="bg-[#319198] text-white rounded-lg"
-              >
-                Get a Quote
-              </Button>
-              </Link>
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`px-4 py-3 rounded-lg text-sm font-medium transition-all ${
+                    currentPage === link.href.replace('/', '')
+                      ? "text-cyan-400 bg-cyan-400/10"
+                      : "text-gray-300 hover:text-white hover:bg-white/5"
+                  }`}
+                >
+                  {link.name}
+                </Link>
+              ))}
               
+              <Link href="/quote" onClick={() => setMobileMenuOpen(false)}>
+                <Button className="w-full mt-4 bg-cyan-500 hover:bg-cyan-400 text-black font-semibold">
+                  Get a Quote
+                </Button>
+              </Link>
             </div>
           </div>
         )}

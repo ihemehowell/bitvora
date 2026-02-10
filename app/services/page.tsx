@@ -3,167 +3,170 @@
 import { ServiceCard } from '@/components/ServiceCard';
 import { PricingCard } from '@/components/PricingCard';
 import { motion } from 'framer-motion';
-import {Accordion,AccordionContent,AccordionItem,AccordionTrigger,} from '@/components/ui/accordion';
-import { servicesData,faqs,pricingPlans } from '@/Data/Data';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { servicesData, faqs, pricingPlans } from '@/Data/Data';
 import Link from 'next/link';
-import { ChevronRight } from 'lucide-react';
-import { button } from 'framer-motion/client';
+import { ArrowRight } from 'lucide-react';
 
-interface ServicesPageProps {
-  onNavigate: (page: string) => void;
-}
-
-export default function ServicesPage({ onNavigate }: ServicesPageProps) {
-  
-
+export default function ServicesPage() {
   return (
-    <div className="">
+    <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="bg-linear-to-br from-[#319198]/30  to-[#319198]/50 py-20 max-md:py-12">
-        <div className="container mx-auto px-6">
-          <div className="max-w-3xl mx-auto text-center">
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="text-gray-900 mb-6 text-3xl font-bold"
-            >
-              Our <span className="bg-[#319198] bg-clip-text text-transparent ">Services</span>
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-              className="text-gray-600 text-lg"
-            >
-              Comprehensive web development solutions designed to help your business thrive in the digital world
-            </motion.p>
-          </div>
+      <section className="py-20 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-transparent to-transparent pointer-events-none" />
+        <div className="container mx-auto px-6 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="max-w-3xl mx-auto text-center"
+          >
+            <span className="text-cyan-400 text-sm font-medium mono mb-4 block">
+              OUR SERVICES
+            </span>
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              Complete <span className="gradient-text">Solutions</span> for Your Business
+            </h1>
+            <p className="text-gray-400 text-lg">
+              From websites to full-stack applications, we deliver modern digital solutions
+            </p>
+          </motion.div>
         </div>
       </section>
 
       {/* Services Grid */}
-      <section className="bg-white py-10 max-md:py-12">
+      <section className="py-10">
         <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {servicesData.map((service, index) => (
-              <ServiceCard key={index} {...service} index={index} />
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+              >
+                <ServiceCard {...service} index={index} />
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
       {/* Pricing Section */}
-      <section className="bg-gray-50 py-20 max-md:py-12">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-12">
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-gray-900 mb-4 text-3xl font-bold"
-            >
-              Transparent Pricing
-            </motion.h2>
-            <p className="text-gray-600 max-w-2xl mx-auto text-lg font-semibold">
-              Choose the package that best fits your needs. All plans include our quality guarantee.
+      <section className="py-20 relative">
+        <div className="absolute inset-0 dotted-grid opacity-20 pointer-events-none" />
+        <div className="container mx-auto px-6 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <span className="text-cyan-400 text-sm font-medium mono mb-4 block">
+              PRICING
+            </span>
+            <h2 className="text-4xl font-bold text-white mb-4">
+              Transparent <span className="gradient-text">Pricing</span>
+            </h2>
+            <p className="text-gray-400 max-w-2xl mx-auto">
+              Choose the package that fits your needs
             </p>
-          </div>
+          </motion.div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {pricingPlans.map((plan, index) => (
-              
-              <PricingCard
-                key={index}
-                {...plan}
-                index={index}
-              />
+              <PricingCard key={index} {...plan} index={index} />
             ))}
           </div>
 
-          <div className="text-center mt-12">
-            <p className="text-gray-600 mb-6 text-lg font-semibold">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mt-12"
+          >
+            <p className="text-gray-400 mb-6">
               Not sure which plan is right for you?
             </p>
-
-            <Link href='contact'>
-            <button
-             className="px-8 py-3 bg-[#319198] text-white rounded-xl hover:bg-[#319198]/80 transition-colors"
-            >
-              Schedule a Consultation
-            </button>
+            <Link href="/contact" className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors">
+              Schedule a Consultation <ArrowRight size={18} />
             </Link>
-            
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* FAQ Section */}
-      <section className="bg-white py-20 max-md:py-12">
+      <section className="py-20">
         <div className="container mx-auto px-6">
-          <div className="text-center mb-12">
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-gray-900 mb-4 text-3xl font-bold"
-            >
-              Frequently Asked Questions
-            </motion.h2>
-            <p className="text-gray-600 max-w-2xl mx-auto text-lg font-semibold">
-              Got questions? We've got answers. Find everything you need to know about our services.
-            </p>
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <span className="text-cyan-400 text-sm font-medium mono mb-4 block">
+              FAQ
+            </span>
+            <h2 className="text-4xl font-bold text-white mb-4">
+              Frequently <span className="gradient-text">Asked</span> Questions
+            </h2>
+          </motion.div>
 
           <div className="max-w-3xl mx-auto">
-            <Accordion type="single" collapsible>
+            <Accordion type="single" collapsible className="space-y-4">
               {faqs.map((faq, index) => (
-                <AccordionItem key={index} value={`item-${index}`}>
-                  <AccordionTrigger>{faq.question}</AccordionTrigger>
-                  <AccordionContent>
-                    <p className="text-gray-600">{faq.answer}</p>
+                <AccordionItem 
+                  key={index} 
+                  value={`item-${index}`}
+                  className="bg-white/5 border border-white/10 rounded-xl px-6"
+                >
+                  <AccordionTrigger className="text-white hover:text-cyan-400 transition-colors">
+                    {faq.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-gray-400">
+                    {faq.answer}
                   </AccordionContent>
                 </AccordionItem>
               ))}
             </Accordion>
           </div>
 
-          <div className="text-center mt-12">
-            <p className="text-gray-600 mb-4 text-lg font-semibold">Still have questions?</p>
-            
-            <Link
-              href="/contact"
-              className="text-[#319198] hover:text-primary transition-colors hover:underline hover:underline-offset-4 text-lg font-semibold"
-            >
-              Contact our team 
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-center mt-12"
+          >
+            <p className="text-gray-400 mb-4">Still have questions?</p>
+            <Link href="/contact" className="text-cyan-400 hover:text-cyan-300 transition-colors">
+              Contact our team
             </Link>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="bg-linear-to-br from-[#319198]/40 to-[#319198]/80 py-20 max-md:py-12">
-        <div className="container mx-auto px-6">
-          <div className="max-w-3xl mx-auto text-center">
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-gray-600 mb-6 text-3xl font-bold"
-            >
-              Ready to Get Started?
-            </motion.h2>
-            <p className="text-gray-600 text-lg mb-8">
-              Let's build something amazing together. Get your free project quote today.
+      <section className="py-20 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/20 via-transparent to-transparent pointer-events-none" />
+        <div className="container mx-auto px-6 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="max-w-3xl mx-auto text-center"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+              Ready to Get <span className="gradient-text">Started?</span>
+            </h2>
+            <p className="text-gray-400 mb-8">
+              Let's build something amazing together
             </p>
-            <Link href='quote'>
-             <button
-              className="px-8 py-4 bg-white text rounded-xl hover:bg-gray-100 transition-colors"
-            >
-              Request a Quote
-            </button>
+            <Link href="/quote">
+              <button className="px-8 py-4 bg-cyan-500 hover:bg-cyan-400 text-black font-semibold rounded-xl transition-all duration-300 glow-primary">
+                Request a Quote
+              </button>
             </Link>
-           
-          </div>
+          </motion.div>
         </div>
       </section>
     </div>

@@ -10,24 +10,14 @@ import {
 } from "../components/Home";
 
 export default function HomePage() {
-
-  const onNavigate = (page: string, projectId?: number) => {
-    if (projectId) {
-      document.getElementById(`project-${projectId}`)?.scrollIntoView({ behavior: "smooth" });
-      return;
-    }
-
-    document.getElementById(page)?.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
-    <div className="pt-20">
-      <HeroSection  />
-      <ServicesSection  />
+    <div className="min-h-screen">
+      <HeroSection />
+      <ServicesSection />
       <WhyChooseUsSection />
-      <PortfolioSection  />
+      <PortfolioSection />
       <TestimonialsSection />
-      <FinalCTA/>
+      <FinalCTA />
     </div>
   );
 }
