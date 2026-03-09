@@ -62,7 +62,7 @@ export default function ContactPage() {
             <span className="text-cyan-400 text-sm font-medium mono mb-4 block">
               CONTACT US
             </span>
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
               Get in <span className="gradient-text">Touch</span>
             </h1>
             <p className="text-gray-400 text-lg">
@@ -82,8 +82,8 @@ export default function ContactPage() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <div className="p-8 rounded-2xl border border-white/10">
-                <h3 className="text-2xl font-bold text-white mb-6">Send us a Message</h3>
+              <div className="p-8 rounded-2xl border border-foreground">
+                <h3 className="text-2xl font-bold text-foreground mb-6">Send us a Message</h3>
 
                 {submitted ? (
                   <motion.div
@@ -94,7 +94,7 @@ export default function ContactPage() {
                     <div className="w-16 h-16 bg-cyan-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
                       <Send className="text-cyan-400" size={28} />
                     </div>
-                    <h4 className="text-white text-xl font-semibold mb-2">Message Sent!</h4>
+                    <h4 className="text-foreground text-xl font-semibold mb-2">Message Sent!</h4>
                     <p className="text-gray-400">
                       Thank you for contacting us. We'll get back to you soon.
                     </p>
@@ -111,7 +111,7 @@ export default function ContactPage() {
                         onChange={handleChange}
                         placeholder="John Doe"
                         required
-                        className="mt-2 bg-white/5 border-white/10 text-white"
+                        className="mt-2 bg-white/5 border-foreground text-foreground"
                       />
                     </div>
 
@@ -125,7 +125,7 @@ export default function ContactPage() {
                         onChange={handleChange}
                         placeholder="john@example.com"
                         required
-                        className="mt-2 bg-white/5 border-white/10 text-white"
+                        className="mt-2 bg-white/5 border-foreground text-foreground"
                       />
                     </div>
 
@@ -138,7 +138,7 @@ export default function ContactPage() {
                         value={formData.phone}
                         onChange={handleChange}
                         placeholder="+234 902-123-4567"
-                        className="mt-2 bg-white/5 border-white/10 text-white"
+                        className="mt-2 bg-white/5 border-foreground text-foreground"
                       />
                     </div>
 
@@ -152,16 +152,16 @@ export default function ContactPage() {
                         placeholder="Tell us about your project..."
                         required
                         rows={6}
-                        className="mt-2 bg-white/5 border-white/10 text-white"
+                        className="mt-2 bg-white/5 border-foreground text-foreground resize-none"
                       />
                     </div>
 
                     <button
                       type="submit"
-                      className="w-full px-8 py-4 bg-cyan-500 hover:bg-cyan-400 text-black font-semibold rounded-xl transition-all duration-300 glow-primary flex items-center justify-center gap-2"
+                      className="w-full px-8 py-4 bg-cyan-500 hover:bg-cyan-400 text-foreground font-medium rounded-xl transition-all duration-300 glow-primary flex items-center justify-center gap-2"
                     >
                       Send Message
-                      <Send size={20} />
+                      <Send size={18} />
                     </button>
                   </form>
                 )}
@@ -176,7 +176,7 @@ export default function ContactPage() {
                 viewport={{ once: true }}
                 className="mb-8"
               >
-                <h3 className="text-2xl font-bold text-white mb-4">Contact Information</h3>
+                <h3 className="text-2xl font-bold text-foreground mb-4">Contact Information</h3>
                 <p className="text-gray-400 text-lg">
                   Reach out to us through any channel
                 </p>
@@ -191,13 +191,13 @@ export default function ContactPage() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 }}
-                    className="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors"
+                    className="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-foreground hover:text-gray-600 transition-colors"
                   >
                     <div className="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center shrink-0">
                       <item.icon className="text-cyan-400" size={24} />
                     </div>
                     <div>
-                      <h6 className="text-white font-medium">{item.title}</h6>
+                      <h6 className="text-foreground font-medium">{item.title}</h6>
                       <p className="text-gray-400">{item.value}</p>
                     </div>
                   </motion.a>
@@ -209,9 +209,9 @@ export default function ContactPage() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="mt-8 p-6 rounded-xl bg-white/5 border border-white/10"
+                className="mt-8 p-6 rounded-xl bg-background border border-foreground"
               >
-                <h4 className="text-white font-semibold mb-4">Business Hours</h4>
+                <h4 className="text-foreground font-semibold mb-4">Business Hours</h4>
                 <div className="space-y-2">
                   {businessHours.map((schedule, index) => (
                     <div
@@ -219,7 +219,7 @@ export default function ContactPage() {
                       className="flex justify-between items-center py-2 border-b border-white/5 last:border-0"
                     >
                       <span className="text-gray-400">{schedule.day}</span>
-                      <span className="text-white">{schedule.hours}</span>
+                      <span className="text-foreground">{schedule.hours}</span>
                     </div>
                   ))}
                 </div>
@@ -238,12 +238,12 @@ export default function ContactPage() {
             viewport={{ once: true }}
             className="relative rounded-3xl p-12 md:p-16 text-center overflow-hidden"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/20 to-transparent rounded-3xl" />
+            <div className="absolute inset-0 bg-primary/80 rounded-3xl" />
             <div className="relative z-10">
-              <h3 className="text-3xl font-bold text-white mb-4">Ready to Start Your Project?</h3>
-              <p className="text-gray-400 mb-8">Get a detailed quote for your project</p>
+              <h3 className="text-3xl font-bold text-foreground/70 mb-4">Ready to Start Your Project?</h3>
+              <p className="text-gray-600 mb-8">Get a detailed quote for your project</p>
               <Link href="/quote">
-                <button className="px-8 py-4 bg-cyan-500 hover:bg-cyan-400 text-black font-semibold rounded-xl transition-all duration-300 glow-primary">
+                <button className="px-8 py-4 bg-cyan-500 hover:bg-cyan-400 text-foreground font-semibold rounded-xl transition-all duration-300 glow-primary">
                   Request a Quote
                 </button>
               </Link>

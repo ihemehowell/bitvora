@@ -153,7 +153,7 @@ export interface ContactInfo {
 export const navLinks: NavLink[] = [
   { name: "Home", href: "/" },
   { name: "Services", href: "/services" },
-  { name: "Portfolio", href: "/portfolio" },
+  { name: "Portfolio", href: "/projects" },
   { name: "About", href: "/about" },
   { name: "Contact", href: "/contact" },
 ];
@@ -408,12 +408,12 @@ export const team: TeamMember[] = [
     bio: 'Front-end developer with 5 years of experience in web development.',
     image: howell,
   },
-  {
-    name: 'Doris Nwankwo',
-    role: 'Social Media Manager',
-    bio: 'Social media expert with 5 years of experience in digital marketing.',
-    image: doris,
-  },
+  // {
+  //   name: 'Doris Nwankwo',
+  //   role: 'Social Media Manager',
+  //   bio: 'Social media expert with 5 years of experience in digital marketing.',
+  //   image: doris,
+  // },
 ];
 
 // ============================================
@@ -657,7 +657,7 @@ export const footerLinks = {
     { name: 'Home', href: '/' },
     { name: 'Services', href: '/services' },
     { name: 'About', href: '/about' },
-    { name: 'Portfolio', href: '/portfolio' },
+    { name: 'Portfolio', href: '/projects' },
     { name: 'Contact', href: '/contact' },
   ],
   services: [

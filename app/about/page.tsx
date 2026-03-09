@@ -6,10 +6,11 @@ import { motion } from 'framer-motion';
 import { ProcessStep } from '@/components/ProcessStep';
 import Link from 'next/link';
 import { team, values, process } from '@/Data/Data';
+import Image from "next/image";
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen tech-grid">
       {/* Hero Section */}
       <section className="py-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-transparent to-transparent pointer-events-none" />
@@ -22,8 +23,8 @@ export default function AboutPage() {
             <span className="text-cyan-400 text-sm font-medium mono mb-4 block">
               ABOUT US
             </span>
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Building Digital <span className="gradient-text">Excellence</span> Since 2019
+            <h1 className="text-4xl md:text-5xl font-bold text-FOREGROUND/70 mb-6">
+              Building Digital <span className="gradient-text">Excellence</span> Since 2025
             </h1>
             <p className="text-gray-400 text-lg">
               We're a team of passionate designers and developers dedicated to creating exceptional digital experiences
@@ -33,7 +34,7 @@ export default function AboutPage() {
       </section>
 
       {/* Mission & Vision */}
-      <section className="py-20">
+      <section className="py-5">
         <div className="container mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -43,10 +44,12 @@ export default function AboutPage() {
               className="relative"
             >
               <div className="relative rounded-2xl overflow-hidden border border-white/10">
-                <img
+                <Image
                   src="https://images.unsplash.com/photo-1627599936744-51d288f89af4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
                   alt="Our Team"
                   className="w-full object-cover"
+                  width={500}
+                  height={500}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-cyan-500/20 to-transparent" />
               </div>
@@ -62,7 +65,7 @@ export default function AboutPage() {
                   <div className="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center">
                     <Target className="text-cyan-400" size={24} />
                   </div>
-                  <h3 className="text-2xl font-bold text-white">Our Mission</h3>
+                  <h3 className="text-2xl font-bold text-foreground/70">Our Mission</h3>
                 </div>
                 <p className="text-gray-400 text-lg leading-relaxed">
                   To empower businesses with high-quality web solutions that enhance their online presence and drive measurable results.
@@ -79,7 +82,7 @@ export default function AboutPage() {
                   <div className="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center">
                     <Eye className="text-cyan-400" size={24} />
                   </div>
-                  <h3 className="text-2xl font-bold text-white">Our Vision</h3>
+                  <h3 className="text-2xl font-bold text-foreground/70">Our Vision</h3>
                 </div>
                 <p className="text-gray-400 text-lg leading-relaxed">
                   To be the leading web development agency known for innovation and transforming businesses through exceptional digital experiences.
@@ -103,7 +106,7 @@ export default function AboutPage() {
             <span className="text-cyan-400 text-sm font-medium mono mb-4 block">
               OUR VALUES
             </span>
-            <h2 className="text-4xl font-bold text-white">
+            <h2 className="text-4xl font-bold text-foreground/70">
               What <span className="gradient-text">Drives</span> Us
             </h2>
           </motion.div>
@@ -121,7 +124,7 @@ export default function AboutPage() {
                 <div className="w-16 h-16 rounded-2xl bg-cyan-500/10 flex items-center justify-center mx-auto mb-4 group-hover:bg-cyan-500/20 transition-colors">
                   <value.icon className="text-cyan-400" size={32} />
                 </div>
-                <h5 className="text-white font-semibold text-lg mb-2">{value.title}</h5>
+                <h5 className="text-foreground/70 font-semibold text-lg mb-2">{value.title}</h5>
                 <p className="text-gray-400 text-sm">{value.description}</p>
               </motion.div>
             ))}
@@ -141,7 +144,7 @@ export default function AboutPage() {
             <span className="text-cyan-400 text-sm font-medium mono mb-4 block">
               OUR PROCESS
             </span>
-            <h2 className="text-4xl font-bold text-white">
+            <h2 className="text-4xl font-bold text-foreground/70">
               How We <span className="gradient-text">Work</span>
             </h2>
           </motion.div>
@@ -167,12 +170,12 @@ export default function AboutPage() {
             <span className="text-cyan-400 text-sm font-medium mono mb-4 block">
               OUR TEAM
             </span>
-            <h2 className="text-4xl font-bold text-white">
+            <h2 className="text-4xl font-bold text-foreground/70">
               Meet the <span className="gradient-text">Team</span>
             </h2>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 justify-center items-center">
             {team.map((member, index) => (
               <TeamMember key={index} {...member} index={index} />
             ))}
@@ -182,7 +185,7 @@ export default function AboutPage() {
 
       {/* Stats Section */}
       <section className="py-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/20 via-transparent to-transparent pointer-events-none" />
+        <div className="absolute inset-0 pointer-events-none" />
         <div className="container mx-auto px-6 relative z-10">
           <div className="grid md:grid-cols-4 gap-8 text-center">
             {[
@@ -215,9 +218,9 @@ export default function AboutPage() {
             viewport={{ once: true }}
             className="relative rounded-3xl p-12 md:p-16 text-center overflow-hidden"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/20 to-transparent rounded-3xl" />
+            <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/80 to-cyan-500/60 rounded-3xl" />
             <div className="relative z-10">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
                 Let's Work <span className="gradient-text">Together</span>
               </h2>
               <p className="text-gray-400 max-w-2xl mx-auto mb-8">
@@ -230,7 +233,7 @@ export default function AboutPage() {
                   </button>
                 </Link>
                 <Link href="/contact">
-                  <button className="px-8 py-4 bg-white/5 hover:bg-white/10 text-white rounded-xl border border-white/10 transition-all duration-300">
+                  <button className="px-8 py-4 bg-white/5 hover:bg-white/10 text-forground/70 rounded-xl border border-foreground/30 transition-all duration-300">
                     Contact Us
                   </button>
                 </Link>
