@@ -8,7 +8,7 @@ import { services } from "@/Data/Data";
 
 export default function ServicesSection() {
   return (
-      <section className="py-20 relative">
+      <section className="py-20 relative glass">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent pointer-events-none" />
 
         <div className="container mx-auto px-6 relative z-10">
@@ -35,6 +35,7 @@ export default function ServicesSection() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 }}
+                    className="group p-6 rounded-2xl border  transition-all duration-300 border-primary/20 hover:border-primary/30"
                 >
                   <ServiceCard {...service} index={index} />
                 </motion.div>
@@ -49,7 +50,7 @@ export default function ServicesSection() {
           >
             <Link
                 href="/services"
-                className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium transition-colors"
+                className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium transition-colors  border rounded-full px-6 py-3 border-primary/20 bg-primary/10 hover:bg-primary/20"
             >
               View All Services
               <ArrowRight size={18} />

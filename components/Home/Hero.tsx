@@ -7,7 +7,7 @@ import Link from "next/link";
 export default function HeroSection() {
   return (
       <section className="relative min-h-screen flex items-center overflow-hidden ">
-        <div className="tech-grid absolute inset-0 bg-linear-to-br from-primary/10 via-transparent to-transparent pointer-events-none" />
+        <div className="tech-grid glass absolute inset-0 bg-linear-to-br from-primary/10 via-transparent to-transparent pointer-events-none" />
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[120px] pointer-events-none" />
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[120px] pointer-events-none" />
 

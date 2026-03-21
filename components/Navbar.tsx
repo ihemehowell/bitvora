@@ -69,7 +69,7 @@ export default function Navbar({ currentPage }: { currentPage?: string }) {
               className="flex items-center gap-2.5 no-underline font-extrabold text-xl text-foreground tracking-tight transition-colors duration-200 hover:text-primary"
           >
             <div className="w-9 h-9 bg-gradient-to-br from-cyan-400 to-cyan-800 rounded-lg flex items-center justify-center shadow-[0_0_16px_rgba(6,182,212,0.3)]">
-              <Image src="/bitvora-logo.svg" alt="bitvora" width={24} height={24} className="object-contain" />
+              <Image src="/bitvora-logo.svg" alt="bitvora" width={124} height={124} className="object-contain" />
             </div>
             Bitvora<span className="text-primary">Tech</span>
           </Link>

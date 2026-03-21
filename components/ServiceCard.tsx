@@ -16,7 +16,7 @@ export function ServiceCard({ icon: Icon, title, description, features, index = 
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.1 }}
-      className="group relative p-6 rounded-2xl border border-white/10 hover:border-cyan-500/30 transition-all duration-300"
+      className="group relative p-6 rounded-2xl  transition-all duration-300"
     >
       {/* Hover Effect */}
       <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -33,7 +33,7 @@ export function ServiceCard({ icon: Icon, title, description, features, index = 
         </div>
 
         {/* Content */}
-        <h4 className="text-white text-lg font-semibold mb-3 group-hover:text-cyan-400 transition-colors">
+        <h4 className="text-foreground/50  text-lg font-semibold mb-3 group-hover:text-cyan-400 transition-colors">
           {title}
         </h4>
         <p className="text-gray-400 text-sm mb-4">{description}</p>
