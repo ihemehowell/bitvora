@@ -327,7 +327,7 @@ export const portfolioProjects: Project[] = [
 
 export const projects: Project[] = portfolioProjects;
 
-export const portfolioFilters = ['All', 'Websites', 'eCommerce', 'Landing Pages', 'UI/UX'];
+export const portfolioFilters = ['All', 'WebApps', 'eCommerce', 'Landing Page', 'UI/UX'];
 
 // ============================================
 // WHY CHOOSE US

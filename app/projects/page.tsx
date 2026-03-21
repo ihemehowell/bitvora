@@ -17,8 +17,7 @@ export default function PortfolioPage() {
       const q = query.toLowerCase();
       const matchQuery = !q ||
           p.title?.toLowerCase().includes(q) ||
-          p.category?.toLowerCase().includes(q) ||
-          p.description?.toLowerCase().includes(q);
+          p.category?.toLowerCase().includes(q);
       return matchCat && matchQuery;
     });
   }, [activeFilter, query]);
