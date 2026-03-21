@@ -28,10 +28,10 @@ export function FAQCarousel({ categories = FALLBACK_FAQ_CATEGORIES }: FAQCarouse
     const [carouselApi, setCarouselApi] = useState<CarouselApi>();
 
     return (
-        <div className="grid gap-8 grid-cols-1 lg:grid-cols-2">
+        <div className="grid gap-8 grid-cols-1 lg:grid-cols-2 ">
             <div className="relative">
                 {/* Navigation */}
-                <div className="flex items-center justify-end gap-2 mb-6">
+                <div className="flex items-center justify-center gap-2 mb-2">
                     <button
                         onClick={() => carouselApi?.scrollPrev()}
                         className="flex items-center justify-center h-12 w-12 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
@@ -49,9 +49,9 @@ export function FAQCarousel({ categories = FALLBACK_FAQ_CATEGORIES }: FAQCarouse
                 <Carousel
                     setApi={setCarouselApi}
                     opts={{ align: "start", loop: true }}
-                    className="w-full mb-4"
+                    className="w-full mb-6"
                 >
-                    <CarouselContent className="py-10">
+                    <CarouselContent className="py-15 px-2">
                         {categories.map((category) => (
                             <CarouselItem key={category.id}>
                                 <div className="rounded-xl">
@@ -67,7 +67,7 @@ export function FAQCarousel({ categories = FALLBACK_FAQ_CATEGORIES }: FAQCarouse
                                             <AccordionItem
                                                 key={item.id}
                                                 value={item.id}
-                                                className="rounded-lg border border-border bg-background last:mb-5"
+                                                className="rounded-lg border border-border bg-background mb-5"
                                             >
                                                 <AccordionTrigger className="px-6 py-5 text-left font-semibold hover:no-underline data-[state=open]:text-primary">
                                                     {item.question}
@@ -90,9 +90,9 @@ export function FAQCarousel({ categories = FALLBACK_FAQ_CATEGORIES }: FAQCarouse
             {/* FAQ Image */}
             <div className="hidden lg:flex items-center justify-center">
                 <Image
-                    src="/assets/FAQ.png"
+                    src="/assets/faq-img.png"
                     alt="FAQ Illustration"
-                    className="w-full max-w-100 h-auto object-contain"
+                    className="w-full  h-auto object-contain"
                     width={400}
                     height={400}
                 />

@@ -67,7 +67,7 @@ export function FAQSearch({ categories = FALLBACK_FAQ_CATEGORIES }: FAQSearchPro
                 <div className="flex flex-wrap gap-2 pt-1">
                     <button
                         onClick={() => setActiveCategory(null)}
-                        className={`rounded-full px-4 py-1.5 text-sm transition-colors ${
+                        className={`rounded-full px-4 py-2 text-sm transition-colors ${
                             !activeCategory
                                 ? 'bg-primary text-primary-foreground'
                                 : 'border border-border hover:bg-muted'

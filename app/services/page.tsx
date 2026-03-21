@@ -1,10 +1,8 @@
 'use client';
 
 import { ServiceCard } from '@/components/ServiceCard';
-import { PricingCard } from '@/components/PricingCard';
 import { motion } from 'framer-motion';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { servicesData, faqs, pricingPlans } from '@/Data/Data';
+import { servicesData } from '@/Data/Data';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
@@ -12,167 +10,72 @@ export default function ServicesPage() {
   return (
       <div className="min-h-screen">
 
-        {/* Hero */}
-        <section className="py-20 relative overflow-hidden">
+        {/* ── Hero ── */}
+        <section className="pt-16 pb-12 relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent pointer-events-none" />
+          <div className="dotted-grid absolute inset-0 pointer-events-none opacity-40" />
           <div className="container mx-auto px-6 relative z-10">
-            <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="max-w-3xl mx-auto text-center"
-            >
-            <span className="text-primary text-sm font-medium mono mb-4 block">
-              OUR SERVICES
-            </span>
-              <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-                Complete <span className="gradient-text">Solutions</span> for Your Business
-              </h1>
-              <p className="text-muted-foreground text-lg">
-                From websites to full-stack applications, we deliver modern digital solutions
-              </p>
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+                        <span className="text-primary text-sm font-medium mono mb-3 block tracking-widest uppercase">
+                            Our Services
+                        </span>
+              <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+                <h1 className="text-5xl md:text-[72px] font-bold text-foreground leading-none">
+                  Complete solutions<br />
+                  for your <span className="text-primary">business</span>
+                </h1>
+                <p className="text-lg text-muted-foreground max-w-sm md:text-right">
+                  From websites to full-stack applications, we deliver modern digital solutions that scale.
+                </p>
+              </div>
             </motion.div>
           </div>
         </section>
 
-        {/* Services Grid */}
-        <section className="py-10">
+        {/* ── Services Grid ── */}
+        <section className="py-12 border-t border-border">
           <div className="container mx-auto px-6">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {servicesData.map((service, index) => (
+              {servicesData.map((service, i) => (
                   <motion.div
-                      key={index}
+                      key={i}
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
-                      transition={{ delay: index * 0.1 }}
+                      transition={{ delay: i * 0.07 }}
                   >
-                    <ServiceCard {...service} index={index} />
+                    <ServiceCard {...service} index={i} />
                   </motion.div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Pricing */}
-        <section className="py-20 relative">
-          <div className="absolute inset-0 dotted-grid opacity-20 pointer-events-none" />
-          <div className="container mx-auto px-6 relative z-10">
-            <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="text-center mb-12"
-            >
-            <span className="text-primary text-sm font-medium mono mb-4 block">
-              PRICING
-            </span>
-              <h2 className="text-4xl font-bold text-foreground mb-4">
-                Transparent <span className="gradient-text">Pricing</span>
-              </h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                Choose the package that fits your needs
-              </p>
-            </motion.div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-              {pricingPlans.map((plan, index) => (
-                  <PricingCard key={index} {...plan} index={index} />
-              ))}
-            </div>
-
-            <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="text-center mt-12"
-            >
-              <p className="text-muted-foreground mb-6">
-                Not sure which plan is right for you?
-              </p>
-              <Link
-                  href="/contact"
-                  className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors"
-              >
-                Schedule a Consultation <ArrowRight size={18} />
-              </Link>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* FAQ */}
-        <section className="py-20">
+        {/* ── CTA ── */}
+        <section className="py-16 border-t border-border">
           <div className="container mx-auto px-6">
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="text-center mb-12"
+                className="rounded-3xl border border-border bg-card relative overflow-hidden p-10 md:p-16 flex flex-col md:flex-row md:items-center md:justify-between gap-8"
             >
-            <span className="text-primary text-sm font-medium mono mb-4 block">
-              FAQ
-            </span>
-              <h2 className="text-4xl font-bold text-foreground mb-4">
-                Frequently <span className="gradient-text">Asked</span> Questions
-              </h2>
-            </motion.div>
-
-            <div className="max-w-3xl mx-auto">
-              <Accordion type="single" collapsible className="space-y-4">
-                {faqs.map((faq, index) => (
-                    <AccordionItem
-                        key={index}
-                        value={`item-${index}`}
-                        className="bg-card border border-border rounded-xl px-6"
-                    >
-                      <AccordionTrigger className="text-foreground hover:text-primary transition-colors">
-                        {faq.question}
-                      </AccordionTrigger>
-                      <AccordionContent className="text-muted-foreground">
-                        {faq.answer}
-                      </AccordionContent>
-                    </AccordionItem>
-                ))}
-              </Accordion>
-            </div>
-
-            <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                className="text-center mt-12"
-            >
-              <p className="text-muted-foreground mb-4">Still have questions?</p>
-              <Link
-                  href="/contact"
-                  className="text-primary hover:text-primary/80 transition-colors"
-              >
-                Contact our team
-              </Link>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* CTA */}
-        <section className="py-20 relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-transparent pointer-events-none" />
-          <div className="container mx-auto px-6 relative z-10">
-            <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="max-w-3xl mx-auto text-center"
-            >
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-                Ready to Get <span className="gradient-text">Started?</span>
-              </h2>
-              <p className="text-muted-foreground mb-8">
-                Let's build something amazing together
-              </p>
-              <Link href="/quote">
-                <button className="px-8 py-4 bg-primary hover:opacity-90 text-primary-foreground font-semibold rounded-xl transition-all duration-300 glow-primary">
-                  Request a Quote
-                </button>
-              </Link>
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent pointer-events-none" />
+              <div className="relative">
+                <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
+                  Ready to get started?
+                </h2>
+                <p className="text-muted-foreground max-w-md">
+                  Let's build something amazing together. Tell us about your project and we'll take it from there.
+                </p>
+              </div>
+              <div className="relative shrink-0 flex justify- items-center flex-wrap gap-3">
+                <Link href="/quote">
+                  <button className="inline-flex items-center gap-2 py-3 px-4 bg-primary hover:opacity-90 text-primary-foreground font-semibold rounded-xl transition-all duration-300">
+                    Request a quote <ArrowRight size={16} />
+                  </button>
+                </Link>
+              </div>
             </motion.div>
           </div>
         </section>
