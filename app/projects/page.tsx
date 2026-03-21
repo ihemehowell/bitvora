@@ -28,12 +28,12 @@ export default function PortfolioPage() {
         {/* ── Hero ── */}
         <section className="pt-16 pb-12 relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent pointer-events-none" />
-          <div className="dotted-grid absolute inset-0 pointer-events-none " />
+          <div className="dotted-grid absolute inset-0 pointer-events-none opacity-40" />
           <div className="container mx-auto px-6 relative z-10">
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="max-w-7xl mx-auto text-center"
+                className="max-w-3xl flex flex-col items-start justify-between gap-6"
             >
                         <span className="text-primary text-sm font-medium mono mb-3 block tracking-widest uppercase">
                             Our Portfolio
@@ -42,7 +42,7 @@ export default function PortfolioPage() {
                 Work we're<br />
                 <span className="text-primary">proud</span> of
               </h1>
-              <p className="text-lg text-muted-foreground ">
+              <p className="text-lg text-muted-foreground max-w-xl justify-end">
                 A selection of projects we've built for clients across industries — from early-stage startups to established enterprises.
               </p>
             </motion.div>
@@ -66,7 +66,7 @@ export default function PortfolioPage() {
                   placeholder="Search projects..."
                   value={query}
                   onChange={e => { setQuery(e.target.value); }}
-                  className="w-full h-11 py-2 rounded-xl border border-border bg-card text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors"
+                  className="w-full h-11 py-2 px-2 rounded-xl border border-border bg-card text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors"
               /> 
               <Search className="absolute right-4 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
               {query && (
@@ -84,7 +84,7 @@ export default function PortfolioPage() {
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.15 }}
-                className="flex flex-wrap gap-2"
+                className="flex flex-wrap gap-2 mx-auto max-w-max"
             >
               {portfolioFilters.map(filter => (
                   <button
