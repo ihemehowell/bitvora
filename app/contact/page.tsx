@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Mail, Phone, MapPin, MessageCircle, Send } from 'lucide-react';
+import {  Send } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -52,7 +52,7 @@ export default function ContactPage() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="py-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-transparent to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-linear-to-br from-cyan-500/10 via-transparent to-transparent pointer-events-none" />
         <div className="container mx-auto px-6 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -66,7 +66,7 @@ export default function ContactPage() {
               Get in <span className="gradient-text">Touch</span>
             </h1>
             <p className="text-gray-400 text-lg">
-              Have a project in mind? We'd love to hear from you.
+              Have a project in mind? We&#39;d love to hear from you.
             </p>
           </motion.div>
         </div>
@@ -96,7 +96,7 @@ export default function ContactPage() {
                     </div>
                     <h4 className="text-foreground text-xl font-semibold mb-2">Message Sent!</h4>
                     <p className="text-gray-400">
-                      Thank you for contacting us. We'll get back to you soon.
+                      Thank you for contacting us. We&#39;ll get back to you soon.
                     </p>
                   </motion.div>
                 ) : (

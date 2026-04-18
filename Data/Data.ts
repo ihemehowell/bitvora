@@ -1,5 +1,4 @@
-import { 
-  ArrowRight, 
+import {  
   CheckCircle, 
   Code, 
   Palette, 
@@ -24,26 +23,16 @@ import {
   CodeXml, 
   Megaphone, 
   Brush,
-  Target,
-  Eye,
-  Calendar,
-  DollarSign,
-  ExternalLink,
-  Send,
+  
   Mail,
   Phone,
   MapPin,
-  MessageCircle,
-  ChevronRight,
-  ChevronLeft,
-  Check,
-  Menu,
-  X
 } from "lucide-react";
 import { StaticImageData } from "next/image";
 
-import { oma, howell, doris } from '../assets/team';
+import { oma, howell, } from '../assets/team';
 import { project1, project2, project3 } from '../assets/portfolio';
+import { IconBrandWhatsapp } from "@tabler/icons-react";
 
 // ============================================
 // TYPES
@@ -614,14 +603,14 @@ export const contactInfo: ContactInfo[] = [
   {
     icon: Phone,
     title: 'Phone',
-    value: '+234 9061846290',
-    link: 'tel:+2349061846290',
+    value: '+234 9112449545',
+    link: 'tel:+2349112449545',
   },
   {
-    icon: MessageCircle,
+    icon: IconBrandWhatsapp,
     title: 'WhatsApp',
-    value: '+234 9061846290',
-    link: 'https://wa.me/+2349061846290',
+    value: '+234 9112449545',
+    link: 'https://wa.me/+2349112449545',
   },
   {
     icon: MapPin,
