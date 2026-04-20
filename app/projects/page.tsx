@@ -105,7 +105,7 @@ export default function PortfolioPage() {
             {(query || activeFilter !== 'All') && (
                 <p className="text-sm text-muted-foreground mt-4">
                   {filtered.length} project{filtered.length !== 1 ? 's' : ''}
-                  {query && <span> matching <strong>"{query}"</strong></span>}
+                  {query && <span> matching <strong>{query}</strong></span>}
                 </p>
             )}
           </div>
@@ -125,7 +125,9 @@ export default function PortfolioPage() {
                         exit={{ opacity: 0, y: 8 }}
                         transition={{ delay: index * 0.06 }}
                     >
-                      <PortfolioCard {...project} index={index} />
+                      <Link href={project.href} target="_blank">
+                        <PortfolioCard {...project} index={index} />
+                      </Link>
                     </motion.div>
                 ))}
               </AnimatePresence>
@@ -151,7 +153,7 @@ export default function PortfolioPage() {
               <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent pointer-events-none" />
               <div className="relative">
                 <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
-                  Like what you see?
+                  Like what you see? 
                 </h2>
                 <p className="text-muted-foreground max-w-md">
                   Let's build something you're proud of. Tell us about your project and we'll take it from there.
