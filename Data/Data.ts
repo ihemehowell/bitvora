@@ -23,7 +23,6 @@ import {
   CodeXml, 
   Megaphone, 
   Brush,
-  
   Mail,
   Phone,
   MapPin,
@@ -31,8 +30,8 @@ import {
 import { StaticImageData } from "next/image";
 
 import { oma, howell, } from '../assets/team';
-import { project1, project2, project3 } from '../assets/portfolio';
-import { IconBrandWhatsapp } from "@tabler/icons-react";
+import { project1, project2, project3, project4, project5, project6} from '../assets/portfolio';
+import { IconBrandWhatsapp, IconBrandGithub, IconBrandLinkedinFilled, IconBrandInstagram, IconBrandFacebook } from "@tabler/icons-react";
 
 // ============================================
 // TYPES
@@ -310,13 +309,37 @@ export const portfolioProjects: Project[] = [
     category: "WebApps",
     tags: ["WebApp", "API Integration", "React", "TailwindCSS"],
     image: project3,
-    href: 'https://skycast-app.vercel.app/',
+    href: 'https://weather-app-7e7q.onrender.com',
+  },
+  {
+    id: 4,
+    title: "Sir T",
+    category: "Music",
+    tags: ["Music", "Website"],
+    image: project4,
+    href: 'https://sir-t.vercel.app/',
+  },
+  {
+    id: 5,
+    title: "Trinity House",
+    category: "Church Website",
+    tags: ["Church", "Website", "UI/UX"],
+    image: project5,
+    href: 'https://trinity-house.vercel.app/',
+  },
+  {
+    id: 6,
+    title: "Bole-boss",
+    category: "Landing Page",
+    tags: ["Design", "Development", "Landing Page"],
+    image: project6,
+    href: 'https://bole-boss-beta.vercel.app/',
   },
 ];
 
 export const projects: Project[] = portfolioProjects;
 
-export const portfolioFilters = ['All', 'WebApps', 'eCommerce', 'Landing Page', 'UI/UX'];
+export const portfolioFilters = ['All', 'WebApps', 'eCommerce', 'Landing Page', 'UI/UX', 'Music'];
 
 // ============================================
 // WHY CHOOSE US
@@ -608,10 +631,10 @@ export const businessHours = [
 // ============================================
 
 export const socialLinks = [
-  { name: 'Facebook', href: '#', icon: 'facebook' },
-  { name: 'Twitter', href: '#', icon: 'twitter' },
-  { name: 'Instagram', href: '#', icon: 'instagram' },
-  { name: 'LinkedIn', href: '#', icon: 'linkedin' },
+  { name: 'Facebook', href: 'https://web.facebook.com/bitvoratech', icon: IconBrandFacebook,  },
+  { name: 'Github', href: 'https://github.com/BitvoraTech-Solutions', icon: IconBrandGithub },
+  { name: 'Instagram', href: 'https://www.instagram.com/bitvoratechh/', icon: IconBrandInstagram },
+  { name: 'LinkedIn', href: 'https://www.linkedin.com/company/bitvoratech-solutions/', icon: IconBrandLinkedinFilled },
 ];
 
 // ============================================

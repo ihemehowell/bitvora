@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowUpRight, ArrowRight, Search, X } from 'lucide-react'
 import Link from 'next/link'
 import {caseStudies, CaseStudy, categories, stats} from "@/Data/case-studies";
+import Image from 'next/image'
 
 
 const PAGE_SIZE = 6
@@ -16,7 +17,14 @@ function FeaturedCard({ study }: { study: CaseStudy }) {
             animate={{ opacity: 1, y: 0 }}
             className="relative rounded-3xl border border-border bg-card overflow-hidden group"
         >
-            <div className={`absolute inset-0 bg-gradient-to-br ${study.accentColor} pointer-events-none`} />
+            <div className={`absolute inset-0 bg-gradient-to-br ${study.accentColor} pointer-events-none`}/>
+                 <Image
+                 src={study.image}
+                 alt={study.title}
+                 width={1500}
+                 height={1500}
+                 className="w-full object-contain h-[400px]"
+                 />
             <div className="relative p-8 md:p-12 grid md:grid-cols-2 gap-10 items-center">
                 <div>
                     <div className="flex items-center gap-3 mb-4">
@@ -32,7 +40,7 @@ function FeaturedCard({ study }: { study: CaseStudy }) {
                         ))}
                     </div>
                     <Link href={`/case-studies/${study.id}`}>
-                        <button className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:gap-3 transition-all duration-200">
+                        <button className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:gap-3 transition-all duration-200 border border-primary px-2 py-2 rounded-lg hover:bg-primary hover:text-background cursor-pointer glow-primary">
                             Read case study <ArrowRight size={15} />
                         </button>
                     </Link>
@@ -138,7 +146,7 @@ export default function CaseStudiesPage() {
                                 Work that<br /><span className="text-primary">speaks</span> for itself
                             </h1>
                             <p className="text-lg text-muted-foreground max-w-sm md:text-right">
-                                Real problems, real solutions, real numbers. Here's what we've shipped.
+                                Real problems, real solutions. Here&apos;s what we&apos;ve shipped.
                             </p>
                         </div>
                     </motion.div>
@@ -157,7 +165,7 @@ export default function CaseStudiesPage() {
                                 transition={{ delay: i * 0.08 }}
                                 className="text-center"
                             >
-                                <p className="text-3xl md:text-4xl font-bold text-foreground mb-1">{value}</p>
+                                <p className="text-xl md:text-2xl font-bold text-foreground mb-1">{value}</p>
                                 <p className="text-sm text-muted-foreground">{label}</p>
                             </motion.div>
                         ))}
@@ -215,7 +223,7 @@ export default function CaseStudiesPage() {
                     {(query || activeCategory !== 'All') && (
                         <p className="text-sm text-muted-foreground mb-6">
                             {filtered.length} result{filtered.length !== 1 ? 's' : ''}
-                            {query && <span> for <strong>"{query}"</strong></span>}
+                            {query && <span> for <strong>&quot;{query}&quot;</strong></span>}
                         </p>
                     )}
 
@@ -252,7 +260,7 @@ export default function CaseStudiesPage() {
                     <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
                         <h2 className="text-4xl font-bold text-foreground mb-3">Want to be our next case study?</h2>
                         <p className="text-muted-foreground mb-8 max-w-lg mx-auto">
-                            Tell us about your project and let's build something worth writing about.
+                            Tell us about your project and let&apos;s build something worth writing about.
                         </p>
                         <Link href="/quote">
                             <button className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-semibold px-8 py-4 rounded-xl hover:opacity-90 transition-all duration-300">

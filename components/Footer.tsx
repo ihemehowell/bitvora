@@ -1,10 +1,12 @@
 "use client";
 
-import { Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
+
 import Image from 'next/image';
 import logo from "../public/bitvora-logo.svg";
 import Link from 'next/link';
 import { footerLinks, socialLinks } from "@/Data/Data";
+// import { Facebook, Github, Instagram, Linkedin } from 'lucide-react';
+import { IconBrandGithub, IconBrandInstagram, IconBrandLinkedinFilled, IconBrandWhatsapp } from '@tabler/icons-react';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -37,10 +39,7 @@ export function Footer() {
                   href={social.href}
                   className="w-10 h-10 rounded-lg glass flex items-center justify-center hover:bg-white/10 transition-colors"
                 >
-                  {social.icon === 'facebook' && <Facebook size={18} />}
-                  {social.icon === 'twitter' && <Twitter size={18} />}
-                  {social.icon === 'instagram' && <Instagram size={18} />}
-                  {social.icon === 'linkedin' && <Linkedin size={18} />}
+                  <social.icon size={28} />
                 </a>
               ))}
             </div>

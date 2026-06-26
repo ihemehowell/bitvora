@@ -56,12 +56,12 @@ export default function HeroSection() {
 
               <div className="grid grid-cols-3 gap-8 mt-12">
                 {[
-                  { value: "250+", label: "Projects Delivered" },
-                  { value: "98%", label: "Client Satisfaction" },
-                  { value: "5+", label: "Years Experience" },
+                  { value: "Modern Stack", label: "Next.js & TypeScript" },
+                  { value: "Direct Access", label: "No Middlemen" },
+                  { value: "Built Locally", label: "For African SMEs" },
                 ].map((stat) => (
                     <div key={stat.label}>
-                      <h3 className="text-3xl font-bold text-primary">{stat.value}</h3>
+                      <h3 className="text-xl font-bold text-primary">{stat.value}</h3>
                       <p className="text-muted-foreground text-sm">{stat.label}</p>
                     </div>
                 ))}

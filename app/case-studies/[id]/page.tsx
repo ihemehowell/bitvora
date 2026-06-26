@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation'
 import {ArrowLeft, ArrowRight, Clock, Calendar, ArrowUpRight} from 'lucide-react'
 import Link from 'next/link'
 import {caseStudies} from "@/Data/case-studies";
+import Image from 'next/image';
 
 
 interface Props {
@@ -19,18 +20,29 @@ export default async function CaseStudyPage({ params }: Props) {
         <div className="min-h-screen py-10">
 
             {/* ── Header ── */}
-            <section className="pt-16 pb-12 relative overflow-hidden">
+            <section className="pt-16 pb-12 relative overflow-hidden ">
+                <div className=" container mx-auto px-6 max-w-7xl relative z-10">
+                    <Link href="/case-studies" className="inline-flex items-center gap-2 text-md font-medium border border-primary/50  rounded-full text-muted-foreground hover:text-foreground transition-colors mb-2 px-4 py-2">
+                        <ArrowLeft size={20} /> Back to case studies
+                    </Link>
+                </div>
+                
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent pointer-events-none" />
                 <div className={`absolute inset-0 bg-gradient-to-br ${study.accentColor} pointer-events-none`} />
+                <Image 
+                src={study.image}
+                alt={study.title}
+                width={1500}
+                height={1500}
+                className="w-full object-cover h-[400px]"
+                />
                 <div className="container mx-auto px-6 relative z-10 max-w-4xl">
-                    <Link href="/case-studies" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-8">
-                        <ArrowLeft size={15} /> Back to case studies
-                    </Link>
+                    
 
-                    <div className="flex items-center gap-3 mb-5">
-                        <span className="text-xs font-semibold uppercase tracking-widest text-primary mono">{study.category}</span>
-                        <span className="h-px w-8 bg-border" />
-                        <span className="text-xs text-muted-foreground">{study.client}</span>
+                    <div className="flex items-center gap-3 my-4">
+                        <span className="text-xs font-semibold uppercase tracking-widest text-primary mono border border-primary rounded-full px-2 ">{study.category}</span>
+                        <span className="h-px w-8 bg-black" />
+                        <span className="text-xs text-muted-foreground border border-primary rounded-full px-2">{study.client}</span>
                     </div>
 
                     <h1 className="text-4xl md:text-5xl font-bold text-foreground leading-tight mb-6">
@@ -58,7 +70,7 @@ export default async function CaseStudyPage({ params }: Props) {
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                         {study.metrics.map(({ label, value }) => (
                             <div key={label} className="text-center">
-                                <p className="text-3xl md:text-4xl font-bold text-foreground mb-1">{value}</p>
+                                <p className="text-lg md:text-xl font-bold text-foreground mb-1">{value}</p>
                                 <p className="text-sm text-muted-foreground">{label}</p>
                             </div>
                         ))}
@@ -119,7 +131,7 @@ export default async function CaseStudyPage({ params }: Props) {
             <section className="py-16 border-t border-border">
                 <div className="container mx-auto px-6 text-center max-w-2xl">
                     <h2 className="text-4xl font-bold text-foreground mb-3">Ready to get similar results?</h2>
-                    <p className="text-muted-foreground mb-8">Tell us about your project and let's see what we can build together.</p>
+                    <p className="text-muted-foreground mb-8">Tell us about your project and let&apos;s see what we can build together.</p>
                     <Link href="/quote">
                         <button className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-semibold px-8 py-4 rounded-xl hover:opacity-90 transition-all duration-300">
                             Start a project <ArrowRight size={18} />

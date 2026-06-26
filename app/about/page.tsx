@@ -189,10 +189,10 @@ export default function AboutPage() {
           <div className="container mx-auto px-6 relative z-10">
             <div className="grid md:grid-cols-4 gap-8 text-center">
               {[
-                { number: '8+', label: 'Years Experience' },
-                { number: '250+', label: 'Projects Completed' },
-                { number: '150+', label: 'Happy Clients' },
-                { number: '98%', label: 'Satisfaction Rate' },
+                { number: 'Founder-Led', label: 'Direct Communication' },
+                { number: 'Modern Stack', label: 'Next.js & TypeScript' },
+                { number: 'Africa-First', label: 'Built for the Local Market' },
+                { number: 'End-to-End', label: 'Design to Deployment' },
               ].map((stat, index) => (
                   <motion.div
                       key={index}
@@ -201,7 +201,7 @@ export default function AboutPage() {
                       viewport={{ once: true }}
                       transition={{ delay: index * 0.1 }}
                   >
-                    <h2 className="text-4xl md:text-5xl font-bold text-cyan-400 mb-2">{stat.number}</h2>
+                    <h2 className="text-2xl md:text-3xl font-bold text-cyan-400 mb-2">{stat.number}</h2>
                     <p className="text-gray-400">{stat.label}</p>
                   </motion.div>
               ))}
