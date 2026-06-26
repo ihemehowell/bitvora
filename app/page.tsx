@@ -5,7 +5,6 @@ import {
   ServicesSection, 
   WhyChooseUsSection, 
   PortfolioSection, 
-  TestimonialsSection, 
   FinalCTA 
 } from "../components/Home";
 
@@ -16,7 +15,7 @@ export default function HomePage() {
       <ServicesSection />
       <WhyChooseUsSection />
       <PortfolioSection />
-      <TestimonialsSection />
+      {/* <TestimonialsSection /> */}
       <FinalCTA />
     </div>
   );

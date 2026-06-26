@@ -352,33 +352,10 @@ export const whyChooseUs: WhyChooseUsItem[] = [
 // ============================================
 // TESTIMONIALS
 // ============================================
+// Removed placeholder testimonials (fake names + stock photos).
+// Add real client testimonials here when available.
 
-export const testimonials: Testimonial[] = [
-  {
-    name: "Sarah Johnson",
-    role: "CEO",
-    company: "TechVision Inc",
-    content: "Working with Bitvoratech was an absolute pleasure. They delivered our website ahead of schedule and exceeded all our expectations.",
-    avatar: "https://images.unsplash.com/photo-1496180470114-6ef490f3ff22?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
-    rating: 5,
-  },
-  {
-    name: "Michael Chen",
-    role: "Founder",
-    company: "StyleHub",
-    content: "Our eCommerce platform has seen a 300% increase in conversions since the redesign. The team understood our vision perfectly.",
-    avatar: "https://images.unsplash.com/photo-1652471943570-f3590a4e52ed?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
-    rating: 5,
-  },
-  {
-    name: "Emily Rodriguez",
-    role: "Marketing Director",
-    company: "GrowthLabs",
-    content: "The landing pages they created for our campaigns are converting at an incredible rate. Professional, responsive, and results-driven.",
-    avatar: "https://images.unsplash.com/photo-1543132220-7bc04a0e790a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
-    rating: 5,
-  },
-];
+export const testimonials: Testimonial[] = [];
 
 // ============================================
 // TEAM
