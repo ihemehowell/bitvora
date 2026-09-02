@@ -2,7 +2,7 @@
 
 
 import Image from 'next/image';
-import logo from "../public/bitvora-logo.svg";
+import logo from "../public/brand/icon-dark-bg.svg";
 import Link from 'next/link';
 import { footerLinks, socialLinks } from "@/Data/Data";
 // import { Facebook, Github, Instagram, Linkedin } from 'lucide-react';
