@@ -1,19 +1,8 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Footer } from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import { Providers } from "@/components/providers";
-
-const geistSans = Geist({
-    variable: "--font-geist-sans",
-    subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-    variable: "--font-geist-mono",
-    subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
     metadataBase: new URL("https://www.bitvoratech.com"),
@@ -29,7 +18,7 @@ export const metadata: Metadata = {
         siteName: "Bitvoratech",
         images: [
             {
-                url: "/brand/og-image.jpg",
+                url: "/brand/og-image.png",
                 width: 1200,
                 height: 630,
                 alt: "Bitvoratech — Web Development Agency in Lagos, Nigeria",
@@ -42,7 +31,7 @@ export const metadata: Metadata = {
         card: "summary_large_image",
         title: "Web Development Agency in Lagos, Nigeria | Bitvoratech",
         description: "Bitvoratech builds fast, modern websites, mobile apps, and eCommerce stores for African SMEs. Based in Lagos.",
-        images: ["/brand/og-image.jpg"],
+        images: ["/brand/og-image.png"],
     },
 };
 
@@ -76,7 +65,7 @@ export default function RootLayout({
 
     return (
         <html lang="en" suppressHydrationWarning>
-        <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}>
+        <body className="antialiased bg-background text-foreground">
         <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
