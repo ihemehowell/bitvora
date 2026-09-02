@@ -1,22 +1,12 @@
-"use client";
+import type { Metadata } from "next";
+import HomeClient from "./HomeClient";
 
-import { 
-  HeroSection, 
-  ServicesSection, 
-  WhyChooseUsSection, 
-  PortfolioSection, 
-  FinalCTA 
-} from "../components/Home";
+export const metadata: Metadata = {
+  title: "Web Development Agency in Lagos, Nigeria | Bitvoratech",
+  description:
+    "Bitvoratech builds fast, modern websites, mobile apps, and eCommerce stores for African SMEs. Based in Lagos. Get a free quote and see our work.",
+};
 
-export default function HomePage() {
-  return (
-    <div className="min-h-screen">
-      <HeroSection />
-      <ServicesSection />
-      <WhyChooseUsSection />
-      <PortfolioSection />
-      {/* <TestimonialsSection /> */}
-      <FinalCTA />
-    </div>
-  );
+export default function Page() {
+  return <HomeClient />;
 }

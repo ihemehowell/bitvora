@@ -93,13 +93,13 @@ cd bitvora
 ### 3️⃣ Install Dependencies
 
 ```bash
-npm install
+pnpm install
 ```
 
 ### 4️⃣ Run the Development Server
 
 ```bash
-npm run dev
+pnpm dev
 ```
 
 ---
@@ -107,7 +107,7 @@ npm run dev
 ## 🏗 Build for Production
 
 ```bash
-npm run build
+pnpm build
 ```
 
 ---
@@ -160,7 +160,7 @@ Distributed under the **MIT License**.
 
 **BitvoraTech**
 
-Email: contact@bitvoratech.com  
+Email: info.bitvoratech@gmail.com  
 Website: https://bitvoratech.com
 
 ---

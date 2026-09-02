@@ -3,8 +3,8 @@
 import { useState, useRef, useEffect } from "react";
 import { Menu, X, ChevronDown, Layers, FolderOpen, BookMarked, Cpu, Wrench, Building2, DollarSign, FileQuestion, Phone } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
 import { ThemeToggle } from "./ThemeToggle";
+import { BrandIcon } from "./BrandIcon";
 
 const navLinks = [
   { name: "About", href: "/about" },
@@ -69,8 +69,8 @@ export default function Navbar({ currentPage }: { currentPage?: string }) {
               href="/"
               className="flex items-center no-underline font-extrabold text-2xl text-foreground tracking-tight transition-colors duration-200 hover:text-primary"
           >
-            <div className="w-9 h-9  flex items-center justify-center ">
-              <Image src="/bitvora-logo.svg" alt="bitvora" width={150} height={150} className="object-contain" />
+            <div className="w-9 h-9 flex items-center justify-center">
+              <BrandIcon size={36} />
             </div>
             Bitvora<span className="text-primary">Tech</span>
           </Link>
