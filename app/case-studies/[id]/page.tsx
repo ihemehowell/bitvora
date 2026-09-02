@@ -3,10 +3,22 @@ import {ArrowLeft, ArrowRight, Clock, Calendar, ArrowUpRight} from 'lucide-react
 import Link from 'next/link'
 import {caseStudies} from "@/Data/case-studies";
 import Image from 'next/image';
+import type { Metadata } from 'next';
 
 
 interface Props {
     params: Promise<{ id: string }>
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+    const { id } = await params
+    const study = caseStudies.find(c => c.id === id)
+    if (!study) return { title: 'Case Study | Bitvoratech' }
+
+    return {
+        title: `${study.title} | Bitvoratech Case Study`,
+        description: study.overview?.slice(0, 155) || `See how Bitvoratech delivered ${study.title} for ${study.client}.`,
+    }
 }
 
 export default async function CaseStudyPage({ params }: Props) {
