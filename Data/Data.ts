@@ -30,7 +30,7 @@ import {
 import { StaticImageData } from "next/image";
 
 import { oma, howell, } from '../assets/team';
-import { project1, project2, project3, project4, project5, project6} from '../assets/portfolio';
+import { project1, project2, project3, project4, project5, project6, project7} from '../assets/portfolio';
 import { IconBrandWhatsapp, IconBrandGithub, IconBrandLinkedinFilled, IconBrandInstagram, IconBrandFacebook } from "@tabler/icons-react";
 
 // ============================================
@@ -335,6 +335,14 @@ export const portfolioProjects: Project[] = [
     image: project6,
     href: 'https://bole-boss-beta.vercel.app/',
   },
+  {
+    id: 7,
+    title: "MSDS",
+    category: "Dashboard",
+    tags: ["Design", "Development", "Dashboard"],
+    image: project7,
+    href: 'https://ministry-tau.vercel.app/',
+  },
 ];
 
 export const projects: Project[] = portfolioProjects;
@@ -393,16 +401,10 @@ export const team: TeamMember[] = [
   },
   {
     name: 'Howell Iheme',
-    role: 'Lead Developer',
+    role: 'Co-Founder & Lead Developer',
     bio: 'Front-end developer with 5 years of experience in web development.',
     image: howell,
   },
-  // {
-  //   name: 'Doris Nwankwo',
-  //   role: 'Social Media Manager',
-  //   bio: 'Social media expert with 5 years of experience in digital marketing.',
-  //   image: doris,
-  // },
 ];
 
 // ============================================

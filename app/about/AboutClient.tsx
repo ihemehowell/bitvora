@@ -175,7 +175,7 @@ export default function AboutClient() {
               </h2>
             </motion.div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 justify-center items-center">
+            <div className="flex gap-8 justify-between items-center">
               {team.map((member, index) => (
                   <TeamMember key={index} {...member} index={index} />
               ))}
