@@ -23,12 +23,14 @@ export function TestimonialSlider({ testimonials }: TestimonialSliderProps) {
   const [direction, setDirection] = useState(0);
 
   useEffect(() => {
+    if (testimonials.length < 2) return;
     const timer = setInterval(() => {
-      handleNext();
+      setDirection(1);
+      setCurrentIndex((prev) => (prev + 1) % testimonials.length);
     }, 6000);
 
     return () => clearInterval(timer);
-  }, [currentIndex]);
+  }, [currentIndex, testimonials.length]);
 
   const handleNext = () => {
     setDirection(1);
@@ -61,10 +63,10 @@ export function TestimonialSlider({ testimonials }: TestimonialSliderProps) {
       <div className="flex items-center justify-center gap-4 mt-8">
         <button
           onClick={handlePrev}
-          className="w-12 h-12 rounded-full glass flex items-center justify-center hover:bg-white/10 transition-colors border border-white/10"
+          className="w-12 h-12 rounded-full glass flex items-center justify-center hover:bg-accent transition-colors border border-border"
           aria-label="Previous testimonial"
         >
-          <ChevronLeft className="text-cyan-400" size={20} />
+          <ChevronLeft className="text-primary" size={20} />
         </button>
 
         <div className="flex gap-2">
@@ -77,8 +79,8 @@ export function TestimonialSlider({ testimonials }: TestimonialSliderProps) {
               }}
               className={`w-2 h-2 rounded-full transition-all ${
                 index === currentIndex
-                  ? 'bg-cyan-400 w-8'
-                  : 'bg-white/30 hover:bg-white/50'
+                  ? 'bg-primary w-8'
+                  : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
               }`}
               aria-label={`Go to testimonial ${index + 1}`}
             />
@@ -87,10 +89,10 @@ export function TestimonialSlider({ testimonials }: TestimonialSliderProps) {
 
         <button
           onClick={handleNext}
-          className="w-12 h-12 rounded-full glass flex items-center justify-center hover:bg-white/10 transition-colors border border-white/10"
+          className="w-12 h-12 rounded-full glass flex items-center justify-center hover:bg-accent transition-colors border border-border"
           aria-label="Next testimonial"
         >
-          <ChevronRight className="text-cyan-400" size={20} />
+          <ChevronRight className="text-primary" size={20} />
         </button>
       </div>
     </div>

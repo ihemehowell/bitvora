@@ -113,10 +113,8 @@ export function ServiceDetailPage({
               </p>
             </div>
             <div className="relative shrink-0 flex items-center flex-wrap gap-3">
-              <Link href="/quote">
-                <button className="inline-flex items-center gap-2 py-3 px-4 bg-primary hover:opacity-90 text-primary-foreground font-semibold rounded-xl transition-all duration-300">
-                  Request a quote <ArrowRight size={16} />
-                </button>
+              <Link href="/quote" className="inline-flex items-center gap-2 py-3 px-4 bg-primary hover:opacity-90 text-primary-foreground font-semibold rounded-xl transition-all duration-300">
+                Request a quote <ArrowRight size={16} />
               </Link>
             </div>
           </div>

@@ -1,73 +1,65 @@
-"use client";
-
-
-import Image from 'next/image';
-import logo from "../public/brand/icon-dark-bg.svg";
 import Link from 'next/link';
+import { Mail, Phone, MapPin } from 'lucide-react';
 import { footerLinks, socialLinks } from "@/Data/Data";
-// import { Facebook, Github, Instagram, Linkedin } from 'lucide-react';
-import { IconBrandGithub, IconBrandInstagram, IconBrandLinkedinFilled, IconBrandWhatsapp } from '@tabler/icons-react';
+import { BrandIcon } from "./BrandIcon";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#0a0a0f] border-t border-white/10">
+    <footer className="bg-card border-t border-border">
       <div className="container mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div>
-            <Link href="/" className="flex items-center gap-2 mb-6">
-              <Image 
-                src={logo} 
-                alt="BitvoraTech Logo" 
-                width={40} 
-                height={40} 
-                className="object-contain"
-              />
-              <span className="text-xl font-bold text-white">
-                Bitvora<span className="text-cyan-400">Tech</span>
+            <Link href="/" className="flex items-center gap-2 mb-6" aria-label="Bitvoratech home">
+              <BrandIcon size={40} />
+              <span className="text-xl font-bold text-foreground">
+                Bitvora<span className="text-primary">Tech</span>
               </span>
             </Link>
-            <p className="text-gray-400 text-sm mb-6">
+            <p className="text-muted-foreground text-sm mb-6">
               Building high-performance websites that grow your business with modern technologies.
             </p>
             <div className="flex gap-3">
-              {socialLinks.map((social, index) => (
+              {socialLinks.map((social) => (
                 <a
-                  key={index}
+                  key={social.name}
                   href={social.href}
-                  className="w-10 h-10 rounded-lg glass flex items-center justify-center hover:bg-white/10 transition-colors"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Bitvoratech on ${social.name}`}
+                  className="w-10 h-10 rounded-lg border border-border text-muted-foreground flex items-center justify-center hover:text-primary hover:border-primary/40 hover:bg-primary/10 transition-colors"
                 >
-                  <social.icon size={28} />
+                  <social.icon size={20} />
                 </a>
               ))}
             </div>
           </div>
 
           {/* Quick Links */}
-          <div>
-            <h6 className="text-white font-semibold mb-6">Quick Links</h6>
+          <nav aria-label="Footer">
+            <h2 className="text-foreground font-semibold mb-6">Quick Links</h2>
             <ul className="space-y-3">
               {footerLinks.quickLinks.map((link) => (
                 <li key={link.name}>
-                  <Link 
+                  <Link
                     href={link.href}
-                    className="text-gray-400 hover:text-cyan-400 text-sm transition-colors"
+                    className="text-muted-foreground hover:text-primary text-sm transition-colors"
                   >
                     {link.name}
                   </Link>
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
 
           {/* Services */}
           <div>
-            <h6 className="text-white font-semibold mb-6">Services</h6>
+            <h2 className="text-foreground font-semibold mb-6">Services</h2>
             <ul className="space-y-3">
               {footerLinks.services.map((service) => (
-                <li key={service} className="text-gray-400 text-sm">
+                <li key={service} className="text-muted-foreground text-sm">
                   {service}
                 </li>
               ))}
@@ -76,39 +68,52 @@ export function Footer() {
 
           {/* Contact */}
           <div>
-            <h6 className="text-white font-semibold mb-6">Contact</h6>
+            <h2 className="text-foreground font-semibold mb-6">Contact</h2>
             <ul className="space-y-3 text-sm">
-              <li className="text-gray-400">
-                info@bitvoratech.com
+              <li>
+                <a href="mailto:info@bitvoratech.com" className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
+                  <Mail size={16} aria-hidden /> info@bitvoratech.com
+                </a>
               </li>
-              <li className="text-gray-400">
-                +234 9061846290
+              <li>
+                <a href="tel:+2349061846290" className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
+                  <Phone size={16} aria-hidden /> +234 906 184 6290
+                </a>
               </li>
-              <li className="text-gray-400">
-                2, Dacosta Street, Yaba Lagos
+              <li>
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=2+Dacosta+Street+Yaba+Lagos"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-start gap-2 text-muted-foreground hover:text-primary transition-colors"
+                >
+                  <MapPin size={16} className="mt-0.5 shrink-0" aria-hidden /> 2, Dacosta Street, Yaba Lagos
+                </a>
               </li>
             </ul>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-white/10 mt-12 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-gray-500 text-sm">
+        <div className="border-t border-border mt-12 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-muted-foreground text-sm">
             © {currentYear} Bitvoratech. All rights reserved.
           </p>
-          <div className="flex gap-6 text-sm">
+          <div className="flex flex-wrap justify-center gap-6 text-sm">
             {footerLinks.legal.map((link) => (
-              <a
+              <Link
                 key={link.name}
                 href={link.href}
-                className="text-gray-500 hover:text-cyan-400 transition-colors"
+                className="text-muted-foreground hover:text-primary transition-colors"
               >
                 {link.name}
-              </a>
+              </Link>
             ))}
           </div>
         </div>
       </div>
+      {/* Clearance for the mobile sticky CTA bar */}
+      <div className="h-20 md:hidden" aria-hidden />
     </footer>
   );
 }

@@ -12,32 +12,32 @@ interface TestimonialCardProps {
 
 export function TestimonialCard({ name, role, company, content, avatar, rating }: TestimonialCardProps) {
   return (
-    <div className="glass p-8 rounded-2xl border border-white/10 mx-4">
+    <div className="glass p-8 rounded-2xl border border-border mx-4">
       {/* Rating */}
-      <div className="flex gap-1 mb-4">
+      <div className="flex gap-1 mb-4" role="img" aria-label={`Rated ${rating} out of 5`}>
         {[...Array(5)].map((_, idx) => (
           <Star
             key={idx}
             size={18}
-            className={idx < rating ? 'fill-cyan-400 text-cyan-400' : 'text-white/30'}
+            className={idx < rating ? 'fill-primary text-primary' : 'text-muted-foreground/30'}
           />
         ))}
       </div>
 
       {/* Content */}
-      <p className="text-gray-300 mb-6 italic leading-relaxed">"{content}"</p>
+      <blockquote className="text-foreground/85 mb-6 leading-relaxed">&ldquo;{content}&rdquo;</blockquote>
 
       {/* Author */}
       <div className="flex items-center gap-4">
         <ImageWithFallback
           src={avatar}
           alt={name}
-          className="w-12 h-12 rounded-full object-cover border border-white/20"
+          className="w-12 h-12 rounded-full object-cover border border-border"
         />
         <div>
-          <h6 className="text-white font-medium">{name}</h6>
-          <p className="text-sm text-gray-500">
-            {role} at <span className="text-cyan-400">{company}</span>
+          <p className="text-foreground font-medium">{name}</p>
+          <p className="text-sm text-muted-foreground">
+            {role} at <span className="text-primary">{company}</span>
           </p>
         </div>
       </div>

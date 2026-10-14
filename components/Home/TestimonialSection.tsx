@@ -5,6 +5,8 @@ import { TestimonialSlider } from "@/components/TestimonialSlider";
 import { motion } from "framer-motion";
 
 export default function TestimonialsSection() {
+  if (testimonials.length === 0) return null;
+
   return (
       <section className="py-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent pointer-events-none" />

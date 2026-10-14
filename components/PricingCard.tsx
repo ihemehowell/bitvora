@@ -33,24 +33,23 @@ export function PricingCard({ name, price, period, description, features, popula
             </div>
         )}
 
-        <h4 className="text-foreground mb-2 text-lg font-semibold">{name}</h4>
+        <h3 className="text-foreground mb-2 text-lg font-semibold">{name}</h3>
         <p className="text-muted-foreground mb-6 text-sm">{description}</p>
 
         <div className="mb-6">
           <span className="text-3xl font-bold text-foreground">{price}</span>
-          <span className="text-muted-foreground text-sm ml-2">/ {period}</span>
+          <span className="block text-muted-foreground text-sm mt-1">{period}</span>
         </div>
 
-        <Link href="/quote">
-          <button
-              className={`w-full py-3 rounded-xl mb-8 transition-all duration-300 ${
-                  popular
-                      ? 'bg-primary hover:opacity-90 text-primary-foreground font-semibold'
-                      : 'bg-accent hover:bg-accent/80 text-foreground'
-              }`}
-          >
-            Get Started
-          </button>
+        <Link
+            href="/quote"
+            className={`flex items-center justify-center w-full py-3 rounded-xl mb-8 transition-all duration-300 ${
+                popular
+                    ? 'bg-primary hover:opacity-90 text-primary-foreground font-semibold'
+                    : 'bg-accent hover:bg-accent/80 text-foreground'
+            }`}
+        >
+          Get Started
         </Link>
 
         <ul className="space-y-4">

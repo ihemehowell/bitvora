@@ -144,11 +144,9 @@ export default async function CaseStudyPage({ params }: Props) {
                 <div className="container mx-auto px-6 text-center max-w-2xl">
                     <h2 className="text-4xl font-bold text-foreground mb-3">Ready to get similar results?</h2>
                     <p className="text-muted-foreground mb-8">Tell us about your project and let&apos;s see what we can build together.</p>
-                    <Link href="/quote">
-                        <button className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-semibold px-8 py-4 rounded-xl hover:opacity-90 transition-all duration-300">
-                            Start a project <ArrowRight size={18} />
-                        </button>
-                    </Link>
+                    <Link href="/quote" className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-semibold px-8 py-4 rounded-xl hover:opacity-90 transition-all duration-300">
+                          Start a project <ArrowRight size={18} />
+                      </Link>
                 </div>
             </section>
 

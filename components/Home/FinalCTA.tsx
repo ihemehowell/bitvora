@@ -1,6 +1,8 @@
 'use client';
 
-import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
+import { IconBrandWhatsapp } from "@tabler/icons-react";
+import { whatsappLink } from "@/Data/Data";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
@@ -24,23 +26,26 @@ export default function FinalCTA() {
                 Ready to Build Something <span className="gradient-text">Amazing?</span>
               </h2>
               <p className="text-muted-foreground max-w-xl mx-auto mb-8">
-                Let's discuss how we can bring your ideas to life with modern technologies.
+                Let&apos;s discuss how we can bring your ideas to life with modern technologies.
               </p>
 
               <div className="flex flex-wrap gap-4 justify-center">
-                <Link href="/quote">
-                  <Button className="bg-primary hover:opacity-90 text-primary-foreground font-semibold px-8 py-4 rounded-xl transition-all duration-300 glow-primary">
-                    Get Free Quote
-                  </Button>
+                <Link
+                    href="/quote"
+                    className="group inline-flex items-center gap-2 bg-primary hover:opacity-90 text-primary-foreground font-semibold px-8 py-4 rounded-xl transition-all duration-300 glow-primary"
+                >
+                  Get Free Quote
+                  <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
-                <Link href="/contact">
-                  <Button
-                      variant="outline"
-                      className="border-border text-foreground hover:bg-accent px-8 py-4 rounded-xl transition-all duration-300"
-                  >
-                    Contact Us
-                  </Button>
-                </Link>
+                <a
+                    href={whatsappLink("Hi Bitvoratech, I'd like to discuss a project.")}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 border border-border bg-background/50 text-foreground hover:bg-accent px-8 py-4 rounded-xl transition-all duration-300"
+                >
+                  <IconBrandWhatsapp size={20} className="text-[#25D366]" />
+                  Chat on WhatsApp
+                </a>
               </div>
             </div>
           </motion.div>

@@ -1,8 +1,13 @@
 import type { Metadata } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Footer } from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import { Providers } from "@/components/providers";
+import { FloatingActions } from "@/components/FloatingActions";
+
+const geistSans = Geist({ subsets: ["latin"], variable: "--font-geist-sans", display: "swap" });
+const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono", display: "swap" });
 
 export const metadata: Metadata = {
     metadataBase: new URL("https://www.bitvoratech.com"),
@@ -64,16 +69,23 @@ export default function RootLayout({
     };
 
     return (
-        <html lang="en" suppressHydrationWarning>
+        <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`} suppressHydrationWarning>
         <body className="antialiased bg-background text-foreground">
         <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
         />
+        <a
+            href="#main"
+            className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60] focus:px-4 focus:py-2 focus:rounded-lg focus:bg-primary focus:text-primary-foreground"
+        >
+            Skip to content
+        </a>
         <Providers>
             <Navbar />
-            {children}
+            <main id="main" className="pt-16">{children}</main>
             <Footer />
+            <FloatingActions />
         </Providers>
         </body>
         </html>

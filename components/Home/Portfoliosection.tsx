@@ -1,7 +1,6 @@
 'use client';
 
 import { ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { portfolioProjects, portfolioFilters } from "@/Data/Data";
 import { PortfolioCard } from "@/components/PortfolioCard";
@@ -32,23 +31,26 @@ export default function PortfolioSection() {
                 Featured <span className="gradient-text">Projects</span>
               </h2>
               <p className="text-muted-foreground mt-2">
-                See how we've helped businesses achieve their digital goals
+                See how we&apos;ve helped businesses achieve their digital goals
               </p>
             </div>
 
-            <Link href="/portfolio">
-              <Button variant="ghost" className="text-primary hover:text-primary/80 hover:bg-primary/10">
-                View All <ArrowRight size={18} />
-              </Button>
+            <Link
+                href="/projects"
+                className="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium text-primary hover:text-primary/80 hover:bg-primary/10 transition-colors"
+            >
+              View All <ArrowRight size={18} />
             </Link>
           </motion.div>
 
           {/* Filters */}
-          <div className="flex flex-wrap gap-2 mb-8">
+          <div className="flex flex-wrap gap-2 mb-8" role="group" aria-label="Filter projects by category">
             {portfolioFilters.map((filter) => (
                 <button
                     key={filter}
+                    type="button"
                     onClick={() => setActiveFilter(filter)}
+                    aria-pressed={activeFilter === filter}
                     className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                         activeFilter === filter
                             ? "bg-primary text-primary-foreground"
@@ -69,7 +71,7 @@ export default function PortfolioSection() {
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 }}
                 >
-                  <Link href={project.href} target="_blank">
+                  <Link href={project.href} target="_blank" rel="noopener noreferrer" aria-label={`${project.title} (opens in a new tab)`}>
                     <PortfolioCard {...project} index={index} />
                   </Link>
                 </motion.div>
@@ -82,10 +84,11 @@ export default function PortfolioSection() {
               viewport={{ once: true }}
               className="text-center mt-8 md:hidden"
           >
-            <Link href="/portfolio">
-              <Button variant="ghost" className="text-primary">
-                View All Projects <ArrowRight size={18} />
-              </Button>
+            <Link
+                href="/projects"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium text-primary hover:bg-primary/10 transition-colors"
+            >
+              View All Projects <ArrowRight size={18} />
             </Link>
           </motion.div>
         </div>

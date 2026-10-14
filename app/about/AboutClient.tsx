@@ -13,20 +13,20 @@ export default function AboutClient() {
       <div className="min-h-screen tech-grid">
         {/* Hero Section */}
         <section className="py-20 relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-transparent to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent pointer-events-none" />
           <div className="container mx-auto px-6 relative z-10">
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 className="max-w-3xl mx-auto text-center"
             >
-            <span className="text-cyan-400 text-sm font-medium mono mb-4 block">
+            <span className="text-primary text-sm font-medium mono mb-4 block">
               ABOUT US
             </span>
               <h1 className="text-4xl md:text-5xl font-bold text-FOREGROUND/70 mb-6">
                 Building Digital <span className="gradient-text">Excellence</span> Since 2025
               </h1>
-              <p className="text-gray-400 text-lg">
+              <p className="text-muted-foreground text-lg">
                 We're a team of passionate designers and developers dedicated to creating exceptional digital experiences
               </p>
             </motion.div>
@@ -51,7 +51,7 @@ export default function AboutClient() {
                       width={500}
                       height={500}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-cyan-500/20 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent" />
                 </div>
               </motion.div>
 
@@ -62,12 +62,12 @@ export default function AboutClient() {
                     viewport={{ once: true }}
                 >
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center">
-                      <Target className="text-cyan-400" size={24} />
+                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                      <Target className="text-primary" size={24} />
                     </div>
                     <h3 className="text-2xl font-bold text-foreground/70">Our Mission</h3>
                   </div>
-                  <p className="text-gray-400 text-lg leading-relaxed">
+                  <p className="text-muted-foreground text-lg leading-relaxed">
                     To empower businesses with high-quality web solutions that enhance their online presence and drive measurable results.
                   </p>
                 </motion.div>
@@ -79,12 +79,12 @@ export default function AboutClient() {
                     transition={{ delay: 0.1 }}
                 >
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center">
-                      <Eye className="text-cyan-400" size={24} />
+                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                      <Eye className="text-primary" size={24} />
                     </div>
                     <h3 className="text-2xl font-bold text-foreground/70">Our Vision</h3>
                   </div>
-                  <p className="text-gray-400 text-lg leading-relaxed">
+                  <p className="text-muted-foreground text-lg leading-relaxed">
                     To be the leading web development agency known for innovation and transforming businesses through exceptional digital experiences.
                   </p>
                 </motion.div>
@@ -103,7 +103,7 @@ export default function AboutClient() {
                 viewport={{ once: true }}
                 className="text-center mb-12"
             >
-            <span className="text-cyan-400 text-sm font-medium mono mb-4 block">
+            <span className="text-primary text-sm font-medium mono mb-4 block">
               OUR VALUES
             </span>
               <h2 className="text-4xl font-bold text-foreground/70">
@@ -119,13 +119,13 @@ export default function AboutClient() {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: index * 0.1 }}
-                      className="p-6 rounded-2xl border border-white/10 hover:border-cyan-500/30 transition-all duration-300 text-center group"
+                      className="p-6 rounded-2xl border border-border hover:border-primary/30 transition-all duration-300 text-center group"
                   >
-                    <div className="w-16 h-16 rounded-2xl bg-cyan-500/10 flex items-center justify-center mx-auto mb-4 group-hover:bg-cyan-500/20 transition-colors">
-                      <value.icon className="text-cyan-400" size={32} />
+                    <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/20 transition-colors">
+                      <value.icon className="text-primary" size={32} />
                     </div>
                     <h5 className="text-foreground/70 font-semibold text-lg mb-2">{value.title}</h5>
-                    <p className="text-gray-400 text-sm">{value.description}</p>
+                    <p className="text-muted-foreground text-sm">{value.description}</p>
                   </motion.div>
               ))}
             </div>
@@ -141,7 +141,7 @@ export default function AboutClient() {
                 viewport={{ once: true }}
                 className="text-center mb-12"
             >
-            <span className="text-cyan-400 text-sm font-medium mono mb-4 block">
+            <span className="text-primary text-sm font-medium mono mb-4 block">
               OUR PROCESS
             </span>
               <h2 className="text-4xl font-bold text-foreground/70">
@@ -159,7 +159,7 @@ export default function AboutClient() {
 
         {/* Team Section */}
         <section className="py-20 relative">
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-500/5 to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent pointer-events-none" />
           <div className="container mx-auto px-6 relative z-10">
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -167,7 +167,7 @@ export default function AboutClient() {
                 viewport={{ once: true }}
                 className="text-center mb-12"
             >
-            <span className="text-cyan-400 text-sm font-medium mono mb-4 block">
+            <span className="text-primary text-sm font-medium mono mb-4 block">
               OUR TEAM
             </span>
               <h2 className="text-4xl font-bold text-foreground/70">
@@ -201,8 +201,8 @@ export default function AboutClient() {
                       viewport={{ once: true }}
                       transition={{ delay: index * 0.1 }}
                   >
-                    <h2 className="text-2xl md:text-3xl font-bold text-cyan-400 mb-2">{stat.number}</h2>
-                    <p className="text-gray-400">{stat.label}</p>
+                    <h2 className="text-2xl md:text-3xl font-bold text-primary mb-2">{stat.number}</h2>
+                    <p className="text-muted-foreground">{stat.label}</p>
                   </motion.div>
               ))}
             </div>
@@ -218,24 +218,20 @@ export default function AboutClient() {
                 viewport={{ once: true }}
                 className="relative rounded-3xl p-12 md:p-16 text-center overflow-hidden"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/80 to-cyan-500/60 rounded-3xl" />
+              <div className="absolute inset-0 bg-primary/10 border border-primary/30 rounded-3xl" />
               <div className="relative z-10">
                 <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-                  Let's Work <span className="gradient-text">Together</span>
+                  Let&apos;s Work <span className="gradient-text">Together</span>
                 </h2>
-                <p className="text-gray-400 max-w-2xl mx-auto mb-8">
+                <p className="text-muted-foreground max-w-2xl mx-auto mb-8">
                   Ready to take your digital presence to the next level?
                 </p>
                 <div className="flex flex-wrap gap-4 justify-center">
-                  <Link href="/quote">
-                    <button className="px-8 py-4 bg-cyan-500 hover:bg-cyan-400 text-black font-semibold rounded-xl transition-all duration-300 glow-primary">
-                      Get a Quote
-                    </button>
+                  <Link href="/quote" className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary hover:opacity-90 text-primary-foreground font-semibold rounded-xl transition-all duration-300 glow-primary">
+                    Get a Quote
                   </Link>
-                  <Link href="/contact">
-                    <button className="px-8 py-4 bg-white/5 hover:bg-white/10 text-forground/70 rounded-xl border border-foreground/30 transition-all duration-300">
-                      Contact Us
-                    </button>
+                  <Link href="/contact" className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-card hover:bg-muted text-foreground rounded-xl border border-border transition-all duration-300">
+                    Contact Us
                   </Link>
                 </div>
               </div>

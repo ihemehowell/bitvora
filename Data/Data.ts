@@ -347,7 +347,8 @@ export const portfolioProjects: Project[] = [
 
 export const projects: Project[] = portfolioProjects;
 
-export const portfolioFilters = ['All', 'WebApps', 'eCommerce', 'Landing Page', 'UI/UX', 'Music'];
+// Derived from the projects so every filter has results and no category is missing
+export const portfolioFilters = ['All', ...Array.from(new Set(portfolioProjects.map((p) => p.category)))];
 
 // ============================================
 // WHY CHOOSE US
@@ -595,6 +596,11 @@ export const faqs: FAQ[] = [
 // CONTACT
 // ============================================
 
+export const WHATSAPP_NUMBER = '2349112449545';
+
+export const whatsappLink = (message?: string) =>
+  `https://wa.me/${WHATSAPP_NUMBER}${message ? `?text=${encodeURIComponent(message)}` : ''}`;
+
 export const contactInfo: ContactInfo[] = [
   {
     icon: Mail,
@@ -612,13 +618,13 @@ export const contactInfo: ContactInfo[] = [
     icon: IconBrandWhatsapp,
     title: 'WhatsApp',
     value: '+234 9112449545',
-    link: 'https://wa.me/+2349112449545',
+    link: whatsappLink(),
   },
   {
     icon: MapPin,
     title: 'Office',
     value: '2, Dacosta Street, Yaba Lagos',
-    link: '#',
+    link: 'https://www.google.com/maps/search/?api=1&query=2+Dacosta+Street+Yaba+Lagos',
   },
 ];
 

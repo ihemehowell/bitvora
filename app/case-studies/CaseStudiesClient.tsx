@@ -262,11 +262,9 @@ export default function CaseStudiesClient() {
                         <p className="text-muted-foreground mb-8 max-w-lg mx-auto">
                             Tell us about your project and let&apos;s build something worth writing about.
                         </p>
-                        <Link href="/quote">
-                            <button className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-semibold px-8 py-4 rounded-xl hover:opacity-90 transition-all duration-300">
-                                Start a project <ArrowRight size={18} />
-                            </button>
-                        </Link>
+                        <Link href="/quote" className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-semibold px-8 py-4 rounded-xl hover:opacity-90 transition-all duration-300">
+                              Start a project <ArrowRight size={18} />
+                          </Link>
                     </motion.div>
                 </div>
             </section>

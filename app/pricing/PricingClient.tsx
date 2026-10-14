@@ -1,129 +1,43 @@
 'use client'
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Zap, Shield, Users, ArrowRight, Check } from 'lucide-react'
+import { Smartphone, Search, Server, Wallet, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 import { PricingCard } from "@/components/PricingCard"
+import { pricingPlans, faqs } from "@/Data/Data"
 
-const plans = [
-    {
-        name: 'Starter',
-        price: '$29',
-        period: 'month',
-        description: 'Perfect for individuals and small projects getting off the ground.',
-        features: [
-            'Up to 5 projects',
-            '10GB storage',
-            'Basic analytics',
-            'Email support',
-            'API access',
-            '99.5% uptime SLA',
-        ],
-        popular: false,
-    },
-    {
-        name: 'Pro',
-        price: '$79',
-        period: 'month',
-        description: 'For growing teams that need more power and collaboration tools.',
-        features: [
-            'Unlimited projects',
-            '100GB storage',
-            'Advanced analytics',
-            'Priority support',
-            'Full API access',
-            '99.9% uptime SLA',
-            'Custom integrations',
-            'Team collaboration',
-        ],
-        popular: true,
-    },
-    {
-        name: 'Enterprise',
-        price: '$199',
-        period: 'month',
-        description: 'Tailored solutions for large organisations with complex needs.',
-        features: [
-            'Unlimited everything',
-            '1TB storage',
-            'Custom analytics',
-            'Dedicated support',
-            'White-label options',
-            '99.99% uptime SLA',
-            'SSO & SAML',
-            'Custom contracts',
-            'On-premise option',
-        ],
-        popular: false,
-    },
+// Every point here is backed by our FAQ / services copy — keep it that way
+const included = [
+    { icon: Smartphone, label: 'Responsive on every device', sub: 'Phones, tablets and desktops' },
+    { icon: Search, label: 'SEO-ready from day one', sub: 'Clean markup, fast pages, metadata' },
+    { icon: Server, label: 'Domain & hosting help', sub: 'We set up and configure it for you' },
+    { icon: Wallet, label: '50% to start', sub: 'Bank transfer or mobile payment' },
 ]
 
-// const faqs = [
-//     {
-//         q: 'Can I switch plans at any time?',
-//         a: "Yes. Upgrades apply immediately and you're only billed the prorated difference. Downgrades take effect at the next billing cycle.",
-//     },
-//     {
-//         q: 'Is there a free trial?',
-//         a: "Every plan includes a 14-day free trial — no credit card required. Cancel any time before the trial ends and you won't be charged.",
-//     },
-//     {
-//         q: 'What payment methods do you accept?',
-//         a: 'We accept all major credit cards, PayPal, and bank transfers for annual Enterprise plans.',
-//     },
-//     {
-//         q: 'Do you offer discounts for annual billing?',
-//         a: 'Yes — pay annually and save up to 20% compared to monthly billing across all plans.',
-//     },
-// ]
-
-const trust = [
-    { icon: Zap, label: 'Lightning Fast', sub: 'Sub-50ms response times globally' },
-    { icon: Shield, label: 'Enterprise Security', sub: 'SOC 2 Type II certified' },
-    { icon: Users, label: '10,000+ Teams', sub: 'Trust us with their workflows' },
-]
+const pricingFaqs = faqs.filter(f =>
+    /payment|long|maintenance|hosting/i.test(f.question)
+)
 
 export default function PricingClient() {
     return (
-        <div className="min-h-screen py-10">
+        <div className="min-h-screen pb-10">
 
             {/* ── Hero ── */}
-            <section className=" pt-16 pb-10 relative overflow-hidden">
+            <section className="pt-16 pb-10 relative overflow-hidden">
                 <div className="absolute inset-0 bg-linear-to-br from-primary/10 via-transparent to-transparent pointer-events-none dotted-grid opacity-40" />
-                <div className="" />
 
                 <div className="container mx-auto px-6 relative z-10 text-center">
                     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
                         <span className="text-primary text-sm font-medium mono mb-3 block tracking-widest uppercase">
                             Simple Pricing
                         </span>
-                        <h1 className="text-5xl md:text-[72px] font-bold text-foreground mb-4 leading-none">
-                            Pay for what
-                            you <span className="text-primary">actually</span> use
+                        <h1 className="text-[clamp(2.5rem,7vw,4.5rem)] font-bold text-foreground mb-4 leading-none">
+                            One-time projects,
+                            <span className="block"><span className="text-primary">no</span> monthly surprises</span>
                         </h1>
                         <p className="text-lg text-muted-foreground max-w-xl mx-auto">
-                            No hidden fees. No surprise invoices. Pick a plan and scale as you grow.
+                            Clear starting prices in Naira. Every project starts with a clear, written quote.
                         </p>
-                    </motion.div>
-
-                    {/* Trust bar */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 16 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.15 }}
-                        className="flex flex-wrap justify-center gap-8 mt-10"
-                    >
-                        {trust.map(({ icon: Icon, label, sub }) => (
-                            <div key={label} className="flex items-center gap-3 text-left">
-                                <div className="h-10 w-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
-                                    <Icon size={18} className="text-primary" />
-                                </div>
-                                <div>
-                                    <p className="text-sm font-semibold text-foreground">{label}</p>
-                                    <p className="text-xs text-muted-foreground">{sub}</p>
-                                </div>
-                            </div>
-                        ))}
                     </motion.div>
                 </div>
             </section>
@@ -131,8 +45,8 @@ export default function PricingClient() {
             {/* ── Pricing cards ── */}
             <section className="py-12">
                 <div className="container mx-auto px-6">
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
-                        {plans.map((plan, i) => (
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start max-w-6xl mx-auto">
+                        {pricingPlans.map((plan, i) => (
                             <PricingCard key={plan.name} {...plan} index={i} />
                         ))}
                     </div>
@@ -143,69 +57,67 @@ export default function PricingClient() {
                         transition={{ delay: 0.3 }}
                         className="text-center text-sm text-muted-foreground mt-8"
                     >
-                        All plans include a 14-day free trial. No credit card required.
+                        Prices are starting points — your final quote depends on scope, content and integrations.
                     </motion.p>
                 </div>
             </section>
 
-            {/* ── Compare section ── */}
+            {/* ── Included in every project ── */}
             <section className="py-12 border-t border-border">
                 <div className="container mx-auto px-6">
-                    <motion.div
+                    <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-center mb-10"
+                        className="text-3xl font-bold text-foreground mb-10 text-center"
                     >
-                        <h2 className="text-3xl font-bold text-foreground mb-2">Compare plans</h2>
-                        <p className="text-muted-foreground">Everything you get, side by side.</p>
-                    </motion.div>
-
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="overflow-x-auto"
-                    >
-                        <table className="w-full text-sm">
-                            <thead>
-                            <tr className="border-b border-border">
-                                <th className="text-left py-3 pr-8 text-muted-foreground font-normal w-1/3">Feature</th>
-                                {plans.map(p => (
-                                    <th key={p.name} className={`py-3 px-4 text-center font-semibold ${p.popular ? 'text-primary' : 'text-foreground'}`}>
-                                        {p.name}
-                                    </th>
-                                ))}
-                            </tr>
-                            </thead>
-                            <tbody>
-                            {[
-                                ['Projects', '5', 'Unlimited', 'Unlimited'],
-                                ['Storage', '10GB', '100GB', '1TB'],
-                                ['Analytics', 'Basic', 'Advanced', 'Custom'],
-                                ['Support', 'Email', 'Priority', 'Dedicated'],
-                                ['API access', '✓', '✓', '✓'],
-                                ['Custom integrations', '—', '✓', '✓'],
-                                ['SSO / SAML', '—', '—', '✓'],
-                                ['White-label', '—', '—', '✓'],
-                                ['Uptime SLA', '99.5%', '99.9%', '99.99%'],
-                            ].map(([feature, ...values]) => (
-                                <tr key={feature} className="border-b border-border/50 hover:bg-muted/30 transition-colors">
-                                    <td className="py-3 pr-8 text-muted-foreground">{feature}</td>
-                                    {values.map((v, i) => (
-                                        <td key={i} className={`py-3 px-4 text-center ${i === 1 ? 'text-primary font-medium' : 'text-foreground'}`}>
-                                            {v === '✓' ? <Check size={16} className="mx-auto text-primary" /> : v === '—' ? <span className="text-border">—</span> : v}
-                                        </td>
-                                    ))}
-                                </tr>
-                            ))}
-                            </tbody>
-                        </table>
-                    </motion.div>
+                        Included in every project
+                    </motion.h2>
+                    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl mx-auto">
+                        {included.map(({ icon: Icon, label, sub }, i) => (
+                            <motion.div
+                                key={label}
+                                initial={{ opacity: 0, y: 16 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: i * 0.05 }}
+                                className="flex items-start gap-3 rounded-2xl border border-border bg-card p-5"
+                            >
+                                <div className="h-10 w-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+                                    <Icon size={18} className="text-primary" aria-hidden />
+                                </div>
+                                <div>
+                                    <p className="text-sm font-semibold text-foreground">{label}</p>
+                                    <p className="text-xs text-muted-foreground mt-0.5">{sub}</p>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </div>
                 </div>
             </section>
 
-            
+            {/* ── Pricing FAQs ── */}
+            {pricingFaqs.length > 0 && (
+                <section className="py-12 border-t border-border">
+                    <div className="container mx-auto px-6 max-w-3xl">
+                        <h2 className="text-3xl font-bold text-foreground mb-8 text-center">Questions about pricing</h2>
+                        <div className="divide-y divide-border rounded-2xl border border-border bg-card">
+                            {pricingFaqs.map(f => (
+                                <details key={f.question} className="group p-5 [&_summary::-webkit-details-marker]:hidden">
+                                    <summary className="flex items-center justify-between gap-4 cursor-pointer list-none font-medium text-foreground">
+                                        {f.question}
+                                        <span aria-hidden className="text-primary text-xl leading-none transition-transform group-open:rotate-45">+</span>
+                                    </summary>
+                                    <p className="text-muted-foreground text-sm leading-relaxed mt-3">{f.answer}</p>
+                                </details>
+                            ))}
+                        </div>
+                        <p className="text-center text-sm text-muted-foreground mt-6">
+                            More answers on our <Link href="/faqs" className="text-primary underline underline-offset-2">FAQ page</Link>.
+                        </p>
+                    </div>
+                </section>
+            )}
 
             {/* ── CTA ── */}
             <section className="py-16 border-t border-border">
@@ -219,13 +131,11 @@ export default function PricingClient() {
                             Not sure which plan fits?
                         </h2>
                         <p className="text-muted-foreground mb-8 max-w-lg mx-auto">
-                            Talk to our team and we&#39ll build a custom package around your exact requirements.
+                            Tell us what you need and we&apos;ll build a package around your exact requirements.
                         </p>
-                        <Link href="/quote">
-                            <button className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-semibold px-8 py-4 rounded-xl hover:opacity-90 transition-all duration-300">
-                                Get a custom quote
-                                <ArrowRight size={18} />
-                            </button>
+                        <Link href="/quote" className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-semibold px-8 py-4 rounded-xl hover:opacity-90 transition-all duration-300">
+                            Get a custom quote
+                            <ArrowRight size={18} />
                         </Link>
                     </motion.div>
                 </div>

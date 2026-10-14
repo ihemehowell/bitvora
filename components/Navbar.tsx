@@ -1,16 +1,17 @@
 'use client';
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { Menu, X, ChevronDown, Layers, FolderOpen, BookMarked, Cpu, Wrench, Building2, DollarSign, FileQuestion, Phone } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { ThemeToggle } from "./ThemeToggle";
 import { BrandIcon } from "./BrandIcon";
 
 const navLinks = [
+  { name: "Work", href: "/projects" },
+  { name: "Services", href: "/services" },
   { name: "About", href: "/about" },
-  { name: "Blog", href: "/blog" },
   { name: "Contact", href: "/contact" },
-  { name:"Services", href:"/services"}, 
 ];
 
 const exploreColumns = [
@@ -41,32 +42,94 @@ const exploreColumns = [
   },
 ];
 
-export default function Navbar({ currentPage }: { currentPage?: string }) {
+const isActive = (pathname: string, href: string) =>
+    href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`);
+
+export default function Navbar() {
+  const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [exploreOpen, setExploreOpen] = useState(false);
   const [mobileExploreOpen, setMobileExploreOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const navRef = useRef<HTMLElement>(null);
+  const hoverTimer = useRef<ReturnType<typeof setTimeout>>(undefined);
 
+  const closeAll = useCallback(() => {
+    setExploreOpen(false);
+    setMobileMenuOpen(false);
+    setMobileExploreOpen(false);
+  }, []);
+
+  // Close menus whenever the route changes (state adjusted during render, not in an effect)
+  const [prevPath, setPrevPath] = useState(pathname);
+  if (pathname !== prevPath) {
+    setPrevPath(pathname);
+    closeAll();
+  }
+
+  // Click outside + Escape
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
       if (navRef.current && !navRef.current.contains(e.target as Node)) {
         setExploreOpen(false);
       }
     }
+    function handleKey(e: KeyboardEvent) {
+      if (e.key === "Escape") closeAll();
+    }
     document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    document.addEventListener("keydown", handleKey);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleKey);
+    };
+  }, [closeAll]);
+
+  // Scroll-aware: compact once scrolled, hide on scroll down, reveal on scroll up
+  useEffect(() => {
+    let lastY = window.scrollY;
+    const onScroll = () => {
+      const y = window.scrollY;
+      setScrolled(y > 8);
+      if (Math.abs(y - lastY) > 6) {
+        setHidden(y > lastY && y > 160);
+        lastY = y;
+      }
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  // Hover intent for the mega menu (desktop pointers only)
+  const openOnHover = () => {
+    clearTimeout(hoverTimer.current);
+    hoverTimer.current = setTimeout(() => setExploreOpen(true), 120);
+  };
+  const closeOnLeave = () => {
+    clearTimeout(hoverTimer.current);
+    hoverTimer.current = setTimeout(() => setExploreOpen(false), 200);
+  };
+
+  const menuOpen = exploreOpen || mobileMenuOpen;
 
   return (
       <nav
           ref={navRef}
-          className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-xl border-b border-border"
+          aria-label="Main"
+          className={`fixed top-0 left-0 right-0 z-50 border-b transition-all duration-300
+            ${hidden && !menuOpen ? "-translate-y-full" : "translate-y-0"}
+            ${scrolled || menuOpen
+              ? "bg-background/85 backdrop-blur-xl border-border shadow-[0_8px_30px_rgba(0,0,0,0.08)]"
+              : "bg-background/40 backdrop-blur-md border-transparent"}`}
       >
         <div className="max-w-[1200px] mx-auto px-6 flex items-center justify-between h-16">
 
           {/* Logo */}
           <Link
               href="/"
+              aria-label="Bitvoratech home"
               className="flex items-center no-underline font-extrabold text-2xl text-foreground tracking-tight transition-colors duration-200 hover:text-primary"
           >
             <div className="w-9 h-9 flex items-center justify-center">
@@ -79,35 +142,45 @@ export default function Navbar({ currentPage }: { currentPage?: string }) {
           <div className="hidden md:flex items-center gap-1">
 
             {/* Explore Trigger */}
-            <button
-                onClick={() => setExploreOpen(!exploreOpen)}
-                className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 cursor-pointer border-none bg-transparent
-              ${exploreOpen
-                    ? "text-primary bg-primary/10"
-                    : "text-muted-foreground hover:text-foreground hover:bg-accent"
-                }`}
-            >
-              Explore
-              <ChevronDown
-                  size={15}
-                  className={`transition-transform duration-300 ${exploreOpen ? "rotate-180" : "rotate-0"}`}
-              />
-            </button>
+            <div onMouseEnter={openOnHover} onMouseLeave={closeOnLeave}>
+              <button
+                  type="button"
+                  onClick={() => setExploreOpen(!exploreOpen)}
+                  aria-expanded={exploreOpen}
+                  aria-controls="explore-menu"
+                  className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 cursor-pointer border-none bg-transparent
+                ${exploreOpen
+                      ? "text-primary bg-primary/10"
+                      : "text-muted-foreground hover:text-foreground hover:bg-accent"
+                  }`}
+              >
+                Explore
+                <ChevronDown
+                    size={15}
+                    aria-hidden
+                    className={`transition-transform duration-300 ${exploreOpen ? "rotate-180" : "rotate-0"}`}
+                />
+              </button>
+            </div>
 
             {/* Nav Links */}
-            {navLinks.map((link) => (
-                <Link
-                    key={link.name}
-                    href={link.href}
-                    className={`px-4 py-2 rounded-lg text-sm font-medium no-underline transition-all duration-200
-                ${currentPage === link.href.replace("/", "")
-                        ? "text-primary bg-primary/10"
-                        : "text-muted-foreground hover:text-foreground hover:bg-accent"
-                    }`}
-                >
-                  {link.name}
-                </Link>
-            ))}
+            {navLinks.map((link) => {
+              const active = isActive(pathname, link.href);
+              return (
+                  <Link
+                      key={link.name}
+                      href={link.href}
+                      aria-current={active ? "page" : undefined}
+                      className={`px-4 py-2 rounded-lg text-sm font-medium no-underline transition-all duration-200
+                  ${active
+                          ? "text-primary bg-primary/10"
+                          : "text-muted-foreground hover:text-foreground hover:bg-accent"
+                      }`}
+                  >
+                    {link.name}
+                  </Link>
+              );
+            })}
           </div>
 
           {/* Desktop Right — Toggle + CTA */}
@@ -125,7 +198,11 @@ export default function Navbar({ currentPage }: { currentPage?: string }) {
           <div className="md:hidden flex items-center gap-2">
             <ThemeToggle />
             <button
+                type="button"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+                aria-expanded={mobileMenuOpen}
+                aria-controls="mobile-menu"
                 className="p-2 bg-transparent border-none text-foreground rounded-lg cursor-pointer transition-colors duration-200 hover:bg-accent"
             >
               {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
@@ -135,6 +212,9 @@ export default function Navbar({ currentPage }: { currentPage?: string }) {
 
         {/* ── Mega Menu ── */}
         <div
+            id="explore-menu"
+            onMouseEnter={openOnHover}
+            onMouseLeave={closeOnLeave}
             className={`hidden md:block absolute left-0 right-0 border-b border-border bg-background backdrop-blur-2xl shadow-[0_32px_64px_rgba(0,0,0,0.15)] transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]
           ${exploreOpen
                 ? "opacity-100 visible translate-y-0"
@@ -159,7 +239,7 @@ export default function Navbar({ currentPage }: { currentPage?: string }) {
                               className="group flex items-start gap-3 px-3 py-3 rounded-xl no-underline transition-all duration-150 hover:bg-accent"
                           >
                             <div className="mt-0.5 w-8 h-8 rounded-lg bg-muted border border-border flex items-center justify-center shrink-0 text-muted-foreground transition-all duration-150 group-hover:bg-primary/15 group-hover:border-primary/25 group-hover:text-primary">
-                              <item.icon size={15} />
+                              <item.icon size={15} aria-hidden />
                             </div>
                             <div>
                         <span className="block text-[13.5px] font-semibold text-foreground/80 group-hover:text-foreground transition-colors leading-tight">
@@ -183,7 +263,7 @@ export default function Navbar({ currentPage }: { currentPage?: string }) {
                   onClick={() => setExploreOpen(false)}
                   className="text-xs font-semibold text-primary no-underline hover:text-primary/80 transition-colors flex items-center gap-1"
               >
-                Get a free quote <span>→</span>
+                Get a free quote <span aria-hidden>→</span>
               </Link>
             </div>
           </div>
@@ -191,15 +271,21 @@ export default function Navbar({ currentPage }: { currentPage?: string }) {
 
         {/* ── Mobile Menu ── */}
         {mobileMenuOpen && (
-            <div className="md:hidden border-t border-border px-4 pt-3 pb-4 bg-background">
+            <div
+                id="mobile-menu"
+                className="md:hidden border-t border-border px-4 pt-3 pb-4 bg-background max-h-[calc(100svh-4rem)] overflow-y-auto"
+            >
 
               <button
+                  type="button"
                   onClick={() => setMobileExploreOpen(!mobileExploreOpen)}
+                  aria-expanded={mobileExploreOpen}
                   className="w-full flex justify-between items-center px-4 py-3 bg-transparent border-none text-muted-foreground text-sm font-medium cursor-pointer rounded-lg transition-all duration-200 hover:bg-accent hover:text-foreground"
               >
                 Explore
                 <ChevronDown
                     size={18}
+                    aria-hidden
                     className={`transition-transform duration-300 ${mobileExploreOpen ? "rotate-180" : "rotate-0"}`}
                 />
               </button>
@@ -219,7 +305,7 @@ export default function Navbar({ currentPage }: { currentPage?: string }) {
                                     onClick={() => setMobileMenuOpen(false)}
                                     className="flex items-center gap-2.5 px-3 py-2.5 rounded-lg no-underline text-muted-foreground text-sm transition-all duration-200 hover:text-foreground hover:bg-accent"
                                 >
-                                  <item.icon size={14} className="shrink-0" />
+                                  <item.icon size={14} className="shrink-0" aria-hidden />
                                   {item.name}
                                 </Link>
                             ))}
@@ -230,20 +316,24 @@ export default function Navbar({ currentPage }: { currentPage?: string }) {
               )}
 
               <div className="flex flex-col mt-1">
-                {navLinks.map((link) => (
-                    <Link
-                        key={link.name}
-                        href={link.href}
-                        onClick={() => setMobileMenuOpen(false)}
-                        className={`block px-4 py-3 rounded-lg no-underline text-sm font-medium transition-all duration-200
-                  ${currentPage === link.href.replace("/", "")
-                            ? "text-primary bg-primary/10"
-                            : "text-muted-foreground hover:text-foreground hover:bg-accent"
-                        }`}
-                    >
-                      {link.name}
-                    </Link>
-                ))}
+                {navLinks.map((link) => {
+                  const active = isActive(pathname, link.href);
+                  return (
+                      <Link
+                          key={link.name}
+                          href={link.href}
+                          aria-current={active ? "page" : undefined}
+                          onClick={() => setMobileMenuOpen(false)}
+                          className={`block px-4 py-3 rounded-lg no-underline text-sm font-medium transition-all duration-200
+                    ${active
+                              ? "text-primary bg-primary/10"
+                              : "text-muted-foreground hover:text-foreground hover:bg-accent"
+                          }`}
+                      >
+                        {link.name}
+                      </Link>
+                  );
+                })}
               </div>
 
               <Link

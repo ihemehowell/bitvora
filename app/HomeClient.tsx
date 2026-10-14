@@ -1,21 +1,23 @@
-"use client";
-
-import { 
-  HeroSection, 
-  ServicesSection, 
-  WhyChooseUsSection, 
-  PortfolioSection, 
-  FinalCTA 
+import {
+  HeroSection,
+  WorkMarquee,
+  ServicesSection,
+  WhyChooseUsSection,
+  PortfolioSection,
+  TestimonialsSection,
+  FinalCTA
 } from "../components/Home";
 
 export default function HomeClient() {
   return (
     <div className="min-h-screen">
       <HeroSection />
+      <WorkMarquee />
       <ServicesSection />
       <WhyChooseUsSection />
       <PortfolioSection />
-      {/* <TestimonialsSection /> */}
+      {/* Renders only once real testimonials are added to Data.ts */}
+      <TestimonialsSection />
       <FinalCTA />
     </div>
   );

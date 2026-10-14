@@ -62,15 +62,18 @@ export default function ProjectsClient() {
             >
              
               <input
-                  type="text"
+                  type="search"
+                  aria-label="Search projects"
                   placeholder="Search projects..."
                   value={query}
                   onChange={e => { setQuery(e.target.value); }}
-                  className="w-full h-11 py-2 px-2 rounded-xl border border-border bg-card text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors"
+                  className="w-full h-11 py-2 pl-10 pr-10 rounded-xl border border-border bg-card text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors"
               /> 
-              <Search className="absolute right-4 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+              <Search aria-hidden className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
               {query && (
                   <button
+                      type="button"
+                      aria-label="Clear search"
                       onClick={() => setQuery('')}
                       className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
                   >
@@ -89,7 +92,9 @@ export default function ProjectsClient() {
               {portfolioFilters.map(filter => (
                   <button
                       key={filter}
+                      type="button"
                       onClick={() => setActiveFilter(filter)}
+                      aria-pressed={activeFilter === filter}
                       className={`px-4 py-1.5 rounded-full text-sm transition-colors duration-200 ${
                           activeFilter === filter
                               ? 'bg-primary text-primary-foreground font-medium'
@@ -103,7 +108,7 @@ export default function ProjectsClient() {
 
             {/* Results count */}
             {(query || activeFilter !== 'All') && (
-                <p className="text-sm text-muted-foreground mt-4">
+                <p className="text-sm text-muted-foreground mt-4" aria-live="polite">
                   {filtered.length} project{filtered.length !== 1 ? 's' : ''}
                   {query && <span> matching <strong>{query}</strong></span>}
                 </p>
@@ -125,7 +130,7 @@ export default function ProjectsClient() {
                         exit={{ opacity: 0, y: 8 }}
                         transition={{ delay: index * 0.06 }}
                     >
-                      <Link href={project.href} target="_blank">
+                      <Link href={project.href} target="_blank" rel="noopener noreferrer" aria-label={`${project.title} (opens in a new tab)`}>
                         <PortfolioCard {...project} index={index} />
                       </Link>
                     </motion.div>
@@ -160,15 +165,11 @@ export default function ProjectsClient() {
                 </p>
               </div>
               <div className="relative flex flex-wrap gap-3 shrink-0">
-                <Link href="/quote">
-                  <button className="inline-flex items-center gap-2 px-7 py-3.5 bg-primary hover:opacity-90 text-primary-foreground font-semibold rounded-xl transition-all duration-300">
-                    Get a quote <ArrowRight size={16} />
-                  </button>
+                <Link href="/quote" className="inline-flex items-center gap-2 px-7 py-3.5 bg-primary hover:opacity-90 text-primary-foreground font-semibold rounded-xl transition-all duration-300">
+                  Get a quote <ArrowRight size={16} />
                 </Link>
-                <Link href="/contact">
-                  <button className="inline-flex items-center gap-2 px-7 py-3.5 border border-border hover:border-primary/40 text-foreground rounded-xl transition-all duration-300">
-                    Contact us
-                  </button>
+                <Link href="/contact" className="inline-flex items-center gap-2 px-7 py-3.5 border border-border hover:border-primary/40 text-foreground rounded-xl transition-all duration-300">
+                  Contact us
                 </Link>
               </div>
             </motion.div>
