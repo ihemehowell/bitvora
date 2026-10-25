@@ -35,7 +35,7 @@ export function TestimonialCard({ name, role, company, content, avatar, rating, 
         )}
       </div>
 
-      <blockquote className="text-foreground/90 leading-relaxed flex-1">&ldquo;{content}&rdquo;</blockquote>
+      <blockquote className="text-foreground/90 leading-relaxed whitespace-pre-line flex-1">&ldquo;{content}&rdquo;</blockquote>
 
       <figcaption className="flex items-center gap-3">
         {avatar ? (

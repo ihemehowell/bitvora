@@ -10,9 +10,11 @@ import { useState } from "react";
 export default function PortfolioSection() {
   const [activeFilter, setActiveFilter] = useState('All');
 
-  const filteredProjects = activeFilter === 'All'
+  // The homepage shows a short selection; the full list lives on /projects
+  const filteredProjects = (activeFilter === 'All'
       ? portfolioProjects
-      : portfolioProjects.filter((project) => project.category === activeFilter);
+      : portfolioProjects.filter((project) => project.category === activeFilter)
+  ).slice(0, 4);
 
   return (
       <section className="py-20 relative">
@@ -61,7 +63,7 @@ export default function PortfolioSection() {
             ))}
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {filteredProjects.map((project, index) => (
                 <motion.div
                     key={project.id}

@@ -391,7 +391,28 @@ export const whyChooseUs: WhyChooseUsItem[] = [
 // (name, star rating, text and date as they appear there).
 // The homepage section stays hidden while this list is empty.
 
-export const testimonials: Testimonial[] = [];
+export const testimonials: Testimonial[] = [
+  {
+    name: 'Deborah wilfred',
+    rating: 5,
+    content:
+      'Excellent service from Bitvoratech! The team was reliable, easy to work with, and delivered a beautiful website that matched my expectations. They paid attention to every detail and ensured I was satisfied with the final result. I highly recommend their services.',
+    source: 'google',
+  },
+  {
+    name: 'Valada',
+    rating: 5,
+    content:
+      'I had an excellent experience with Bitvoratech. From the beginning to the end, the process was smooth and professional. They paid attention to every detail, delivered a beautiful website, and made sure I was completely satisfied. I highly recommend Bitvoratech to anyone looking for reliable web design and digital solutions.',
+    source: 'google',
+  },
+  {
+    name: 'DORIS NWANKWO',
+    rating: 5,
+    content: 'Tested and trusted\nThey are very good at what they are doing and I love my website',
+    source: 'google',
+  },
+];
 
 // Link to the Google Maps listing's reviews; the "See all reviews" button shows when set.
 export const GOOGLE_REVIEWS_URL = '';
