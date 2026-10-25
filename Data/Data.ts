@@ -62,11 +62,14 @@ export interface Project {
 
 export interface Testimonial {
   name: string;
-  role: string;
-  company: string;
   content: string;
-  avatar: string;
   rating: number;
+  role?: string;
+  company?: string;
+  avatar?: string;
+  /** As shown on the review, e.g. "2 weeks ago" or "Oct 2026" */
+  date?: string;
+  source?: 'google';
 }
 
 export interface TeamMember {
@@ -359,35 +362,39 @@ export const whyChooseUs: WhyChooseUsItem[] = [
     icon: Zap,
     title: "Fast Delivery",
     description: "Get your website launched quickly without compromising on quality.",
-    color: "text-cyan-400"
+    color: "text-primary"
   },
   {
     icon: Users,
     title: "Expert Team",
     description: "Work with experienced developers and designers who care about your success.",
-    color: 'text-cyan-300'
+    color: "text-primary"
   },
   {
     icon: Award,
     title: "Quality Assured",
     description: "Rigorous testing ensures your website works flawlessly across all devices.",
-    color: "text-cyan-500"
+    color: "text-primary"
   },
   {
     icon: CheckCircle,
     title: "Ongoing Support",
     description: "Continuous maintenance and support to keep your website running smoothly.",
-    color: "text-cyan-400"
+    color: "text-primary"
   },
 ];
 
 // ============================================
 // TESTIMONIALS
 // ============================================
-// Removed placeholder testimonials (fake names + stock photos).
-// Add real client testimonials here when available.
+// Real client reviews only, copied word for word from Google
+// (name, star rating, text and date as they appear there).
+// The homepage section stays hidden while this list is empty.
 
 export const testimonials: Testimonial[] = [];
+
+// Link to the Google Maps listing's reviews; the "See all reviews" button shows when set.
+export const GOOGLE_REVIEWS_URL = '';
 
 // ============================================
 // TEAM
@@ -593,6 +600,14 @@ export const faqs: FAQ[] = [
 ];
 
 // ============================================
+// BITVORA STORES (our product)
+// ============================================
+
+export const STORES_URL = 'https://stores.bitvoratech.com';
+export const STORES_DEMO_URL = 'https://shop.bitvoratech.com/demo-store';
+export const STORES_APP_URL = 'https://app.bitvoratech.com';
+
+// ============================================
 // CONTACT
 // ============================================
 
@@ -665,9 +680,14 @@ export const footerLinks = {
     'Web Maintenance',
     'SEO Optimization',
   ],
+  products: [
+    { name: 'Bitvora Stores', href: 'https://stores.bitvoratech.com' },
+    { name: 'See a demo store', href: 'https://shop.bitvoratech.com/demo-store' },
+    { name: 'Merchant log in', href: 'https://app.bitvoratech.com' },
+  ],
   legal: [
     { name: 'Privacy Policy', href: '/privacy-policy' },
     { name: 'Terms of Service', href: '/terms-of-service' },
     { name: 'Cookie Policy', href: '/cookie-policy' },
   ],
-};
+};

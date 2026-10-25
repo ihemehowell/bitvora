@@ -1,5 +1,6 @@
 import {
   HeroSection,
+  StoresLadder,
   WorkMarquee,
   ServicesSection,
   WhyChooseUsSection,
@@ -12,6 +13,7 @@ export default function HomeClient() {
   return (
     <div className="min-h-screen">
       <HeroSection />
+      <StoresLadder />
       <WorkMarquee />
       <ServicesSection />
       <WhyChooseUsSection />

@@ -16,7 +16,6 @@ export default function PortfolioSection() {
 
   return (
       <section className="py-20 relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent pointer-events-none" />
 
         <div className="container mx-auto px-6 relative z-10">
           <motion.div
@@ -26,7 +25,7 @@ export default function PortfolioSection() {
               className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12"
           >
             <div>
-              <span className="text-primary text-sm font-medium mono mb-2 block">OUR WORK</span>
+              <span className="text-highlight text-sm font-semibold tracking-[0.12em] mb-2 block">OUR WORK</span>
               <h2 className="text-4xl font-bold text-foreground">
                 Featured <span className="gradient-text">Projects</span>
               </h2>
@@ -94,4 +93,4 @@ export default function PortfolioSection() {
         </div>
       </section>
   );
-}
+}

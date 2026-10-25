@@ -5,8 +5,7 @@ import { motion } from "framer-motion";
 
 export default function WhyChooseUsSection() {
   return (
-      <section className="py-20 relative">
-        <div className="absolute inset-0 dotted-grid opacity-30 pointer-events-none" />
+      <section className="dark py-20 relative bg-background text-foreground">
 
         <div className="container mx-auto px-6 relative z-10">
           <motion.div
@@ -15,12 +14,12 @@ export default function WhyChooseUsSection() {
               viewport={{ once: true }}
               className="text-center mb-16"
           >
-            <span className="text-primary text-sm font-medium mono mb-4 block">WHY CHOOSE US</span>
+            <span className="text-highlight text-sm font-semibold tracking-[0.12em] mb-4 block">WHY CHOOSE US</span>
             <h2 className="text-4xl font-bold text-foreground mb-4">
-              Built for <span className="gradient-text">Excellence</span>
+              A small studio that <span className="gradient-text">actually ships.</span>
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              We combine expertise, creativity, and dedication to deliver exceptional results
+              We build for how Nigerian businesses really work: customers on WhatsApp, budget Android phones, slow data. No fake numbers.
             </p>
           </motion.div>
 
@@ -45,4 +44,4 @@ export default function WhyChooseUsSection() {
         </div>
       </section>
   );
-}
+}

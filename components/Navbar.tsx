@@ -6,6 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ThemeToggle } from "./ThemeToggle";
 import { BrandIcon } from "./BrandIcon";
+import { STORES_URL } from "@/Data/Data";
 
 const navLinks = [
   { name: "Work", href: "/projects" },
@@ -181,6 +182,17 @@ export default function Navbar() {
                   </Link>
               );
             })}
+
+            {/* Our product */}
+            <a
+                href={STORES_URL}
+                className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium no-underline text-muted-foreground transition-all duration-200 hover:text-foreground hover:bg-accent"
+            >
+              Bitvora Stores
+              <span className="rounded-full bg-[var(--brand-orange)] px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[var(--brand-navy)]">
+                New
+              </span>
+            </a>
           </div>
 
           {/* Desktop Right — Toggle + CTA */}
@@ -334,6 +346,15 @@ export default function Navbar() {
                       </Link>
                   );
                 })}
+                <a
+                    href={STORES_URL}
+                    className="flex items-center gap-2 px-4 py-3 rounded-lg no-underline text-sm font-medium text-muted-foreground transition-all duration-200 hover:text-foreground hover:bg-accent"
+                >
+                  Bitvora Stores
+                  <span className="rounded-full bg-[var(--brand-orange)] px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[var(--brand-navy)]">
+                    New
+                  </span>
+                </a>
               </div>
 
               <Link

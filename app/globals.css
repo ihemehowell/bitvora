@@ -7,7 +7,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-inter);
   --font-mono: var(--font-geist-mono);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
@@ -47,99 +47,121 @@
   --color-tech-accent: var(--tech-accent);
   --color-tech-dark: var(--tech-dark);
   --color-tech-light: var(--tech-light);
-  --font-heading: var(--font-sans);
+  --font-heading: var(--font-space-grotesk);
+  --color-highlight: var(--highlight);
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-/* ── Dark theme (default) ── */
+/* ── Brand palette (shared with Bitvora Stores) ──
+   navy #1b2357 · orange #e8a63e · cream #f6f1e7 */
+
+/* ── Light theme (default): cream ground, navy primary, orange accent ── */
 :root,
-.dark {
+.light {
   --radius: 0.625rem;
 
-  --background:         oklch(0.08  0.010 265);
-  --foreground:         oklch(0.977 0.003 247);
-  --card:               oklch(0.10  0.012 265);
-  --card-foreground:    oklch(0.977 0.003 247);
-  --popover:            oklch(0.10  0.012 265);
-  --popover-foreground: oklch(0.977 0.003 247);
+  --brand-navy:   #1b2357;
+  --brand-orange: #e8a63e;
+  --brand-cream:  #f6f1e7;
 
-  --primary:            oklch(0.715 0.143 215);
-  --primary-foreground: oklch(0.08  0.010 265);
-  --secondary:          oklch(0.15  0.020 265);
-  --secondary-foreground: oklch(0.977 0.003 247);
-  --muted:              oklch(0.15  0.020 265);
-  --muted-foreground:   oklch(0.627 0.020 250);
-  --accent:             oklch(0.15  0.020 265);
-  --accent-foreground:  oklch(0.977 0.003 247);
+  --background:         #f6f1e7;
+  --foreground:         #141a3a;
+  --card:               #ffffff;
+  --card-foreground:    #141a3a;
+  --popover:            #ffffff;
+  --popover-foreground: #141a3a;
+
+  --primary:            #1b2357;
+  --primary-foreground: #ffffff;
+  --secondary:          #ece5d6;
+  --secondary-foreground: #141a3a;
+  --muted:              #ece5d6;
+  --muted-foreground:   #4d5270;
+  --accent:             #ece5d6;
+  --accent-foreground:  #141a3a;
   --destructive:        oklch(0.577 0.245 27.3);
-  --border:             oklch(0.22  0.018 265);
-  --input:              oklch(0.22  0.018 265);
-  --ring:               oklch(0.715 0.143 215);
+  --border:             #e3dccb;
+  --input:              #d9d0bc;
+  --ring:               #1b2357;
 
-  --tech-primary:       oklch(0.715 0.143 215);
-  --tech-secondary:     oklch(0.778 0.135 210);
-  --tech-accent:        oklch(0.876 0.095 207);
-  --tech-dark:          oklch(0.08  0.010 265);
-  --tech-light:         oklch(0.15  0.020 265);
+  /* Orange that stays readable on cream (headline highlights, eyebrows) */
+  --highlight:          #9a5a0a;
 
-  --chart-1: oklch(0.715 0.143 215);
-  --chart-2: oklch(0.778 0.135 210);
-  --chart-3: oklch(0.876 0.095 207);
-  --chart-4: oklch(0.927 0.060 175);
-  --chart-5: oklch(0.962 0.030 195);
+  --tech-primary:       #1b2357;
+  --tech-secondary:     #2d3a85;
+  --tech-accent:        #e8a63e;
+  --tech-dark:          #141a3a;
+  --tech-light:         #ece5d6;
 
-  --sidebar:                    oklch(0.08  0.010 265);
-  --sidebar-foreground:         oklch(0.977 0.003 247);
-  --sidebar-primary:            oklch(0.715 0.143 215);
-  --sidebar-primary-foreground: oklch(0.08  0.010 265);
-  --sidebar-accent:             oklch(0.15  0.020 265);
-  --sidebar-accent-foreground:  oklch(0.977 0.003 247);
-  --sidebar-border:             oklch(0.22  0.018 265);
-  --sidebar-ring:               oklch(0.715 0.143 215);
+  --chart-1: #1b2357;
+  --chart-2: #e8a63e;
+  --chart-3: #2d3a85;
+  --chart-4: #c98a2b;
+  --chart-5: #8a91b8;
 
-  --grid-color: rgba(6, 182, 212, 0.04);
-  --dot-color:  rgba(6, 182, 212, 0.15);
+  --sidebar:                    #ffffff;
+  --sidebar-foreground:         #141a3a;
+  --sidebar-primary:            #1b2357;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent:             #ece5d6;
+  --sidebar-accent-foreground:  #141a3a;
+  --sidebar-border:             #e3dccb;
+  --sidebar-ring:               #1b2357;
+
+  --grid-color: rgba(27, 35, 87, 0.05);
+  --dot-color:  rgba(27, 35, 87, 0.14);
 }
 
-/* ── Light theme ── */
-.light {
-  --tech-primary:       oklch(0.52  0.105 223);
-  --tech-secondary:     oklch(0.60  0.118 215);
-  --tech-accent:        oklch(0.70  0.120 210);
-  --tech-light:         oklch(0.951 0.007 247);
-  --background:         oklch(0.977 0.003 247);
-  --foreground:         oklch(0.08  0.010 265);
-  --card:               oklch(1     0     0);
-  --card-foreground:    oklch(0.08  0.010 265);
-  --popover:            oklch(1     0     0);
-  --popover-foreground: oklch(0.08  0.010 265);
+/* ── Dark theme: navy ground, orange primary.
+   Also used to scope navy bands on the light site (className="dark"). ── */
+.dark {
+  --background:         #1b2357;
+  --foreground:         #f6f1e7;
+  --card:               #222b66;
+  --card-foreground:    #f6f1e7;
+  --popover:            #222b66;
+  --popover-foreground: #f6f1e7;
 
-  --primary:            oklch(0.52  0.105 223);
-  --primary-foreground: oklch(1     0     0);
-  --secondary:          oklch(0.90  0.007 247);
-  --secondary-foreground: oklch(0.08 0.010 265);
-  --muted:              oklch(0.951 0.007 247);
-  --muted-foreground:   oklch(0.492 0.020 250);
-  --accent:             oklch(0.951 0.007 247);
-  --accent-foreground:  oklch(0.08  0.010 265);
+  --primary:            #e8a63e;
+  --primary-foreground: #1b2357;
+  --secondary:          #2a3370;
+  --secondary-foreground: #f6f1e7;
+  --muted:              #2a3370;
+  --muted-foreground:   #c3c8e0;
+  --accent:             #2a3370;
+  --accent-foreground:  #f6f1e7;
   --destructive:        oklch(0.577 0.245 27.3);
-  --border:             oklch(0.90  0.007 247);
-  --input:              oklch(0.90  0.007 247);
-  --ring:               oklch(0.52  0.105 223);
+  --border:             #353e7c;
+  --input:              #353e7c;
+  --ring:               #e8a63e;
 
-  --sidebar:                    oklch(1     0     0);
-  --sidebar-foreground:         oklch(0.08  0.010 265);
-  --sidebar-primary:            oklch(0.52  0.105 223);
-  --sidebar-primary-foreground: oklch(1     0     0);
-  --sidebar-accent:             oklch(0.951 0.007 247);
-  --sidebar-accent-foreground:  oklch(0.08  0.010 265);
-  --sidebar-border:             oklch(0.90  0.007 247);
-  --sidebar-ring:               oklch(0.52  0.105 223);
+  --highlight:          #e8a63e;
 
-  --grid-color: rgba(6, 182, 212, 0.08);
-  --dot-color:  rgba(6, 182, 212, 0.20);
+  --tech-primary:       #e8a63e;
+  --tech-secondary:     #f0bd6a;
+  --tech-accent:        #e8a63e;
+  --tech-dark:          #141a3a;
+  --tech-light:         #2a3370;
+
+  --chart-1: #e8a63e;
+  --chart-2: #f6f1e7;
+  --chart-3: #f0bd6a;
+  --chart-4: #8a91b8;
+  --chart-5: #c3c8e0;
+
+  --sidebar:                    #1b2357;
+  --sidebar-foreground:         #f6f1e7;
+  --sidebar-primary:            #e8a63e;
+  --sidebar-primary-foreground: #1b2357;
+  --sidebar-accent:             #2a3370;
+  --sidebar-accent-foreground:  #f6f1e7;
+  --sidebar-border:             #353e7c;
+  --sidebar-ring:               #e8a63e;
+
+  --grid-color: rgba(246, 241, 231, 0.04);
+  --dot-color:  rgba(232, 166, 62, 0.16);
 }
 
 @layer base {
@@ -154,7 +176,9 @@
     scroll-behavior: smooth;
     @apply font-sans;
   }
-  h1, h2, h3 {
+  h1, h2, h3, h4, h5 {
+    font-family: var(--font-heading);
+    letter-spacing: -0.015em;
     text-wrap: balance;
   }
   p {
@@ -191,23 +215,17 @@
   }
 
   .glow-primary {
-    box-shadow: 0 0 40px -10px color-mix(in srgb, var(--primary) 50%, transparent);
+    box-shadow: 0 10px 28px -12px color-mix(in srgb, var(--primary) 55%, transparent);
   }
 
   .glow-secondary {
-    box-shadow: 0 0 40px -10px color-mix(in srgb, var(--tech-secondary) 50%, transparent);
+    box-shadow: 0 10px 28px -12px color-mix(in srgb, var(--tech-secondary) 55%, transparent);
   }
 
-  .gradient-text {
-    @apply bg-gradient-to-r from-cyan-400 via-cyan-400 to-cyan-500 bg-clip-text text-transparent;
-  }
-
-  .light .gradient-text {
-    @apply from-cyan-700 via-cyan-600 to-cyan-700;
-  }
-
+  /* Brand highlight for key words in headlines (solid orange, as on Bitvora Stores) */
+  .gradient-text,
   .gradient-text-accent {
-    @apply bg-gradient-to-r from-cyan-300 via-cyan-400 to-emerald-400 bg-clip-text text-transparent;
+    color: var(--highlight);
   }
 
   .tech-grid {
@@ -233,7 +251,7 @@
     position: absolute;
     inset: -2px;
     border-radius: calc(var(--radius-lg) + 4px);
-    background: linear-gradient(135deg, #06b6d4, #22d3ee, #67e8f9, #06b6d4);
+    background: linear-gradient(135deg, #1b2357, #e8a63e, #f0bd6a, #1b2357);
     background-size: 400% 400%;
     animation: gradient-shift 4s ease infinite;
     z-index: -1;

@@ -7,19 +7,19 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-card border-t border-border">
+    <footer className="dark bg-background text-foreground border-t border-border">
       <div className="container mx-auto px-6 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
           {/* Brand */}
           <div>
             <Link href="/" className="flex items-center gap-2 mb-6" aria-label="Bitvoratech home">
-              <BrandIcon size={40} />
+              <BrandIcon size={40} background="dark" />
               <span className="text-xl font-bold text-foreground">
                 Bitvora<span className="text-primary">Tech</span>
               </span>
             </Link>
             <p className="text-muted-foreground text-sm mb-6">
-              Building high-performance websites that grow your business with modern technologies.
+              Websites, apps and online stores for Nigerian businesses. Makers of Bitvora Stores.
             </p>
             <div className="flex gap-3">
               {socialLinks.map((social) => (
@@ -53,6 +53,23 @@ export function Footer() {
               ))}
             </ul>
           </nav>
+
+          {/* Products */}
+          <div>
+            <h2 className="text-foreground font-semibold mb-6">Products</h2>
+            <ul className="space-y-3">
+              {footerLinks.products.map((link) => (
+                <li key={link.name}>
+                  <a
+                    href={link.href}
+                    className="text-muted-foreground hover:text-primary text-sm transition-colors"
+                  >
+                    {link.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
 
           {/* Services */}
           <div>

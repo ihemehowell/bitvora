@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, Space_Grotesk, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Footer } from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import { Providers } from "@/components/providers";
 import { FloatingActions } from "@/components/FloatingActions";
 
-const geistSans = Geist({ subsets: ["latin"], variable: "--font-geist-sans", display: "swap" });
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
+const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], weight: ["500", "600", "700"], variable: "--font-space-grotesk", display: "swap" });
 const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono", display: "swap" });
 
 export const metadata: Metadata = {
@@ -69,7 +70,7 @@ export default function RootLayout({
     };
 
     return (
-        <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`} suppressHydrationWarning>
+        <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable} ${geistMono.variable}`} suppressHydrationWarning>
         <body className="antialiased bg-background text-foreground">
         <script
             type="application/ld+json"
@@ -90,4 +91,4 @@ export default function RootLayout({
         </body>
         </html>
     );
-}
+}

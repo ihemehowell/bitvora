@@ -4,15 +4,7 @@ import { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { TestimonialCard } from './TestimonialCard';
-
-interface Testimonial {
-  name: string;
-  role: string;
-  company: string;
-  content: string;
-  avatar: string;
-  rating: number;
-}
+import type { Testimonial } from '@/Data/Data';
 
 interface TestimonialSliderProps {
   testimonials: Testimonial[];

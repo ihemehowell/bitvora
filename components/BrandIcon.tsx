@@ -7,25 +7,28 @@ import Image from 'next/image';
 interface BrandIconProps {
   size?: number;
   className?: string;
+  /** Force a variant when the icon sits on a fixed background (e.g. a navy band). */
+  background?: 'auto' | 'dark' | 'light';
 }
 
 /**
  * Renders the BitvoraTech icon mark, automatically swapping between the
  * light-background and dark-background variants based on the active theme.
  */
-export function BrandIcon({ size = 36, className = '' }: BrandIconProps) {
+export function BrandIcon({ size = 36, className = '', background = 'auto' }: BrandIconProps) {
   const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => setMounted(true), []);
 
   // Avoid a flash of the wrong variant before the theme is known client-side.
-  if (!mounted) {
+  if (!mounted && background === 'auto') {
     return <div style={{ width: size, height: size }} className={className} />;
   }
 
+  const onDark = background === 'auto' ? resolvedTheme === 'dark' : background === 'dark';
   const src =
-    resolvedTheme === 'dark' ? '/brand/icon-dark-bg.svg' : '/brand/icon-light-bg.svg';
+    onDark ? '/brand/icon-dark-bg.svg' : '/brand/icon-light-bg.svg';
 
   return (
     <Image

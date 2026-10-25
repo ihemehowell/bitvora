@@ -4,7 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle } from "lucide-react";
 import Link from "next/link";
-import { portfolioProjects } from "@/Data/Data";
+import { portfolioProjects, STORES_URL } from "@/Data/Data";
 
 const blur = (img: unknown) => (typeof img === "string" ? "empty" : "blur");
 
@@ -30,11 +30,10 @@ function BrowserFrame({ url, children }: { url: string; children: React.ReactNod
 export default function HeroSection() {
   const [front, middle, back] = showcase;
 
+  // "dark" scopes the navy brand palette to the hero, matching the Bitvora Stores hero
   return (
-      <section className="relative min-h-[calc(100svh-4rem)] flex items-center overflow-hidden">
-        <div className="tech-grid absolute inset-0 bg-linear-to-br from-primary/10 via-transparent to-transparent pointer-events-none" />
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[120px] pointer-events-none" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[120px] pointer-events-none" />
+      <section className="dark relative min-h-[calc(100svh-4rem)] flex items-center overflow-hidden bg-background text-foreground">
+        <div className="tech-grid absolute inset-0 pointer-events-none" />
 
         <div className="container mx-auto px-6 py-16 lg:py-20 relative z-10">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -43,25 +42,26 @@ export default function HeroSection() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
             >
-              <motion.div
+              <motion.a
+                  href={STORES_URL}
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.1 }}
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-6"
+                  className="group inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border mb-6 no-underline hover:border-primary/60 transition-colors"
               >
-                <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-                <span className="text-sm text-primary mono">Available for projects</span>
-              </motion.div>
+                <span className="w-2 h-2 bg-primary rounded-full" />
+                <span className="text-sm font-semibold text-primary">New: Bitvora Stores launches 1 November</span>
+                <ArrowRight size={14} className="text-primary group-hover:translate-x-0.5 transition-transform" aria-hidden />
+              </motion.a>
 
-              <h1 className="text-[clamp(2.5rem,6vw,4rem)] font-black mb-6 leading-[1.05] tracking-tight text-foreground">
-                Building Digital
-                <span className="block gradient-text">Experiences</span>
-                That <span className="text-muted-foreground">Scale</span>
+              <h1 className="text-[clamp(2.5rem,6vw,4.25rem)] font-bold mb-6 leading-[1.05] text-foreground">
+                Websites and software that grow{" "}
+                <span className="gradient-text">with your business.</span>
               </h1>
 
               <p className="text-muted-foreground text-lg mb-8 max-w-xl">
-                We craft modern websites and applications using cutting-edge technologies.
-                Fast, scalable, and designed for growth.
+                We design and build websites, web apps and online stores for Nigerian businesses.
+                Start small with Bitvora Stores, or work with our team on something fully custom.
               </p>
 
               <div className="flex flex-wrap gap-4">
@@ -69,7 +69,7 @@ export default function HeroSection() {
                     href="/quote"
                     className="group inline-flex items-center gap-2 px-8 py-4 bg-primary hover:opacity-90 text-primary-foreground font-semibold rounded-xl transition-all duration-300 glow-primary"
                 >
-                  Start a Project
+                  Start a project
                   <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
 
@@ -77,13 +77,13 @@ export default function HeroSection() {
                     href="/projects"
                     className="inline-flex items-center px-8 py-4 bg-accent hover:bg-accent/80 text-foreground font-medium rounded-xl border border-border transition-all duration-300"
                 >
-                  View Work
+                  See our work
                 </Link>
               </div>
 
               <dl className="grid grid-cols-3 gap-6 sm:gap-8 mt-12">
                 {[
-                  { value: `${portfolioProjects.length}+`, label: "Projects launched" },
+                  { value: `${portfolioProjects.length}+`, label: "Client projects shipped" },
                   { value: "Direct", label: "Access to your developer" },
                   { value: "Lagos", label: "Built locally for African SMEs" },
                 ].map((stat) => (
@@ -144,7 +144,7 @@ export default function HeroSection() {
                   </motion.a>
               )}
 
-              <div className="absolute -bottom-2 left-0 glass p-4 rounded-xl border border-border z-10">
+              <div className="absolute -bottom-2 left-0 bg-card p-4 rounded-xl border border-border shadow-xl z-10">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center">
                     <CheckCircle className="text-primary" size={20} />
@@ -156,7 +156,7 @@ export default function HeroSection() {
                 </div>
               </div>
 
-              <div className="absolute top-2 right-2 glass px-4 py-2 rounded-full border border-border z-10">
+              <div className="absolute top-2 right-2 bg-card px-4 py-2 rounded-full border border-border shadow-xl z-10">
                 <span className="text-primary text-sm font-medium mono">Next.js + Tailwind</span>
               </div>
             </motion.div>

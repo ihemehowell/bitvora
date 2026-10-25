@@ -8,8 +8,7 @@ import { services } from "@/Data/Data";
 
 export default function ServicesSection() {
   return (
-      <section className="py-20 relative glass">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent pointer-events-none" />
+      <section className="py-20 relative bg-card border-y border-border">
 
         <div className="container mx-auto px-6 relative z-10">
           <motion.div
@@ -18,12 +17,12 @@ export default function ServicesSection() {
               viewport={{ once: true }}
               className="text-center mb-16"
           >
-            <span className="text-primary text-sm font-medium mono mb-4 block">WHAT WE DO</span>
+            <span className="text-highlight text-sm font-semibold tracking-[0.12em] mb-4 block">WHAT WE DO</span>
             <h2 className="text-4xl font-bold text-foreground mb-4">
               Our <span className="">Services</span>
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-              Comprehensive web development solutions tailored to your business needs
+              Everything your business needs to sell online, from a first website to a full custom platform
             </p>
           </motion.div>
 
@@ -59,4 +58,4 @@ export default function ServicesSection() {
         </div>
       </section>
   );
-}
+}
